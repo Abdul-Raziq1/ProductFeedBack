@@ -13,7 +13,7 @@ export default {
         'purpleTheme': '#AD1FEA',
         'blueTheme': '#4661E6',
         'blueBlackTheme': '#373F68',
-        'grayTheme': '#F2F4FF',
+        'grayTheme': '#F2F4FE',
         'lighterGrayTheme': '#F758FD',
         'lighterBlueBlackTheme': '#3A4374',
         'darkGrayTheme': '#647196',
