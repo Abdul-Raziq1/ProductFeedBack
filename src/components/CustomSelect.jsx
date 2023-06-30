@@ -12,7 +12,7 @@ const CustomOption = (props) => (
     </span>
   </components.Option>
 );
-const CustomSelect = ({ options }) => {
+const CustomSelect = ({ options, onChange }) => {
   const customStyle = {
     control: (styles) => ({
       ...styles,
@@ -28,7 +28,7 @@ const CustomSelect = ({ options }) => {
     option: (styles, state) => {
       return {
         ...styles,
-        color: state.isFocused ? "#AD1FEA" : "",
+        color: state.isSelected ? "#AD1FEA" : "",
         backgroundColor: state.isSelected && "",
         borderBottom: "1px solid #F2F4FF",
         ":hover": {
@@ -72,6 +72,7 @@ const CustomSelect = ({ options }) => {
       options={options}
       placeholder={options[0]?.label}
       defaultValue={options[0]}
+      onChange={onChange}
     />
   );
 };
