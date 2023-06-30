@@ -1,27 +1,34 @@
 import { FaBars, FaPlus } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
 import SortDropDown from "../components/SortDropDown";
 import CustomButton from "../components/CustomButton";
 
 import detective from "../assets/images/detective.svg";
 import Suggestion from "../components/Suggestion";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
+import SideBar from "../components/SideBar";
 const LandingScreen = () => {
+  const [showSideBar, setShowSideBar] = useState(false)
   const { sortedState, loading } = useContext(FeedbackContext)
+  const sideBarHandler = () => {
+    setShowSideBar(!showSideBar)
+  }
   return (
-    <>
-      <header className="flex px-10 py-6 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="h-screen">
+      <header className="relative flex px-10 py-6 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         <div className="flex flex-col gap-2">
           <h2 className="font-semibold text-2xl text-white">Frontend Mentor</h2>
           <h4 className="font-semibold text-xl text-grayTheme">
             Feedback Board
           </h4>
         </div>
-        <div>
-          <FaBars className="text-white text-4xl cursor-pointer" />
+        <div onClick={sideBarHandler}>
+          {!showSideBar ? <FaBars className="text-white text-4xl cursor-pointer" /> : <AiOutlineClose className="text-white text-4xl cursor-pointer"/>}
         </div>
+        {showSideBar && <SideBar />}
       </header>
-      <section className="flex justify-between bg-blueBlackTheme py-5 px-5">
+      <section className="flex justify-between bg-blueBlackTheme py-5 px-3">
         <SortDropDown />
         <CustomButton
           icon={<FaPlus />}
@@ -29,7 +36,7 @@ const LandingScreen = () => {
           color={"#AD1FEA"}
         />
       </section>
-      <main className="bg-grayTheme py-10 px-4">
+      <main className="bg-grayTheme py-10 px-4 ">
         {
           loading === true ? (
             <></>
@@ -66,7 +73,7 @@ const LandingScreen = () => {
         }
 
       </main>
-    </>
+    </div>
   );
 };
 

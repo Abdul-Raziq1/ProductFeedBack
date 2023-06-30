@@ -14,7 +14,7 @@ const CustomButton = ({ text, icon, color, onClick }) => {
     >
       <div className="flex gap-2 items-center px-2">
         <span className="text-xs text-white">{icon}</span>
-        <span className="text-white font-bold">{text}</span>
+        <span className="text-white font-bold whitespace-nowrap">{text}</span>
       </div>
     </button>
   );
