@@ -49,11 +49,11 @@ const suggestions = {
         ]
     },
     2: {
-        id: 1,
+        id: 2,
         title: "Add tags for solutions",
         description: "Easier to search for solutions based on a specific stack.",
-        numOfMessages: 2,
-        numOfUpvotes: 112,
+        numOfMessages: 4,
+        numOfUpvotes: 99,
         categories: [
             {id: "enh5059", category: 'Enhancement'}
         ],
@@ -98,11 +98,11 @@ const suggestions = {
         ]
     },
     3: {
-        id: 1,
+        id: 3,
         title: "Add tags for solutions",
         description: "Easier to search for solutions based on a specific stack.",
         numOfMessages: 2,
-        numOfUpvotes: 112,
+        numOfUpvotes: 65,
         categories: [
             {id: "endm553", category: 'Enhancement'}
         ],
@@ -147,11 +147,11 @@ const suggestions = {
         ]
     },
     4: {
-        id: 1,
+        id: 4,
         title: "Add tags for solutions",
         description: "Easier to search for solutions based on a specific stack.",
         numOfMessages: 2,
-        numOfUpvotes: 112,
+        numOfUpvotes: 66,
         categories: [
             {id: "rec9d04", category: 'Enhancement'}
         ],

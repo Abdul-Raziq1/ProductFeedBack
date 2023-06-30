@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LandingScreen from './screens/LandingScreen.jsx'
+import FeedbackProvider from './context/FeedbackContext'
 
 const router = createBrowserRouter([
   {
@@ -11,5 +12,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}/>
+  <FeedbackProvider>
+    <RouterProvider router={router}/>
+  </FeedbackProvider>
 )
