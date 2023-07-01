@@ -30,7 +30,7 @@ const FeedbackScreen = () => {
         setFeedback({
           title: "",
           description: "",
-          category: "",
+          category: "Feature",
           numOfMessages: 0,
           numOfUpvotes: 0,
           messages: [],

@@ -10,13 +10,13 @@ const FeedbackProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState(MOST_UPVOTES);
   const [filterBy, setFilterBy] = useState(ALL);
   const [sortedState, setSortedState] = useState([]);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(true);
   const [updateStatus, setUpdateStatus] = useState({});
   const [fetchData, setFetchData] = useState(true)
   const [feedback, setFeedback] = useState({
     title: '',
     description: '',
-    category: '',
+    category: 'Feature',
     numOfMessages: 0,
     numOfUpvotes: 0,
     messages: []
@@ -44,11 +44,11 @@ const FeedbackProvider = ({ children }) => {
     return copy;
   };
 
-  const filterate = (filterBy) => {
+  const filterate = (filterBy, arrayToFilter) => {
     if (filterBy === ALL) {
-      return suggestions;
+      return arrayToFilter;
     }
-    const filteredArray = suggestions.filter((suggestion) => suggestion.category === filterBy)
+    const filteredArray = arrayToFilter.filter((suggestion) => suggestion.category === filterBy)
     return filteredArray;
   };
   useEffect(() => {
@@ -56,7 +56,8 @@ const FeedbackProvider = ({ children }) => {
       .getSuggestions()
       .then((response) => {
         setSuggestions(sorter(sortBy, response));
-        setSortedState(sorter(sortBy, response));
+        setSortedState(sorter(sortBy, filterate(filterBy, response)));
+
         setLoading(false);
         // setTimeout(() => {
         // }, 2000)
@@ -73,10 +74,10 @@ const FeedbackProvider = ({ children }) => {
         console.log("Error:", error);
       });
       setFetchData(false)
-  }, [fetchData, setFetchData]);
+  }, [fetchData]);
 
   useEffect(() => {
-    setSortedState(sorter(sortBy, filterate(filterBy)));
+    setSortedState(sorter(sortBy, filterate(filterBy, suggestions)));
   }, [sortBy, filterBy]);
   return (
     <FeedbackContext.Provider
