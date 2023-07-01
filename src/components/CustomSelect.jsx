@@ -33,7 +33,7 @@ const CustomSelect = ({ options, onChange }) => {
         borderBottom: "1px solid #F2F4FF",
         ":hover": {
           backgroundColor: "",
-          color: "",
+          color: "#AD1FEA",
         },
         ":active": {
           backgroundColor: "",
@@ -61,9 +61,15 @@ const CustomSelect = ({ options, onChange }) => {
           transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : null,
           ':hover': {
             color: ""
-          }
+          },
       }
   ),
+  valueContainer: (styles) => {
+    return {
+      ...styles,
+      padding: "2px"
+    }
+  }
   };
   return (
     <Select

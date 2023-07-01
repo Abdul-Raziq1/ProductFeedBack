@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import CustomSelect from "./CustomSelect";
 import { FeedbackContext } from "../context/FeedbackContext";
-import { LEAST_COMMENTS, LEAST_UPVOTES, MOST_COMMENTS, MOST_UPVOTES } from "../data/sortTypes";
+import { LEAST_COMMENTS, LEAST_UPVOTES, MOST_COMMENTS, MOST_UPVOTES } from "../data/types";
 
 const SortDropDown = () => {
   const { setSortBy } = useContext(FeedbackContext)
@@ -16,7 +16,7 @@ const SortDropDown = () => {
   }
   return (
     <div className="flex items-center">
-      <span className="font-bold text-grayTheme">Sort by :</span>
+      <span className="font-bold whitespace-nowrap text-grayTheme">Sort by :</span>
       <CustomSelect options={dropDownItems} onChange={handleChange}/>
     </div>
   );
