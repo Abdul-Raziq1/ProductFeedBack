@@ -43,10 +43,10 @@ const FeedbackScreen = () => {
       });
   };
   return (
-    <div className="min-h-screen p-7 bg-grayTheme flex flex-col gap-10">
+    <div className="min-h-screen p-7 bg-grayTheme flex flex-col gap-10 select-none">
       <div
         onClick={backClickHandler}
-        className="cursor-pointer flex gap-2 items-center"
+        className="cursor-pointer w-fit flex gap-2 items-center"
       >
         <FaChevronLeft className="w-2 text-blueTheme" />
         <span className="hover:underline font-semibold text-darkGrayTheme">

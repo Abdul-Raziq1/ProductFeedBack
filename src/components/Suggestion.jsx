@@ -4,7 +4,7 @@ import Category from "./Category";
 import { FaComment } from "react-icons/fa";
 const Suggestion = ({ suggestion }) => {
   return (
-    <div className="cursor-pointer rounded-xl flex flex-col gap-5 p-5 bg-white mb-5">
+    <div className="select-text rounded-xl flex flex-col gap-5 p-5 bg-white mb-5">
       <div className="flex flex-col gap-3">
         <h2 className="text-blueBlackTheme font-bold text-lg">
           {suggestion.title}

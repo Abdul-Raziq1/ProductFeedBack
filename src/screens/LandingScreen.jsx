@@ -17,15 +17,15 @@ const LandingScreen = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
-      <header className=" flex px-6 py-1 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="min-h-screen overflow-x-hidden select-none">
+      <header className=" flex pl-3 py-1 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         <div className="flex flex-col">
           <h2 className="font-semibold text-xl text-white">Frontend Mentor</h2>
           <h4 className=" text-lg text-grayTheme text-opacity-90">
             Feedback Board
           </h4>
         </div>
-        <div onClick={sideBarHandler}>
+        <div className="mr-6" onClick={sideBarHandler}>
           {!showSideBar ? (
             <FaBars className="text-white text-3xl cursor-pointer" />
           ) : (

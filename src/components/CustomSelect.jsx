@@ -43,7 +43,6 @@ const CustomSelect = ({ options, onChange, override }) => {
     container: (styles) => {
         return {
             ...styles,
-            minWidth: "150px",
         }
     },
     singleValue: (styles) => {
@@ -62,12 +61,19 @@ const CustomSelect = ({ options, onChange, override }) => {
           ':hover': {
             color: ""
           },
+          paddingInline: "0"
       }
   ),
   valueContainer: (styles) => {
     return {
       ...styles,
       padding: "2px"
+    }
+  },
+  menu: (styles) => {
+    return {
+      ...styles,
+      minWidth: "160px"
     }
   }
   };
