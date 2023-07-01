@@ -85,6 +85,7 @@ const CustomSelect = ({ options, onChange, override }) => {
       placeholder={options[0]?.label}
       defaultValue={options[0]}
       onChange={onChange}
+      isSearchable={false}
     />
   );
 };
