@@ -11,9 +11,7 @@ const Suggestion = ({ suggestion }) => {
         </h2>
         <p className="text-darkGrayTheme">{suggestion.description}</p>
         <div className="flex gap-3">
-          {suggestion.categories.map((category) => (
-            <Category key={category.id} category={category.category} />
-          ))}
+          <Category category={suggestion.category} />
         </div>
       </div>
       <div className="flex justify-between items-center">

@@ -11,3 +11,6 @@ export const UI = "UI"
 export const UX = "UX"
 export const BUG = "Bug"
 export const FEATURE = "Feature"
+
+// Buttons
+export const ADD_FEEDBACK = "Add Feedback"

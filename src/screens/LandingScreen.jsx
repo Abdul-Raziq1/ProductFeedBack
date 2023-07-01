@@ -1,21 +1,23 @@
 import { FaBars, FaPlus } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import SortDropDown from "../components/SortDropDown";
-import CustomButton from "../components/CustomButton";
 
 import detective from "../assets/images/detective.svg";
 import Suggestion from "../components/Suggestion";
 import { useContext, useState } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
 import SideBar from "../components/SideBar";
+import { ADD_FEEDBACK } from "../data/types";
+import LinkButton from "../components/LinkButtons";
 const LandingScreen = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const { sortedState, loading } = useContext(FeedbackContext);
   const sideBarHandler = () => {
     setShowSideBar(!showSideBar);
   };
+  
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <header className=" flex px-10 py-6 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         <div className="flex flex-col gap-2">
           <h2 className="font-semibold text-2xl text-white">Frontend Mentor</h2>
@@ -34,9 +36,9 @@ const LandingScreen = () => {
       <div className="relative">{<SideBar showSideBar={showSideBar}/>}</div>
       <section className="flex justify-between bg-blueBlackTheme py-5 px-3">
         <SortDropDown />
-        <CustomButton
+        <LinkButton
           icon={<FaPlus />}
-          text={"Add Feedback"}
+          text={ADD_FEEDBACK}
           color={"#AD1FEA"}
         />
       </section>
@@ -59,9 +61,9 @@ const LandingScreen = () => {
                 Got a suggestion? Found a bug that needs to be squashed? We love
                 hearing about new ideas to improve our app.
               </blockquote>
-              <CustomButton
+              <LinkButton
                 icon={<FaPlus />}
-                text={"Add Feedback"}
+                text={ADD_FEEDBACK}
                 color={"#AD1FEA"}
               />
             </div>

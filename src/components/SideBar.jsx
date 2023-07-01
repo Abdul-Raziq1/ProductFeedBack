@@ -6,7 +6,6 @@ import UpdateStatus from "./UpdateStatus";
 
 const SideBar = ({ showSideBar }) => {
   const { setFilterBy, selected, updateStatus } = useContext(FeedbackContext);
-  console.log("Status", updateStatus)
   const categoryHandler = (category) => {
     setFilterBy(category);
   };

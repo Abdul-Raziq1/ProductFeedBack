@@ -1,13 +1,12 @@
-const suggestions = {
+import { v4 as uuid } from 'uuid'
+let suggestions = {
     1: {
         id: 1,
         title: "Add tags for solutions",
         description: "Easier to search for solutions based on a specific stack.",
         numOfMessages: 2,
         numOfUpvotes: 112,
-        categories: [
-            {id: "enh313", category: 'Enhancement'}
-        ],
+        category: 'Enhancement',
         messages: [
             {
                 id: 1111,
@@ -54,9 +53,7 @@ const suggestions = {
         description: "Easier to search for solutions based on a specific stack.",
         numOfMessages: 4,
         numOfUpvotes: 99,
-        categories: [
-            {id: "enh5059", category: 'UI'}
-        ],
+        category: 'UI',
         messages: [
             {
                 id: 1111,
@@ -103,9 +100,7 @@ const suggestions = {
         description: "Easier to search for solutions based on a specific stack.",
         numOfMessages: 2,
         numOfUpvotes: 65,
-        categories: [
-            {id: "endm553", category: 'Bug'}
-        ],
+        category: 'Bug',
         messages: [
             {
                 id: 1111,
@@ -152,9 +147,7 @@ const suggestions = {
         description: "Easier to search for solutions based on a specific stack.",
         numOfMessages: 2,
         numOfUpvotes: 66,
-        categories: [
-            {id: "rec9d04", category: 'Feature'}
-        ],
+        category: 'Feature',
         messages: [
             {
                 id: 1111,
@@ -201,9 +194,7 @@ const suggestions = {
         description: "Easier to search for solutions based on a specific stack.",
         numOfMessages: 10,
         numOfUpvotes: 66,
-        categories: [
-            {id: "r9d9di04", category: 'Enhancement'}
-        ],
+        category: 'Enhancement',
         messages: [
             {
                 id: 5551111,
@@ -278,4 +269,25 @@ const getUpdateStatus = () => {
     })
 }
 
-export default { getSuggestions, getUpdateStatus }
+const addFeedBack = (newFeedback) => {
+    return new Promise((resolve, reject) => {
+        try {
+            const id = uuid()
+            const feedback = {
+                id,
+                ...newFeedback
+            }
+            suggestions = {...suggestions, [id]: feedback}
+            setTimeout(() => {
+                console.log("Added ", feedback)
+                return resolve(true)
+            }, 250);
+        }
+        catch (error) {
+            reject(new Error("Something wrong occured"))
+        }
+
+    })
+}
+
+export default { getSuggestions, getUpdateStatus, addFeedBack }

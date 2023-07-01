@@ -12,14 +12,14 @@ const CustomOption = (props) => (
     </span>
   </components.Option>
 );
-const CustomSelect = ({ options, onChange }) => {
+const CustomSelect = ({ options, onChange, override }) => {
   const customStyle = {
     control: (styles) => ({
       ...styles,
-      border: "0",
+      border: override ? '1px solid #4661E6' : 0,
       boxShadow: 0,
-      backgroundColor: "#373F68"
-
+      backgroundColor: override ? "#F2F4FE" : "#373F68",
+      padding: override && "10px",
     }),
     indicatorSeparator: (styles) => ({
       ...styles,
@@ -28,7 +28,7 @@ const CustomSelect = ({ options, onChange }) => {
     option: (styles, state) => {
       return {
         ...styles,
-        color: state.isSelected ? "#AD1FEA" : "",
+        color: state.isSelected ? "#AD1FEA" : "#647196",
         backgroundColor: state.isSelected && "",
         borderBottom: "1px solid #F2F4FF",
         ":hover": {
@@ -49,14 +49,14 @@ const CustomSelect = ({ options, onChange }) => {
     singleValue: (styles) => {
       return {
         ...styles,
-        fontWeight: 'bold',
-        color: '#F2F4FE'
+        fontWeight: !override && 'bold',
+        color: override ? '#647196' : '#F2F4FE'
       }
     },
     dropdownIndicator: (styles, state) => (
       {
           ...styles,
-          color: "white",
+          color: override ? "#4661E6" : "white",
           transition: 'transform .2s ease',
           transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : null,
           ':hover': {
@@ -85,5 +85,6 @@ const CustomSelect = ({ options, onChange }) => {
 
 CustomSelect.propTypes = {
   options: PropTypes.array,
+  override: PropTypes.bool
 };
 export default CustomSelect;

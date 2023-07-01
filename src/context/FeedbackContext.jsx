@@ -12,7 +12,15 @@ const FeedbackProvider = ({ children }) => {
   const [sortedState, setSortedState] = useState([]);
   const [selected, setSelected] = useState(false);
   const [updateStatus, setUpdateStatus] = useState({});
-
+  const [fetchData, setFetchData] = useState(true)
+  const [feedback, setFeedback] = useState({
+    title: '',
+    description: '',
+    category: '',
+    numOfMessages: 0,
+    numOfUpvotes: 0,
+    messages: []
+  });
   const sorter = (sortBy, arrayToSort) => {
     let copy;
     // Sort Logic
@@ -40,12 +48,7 @@ const FeedbackProvider = ({ children }) => {
     if (filterBy === ALL) {
       return suggestions;
     }
-    const filteredArray = suggestions.filter((suggestion) => {
-      const filtered = suggestion.categories.filter((category) => {
-        return category.category === filterBy;
-      });
-      return filtered.length > 0;
-    });
+    const filteredArray = suggestions.filter((suggestion) => suggestion.category === filterBy)
     return filteredArray;
   };
   useEffect(() => {
@@ -64,18 +67,17 @@ const FeedbackProvider = ({ children }) => {
     fakeApi
       .getUpdateStatus()
       .then((response) => {
-        console.log("Update Status", response);
         setUpdateStatus(response)
       })
       .catch((error) => {
         console.log("Error:", error);
       });
-  }, []);
+      setFetchData(false)
+  }, [fetchData, setFetchData]);
 
   useEffect(() => {
     setSortedState(sorter(sortBy, filterate(filterBy)));
   }, [sortBy, filterBy]);
-
   return (
     <FeedbackContext.Provider
       value={{
@@ -84,9 +86,12 @@ const FeedbackProvider = ({ children }) => {
         selected,
         filterBy,
         updateStatus,
+        feedback,
         setSortBy,
         setFilterBy,
         setSelected,
+        setFeedback,
+        setFetchData
       }}
     >
       {children}

@@ -1,32 +1,37 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const CustomButton = ({ text, icon, color, onClick, type="button" }) => {
+const LinkButton = ({ text, icon, color }) => {
   const buttonStyle = {
      backgroundColor: color,
      borderRadius: "10px",
-     padding: "10px",
+     padding
+     : "10px",
+  }
+  const mapTextToLink = (text) => {
+    const links = {
+      'Add Feedback': 'addFeedback'
+    }
+    return links[text]
   }
   return (
-    <button
-      type={type}
-      onClick={onClick}
+    <Link
+      to={`${mapTextToLink(text)}`}
       style={buttonStyle}
-      className="hover:opacity-90 opacity-100"
+      className="hover:opacity-100 opacity-90 "
     >
       <div className="flex justify-center gap-2 items-center px-2">
         <span className="text-xs text-white">{icon}</span>
         <span className="text-white font-bold whitespace-nowrap">{text}</span>
       </div>
-    </button>
+    </Link>
   );
 };
 
-CustomButton.propTypes = {
+LinkButton.propTypes = {
   text: PropTypes.string,
   icon: PropTypes.any,
   color: PropTypes.string,
-  onClick: PropTypes.func,
-  type: PropTypes.string,
 };
 
-export default CustomButton;
+export default LinkButton;
