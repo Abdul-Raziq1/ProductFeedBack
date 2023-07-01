@@ -15,26 +15,26 @@ const LandingScreen = () => {
   const sideBarHandler = () => {
     setShowSideBar(!showSideBar);
   };
-  
+
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <header className=" flex px-10 py-6 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-        <div className="flex flex-col gap-2">
-          <h2 className="font-semibold text-2xl text-white">Frontend Mentor</h2>
-          <h4 className="font-semibold text-xl text-grayTheme">
+      <header className=" flex px-6 py-1 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <div className="flex flex-col">
+          <h2 className="font-semibold text-xl text-white">Frontend Mentor</h2>
+          <h4 className=" text-lg text-grayTheme text-opacity-90">
             Feedback Board
           </h4>
         </div>
         <div onClick={sideBarHandler}>
           {!showSideBar ? (
-            <FaBars className="text-white text-4xl cursor-pointer" />
+            <FaBars className="text-white text-3xl cursor-pointer" />
           ) : (
             <AiOutlineClose className="text-white text-4xl cursor-pointer" />
           )}
         </div>
       </header>
       <div className="relative">{<SideBar showSideBar={showSideBar}/>}</div>
-      <section className="flex justify-between bg-blueBlackTheme py-5 px-3">
+      <section className="flex justify-around bg-blueBlackTheme py-2">
         <SortDropDown />
         <LinkButton
           icon={<FaPlus />}

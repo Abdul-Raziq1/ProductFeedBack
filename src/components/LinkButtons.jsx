@@ -20,7 +20,7 @@ const LinkButton = ({ text, icon, color }) => {
       style={buttonStyle}
       className="hover:opacity-100 opacity-90 "
     >
-      <div className="flex justify-center gap-2 items-center px-2">
+      <div className="flex justify-center gap-1 items-center ">
         <span className="text-xs text-white">{icon}</span>
         <span className="text-white font-bold whitespace-nowrap">{text}</span>
       </div>
