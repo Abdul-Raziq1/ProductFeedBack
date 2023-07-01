@@ -66,7 +66,6 @@ const SideBar = ({ showSideBar }) => {
           </a>
         </div>
         <div className="flex flex-col gap-2">
-          {/*TODO: Remember to add the number argument */}
           <UpdateStatus text={"Planned"} color={"bg-amber-600"} number={updateStatus.planned?.length}/>
           <UpdateStatus text={"In-Progress"} color={"bg-purpleTheme"} number={updateStatus.inProgress?.length}/>
           <UpdateStatus text={"Live"} color={"bg-blueTheme"} number={updateStatus.live?.length}/>
