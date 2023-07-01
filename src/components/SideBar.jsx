@@ -2,15 +2,17 @@ import { useContext } from "react";
 import Category from "./Category";
 import PropTypes from "prop-types";
 import { FeedbackContext } from "../context/FeedbackContext";
+import UpdateStatus from "./UpdateStatus";
 
 const SideBar = ({ showSideBar }) => {
-  const { setFilterBy, selected } = useContext(FeedbackContext);
+  const { setFilterBy, selected, updateStatus } = useContext(FeedbackContext);
+  console.log("Status", updateStatus)
   const categoryHandler = (category) => {
     setFilterBy(category);
   };
   return (
     <div
-      className={`absolute top-0 right-0 z-10 p-4 bg-grayTheme flex flex-col h-screen ${
+      className={`absolute top-0 right-0 z-10 p-4 bg-grayTheme flex flex-col gap-6 h-screen ${
         showSideBar ? "translate-x-0" : "translate-x-full"
       } ease-in-out duration-300`}
     >
@@ -50,6 +52,24 @@ const SideBar = ({ showSideBar }) => {
             onClick={categoryHandler}
             category={"Feature"}
           />
+        </div>
+      </div>
+      <div className="flex flex-col gap-5 bg-white rounded-xl p-7">
+        <div className="flex justify-between items-center ">
+          <h2 className="text-xl font-semibold text-blueBlackTheme">Roadmap</h2>
+          {/*TODO: Add Link tag soon */}
+          <a
+            href="/roadmap"
+            className="text-sm text-darkGrayTheme text-opacity-30 font-semibold underline"
+          >
+            View
+          </a>
+        </div>
+        <div className="flex flex-col gap-2">
+          {/*TODO: Remember to add the number argument */}
+          <UpdateStatus text={"Planned"} color={"bg-amber-600"} number={updateStatus.planned?.length}/>
+          <UpdateStatus text={"In-Progress"} color={"bg-purpleTheme"} number={updateStatus.inProgress?.length}/>
+          <UpdateStatus text={"Live"} color={"bg-blueTheme"} number={updateStatus.live?.length}/>
         </div>
       </div>
     </div>

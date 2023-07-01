@@ -1,12 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from "react";
 import fakeApi from "../data/suggestions";
-import {
-  ALL,
-  LEAST_UPVOTES,
-  MOST_COMMENTS,
-  MOST_UPVOTES,
-} from "../data/types";
+import { ALL, LEAST_UPVOTES, MOST_COMMENTS, MOST_UPVOTES } from "../data/types";
 export const FeedbackContext = createContext();
 
 const FeedbackProvider = ({ children }) => {
@@ -15,7 +10,8 @@ const FeedbackProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState(MOST_UPVOTES);
   const [filterBy, setFilterBy] = useState(ALL);
   const [sortedState, setSortedState] = useState([]);
-  const [selected, setSelected] = useState(false)
+  const [selected, setSelected] = useState(false);
+  const [updateStatus, setUpdateStatus] = useState({});
 
   const sorter = (sortBy, arrayToSort) => {
     let copy;
@@ -50,7 +46,7 @@ const FeedbackProvider = ({ children }) => {
       });
       return filtered.length > 0;
     });
-    return filteredArray
+    return filteredArray;
   };
   useEffect(() => {
     fakeApi
@@ -65,14 +61,34 @@ const FeedbackProvider = ({ children }) => {
       .catch((error) => {
         console.log("Error: ", error);
       });
+    fakeApi
+      .getUpdateStatus()
+      .then((response) => {
+        console.log("Update Status", response);
+        setUpdateStatus(response)
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
   }, []);
 
   useEffect(() => {
-      setSortedState(sorter(sortBy, filterate(filterBy)));
+    setSortedState(sorter(sortBy, filterate(filterBy)));
   }, [sortBy, filterBy]);
 
   return (
-    <FeedbackContext.Provider value={{ sortedState, loading, selected, filterBy, setSortBy, setFilterBy, setSelected }}>
+    <FeedbackContext.Provider
+      value={{
+        sortedState,
+        loading,
+        selected,
+        filterBy,
+        updateStatus,
+        setSortBy,
+        setFilterBy,
+        setSelected,
+      }}
+    >
       {children}
     </FeedbackContext.Provider>
   );

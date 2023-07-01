@@ -246,6 +246,12 @@ const suggestions = {
     }
 }
 
+const updateStatus = {
+    planned: [],
+    inProgress: [],
+    live: []
+}
+
 const getSuggestions = () => {
     return new Promise((resolve, reject) => {
         if (!suggestions) {
@@ -259,6 +265,17 @@ const getSuggestions = () => {
     })
 }
 
+const getUpdateStatus = () => {
+    return new Promise((resolve, reject) => {
+        if (!updateStatus){
+            return setTimeout(() => {
+                reject(new Error("Update Status not found"))
+            }, 250)
+        }
+        return setTimeout(() => {
+            resolve(updateStatus)
+        }, 250)
+    })
+}
 
-
-export default { getSuggestions }
+export default { getSuggestions, getUpdateStatus }
