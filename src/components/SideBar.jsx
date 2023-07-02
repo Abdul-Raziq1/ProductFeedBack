@@ -1,16 +1,17 @@
-import { useContext } from "react";
+import { useContext, forwardRef } from "react";
 import Category from "./Category";
 import PropTypes from "prop-types";
 import { FeedbackContext } from "../context/FeedbackContext";
 import UpdateStatus from "./UpdateStatus";
 
-const SideBar = ({ showSideBar }) => {
+// eslint-disable-next-line react/display-name
+const SideBar = forwardRef(({ showSideBar }, ref) => {
   const { setFilterBy, selected, updateStatus } = useContext(FeedbackContext);
   const categoryHandler = (category) => {
     setFilterBy(category);
   };
   return (
-    <div
+    <div ref={ref}
       className={`absolute top-0 right-0 h-full z-10 p-4 bg-grayTheme flex flex-col gap-6 ${
         showSideBar ? "translate-x-0" : "translate-x-full"
       } ease-in-out duration-300`}
@@ -71,8 +72,8 @@ const SideBar = ({ showSideBar }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+})
 
 SideBar.propTypes = {
   showSideBar: PropTypes.bool,

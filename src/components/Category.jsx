@@ -2,9 +2,12 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
 
-const Category = ({ category, onClick, selected }) => {
+const Category = ({ category, onClick, selected, isPresentational }) => {
   const { setSelected, filterBy } = useContext(FeedbackContext);
   const handleClick = (category) => {
+    if (isPresentational){
+      return
+    }
     onClick(category);
     setSelected(true)
   };
@@ -23,6 +26,7 @@ const Category = ({ category, onClick, selected }) => {
 Category.propTypes = {
   category: PropTypes.string,
   onClick: PropTypes.func,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
+  isPresentational: PropTypes.bool
 };
 export default Category;

@@ -11,7 +11,7 @@ const Suggestion = ({ suggestion }) => {
         </h2>
         <p className="select-text text-darkGrayTheme">{suggestion.description}</p>
         <div className="flex gap-3">
-          <Category category={suggestion.category} />
+          <Category category={suggestion.category} isPresentational/>
         </div>
       </div>
       <div className="flex justify-between items-center">

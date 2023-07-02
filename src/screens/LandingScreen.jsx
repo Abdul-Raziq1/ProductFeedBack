@@ -4,17 +4,31 @@ import SortDropDown from "../components/SortDropDown";
 
 import detective from "../assets/images/detective.svg";
 import Suggestion from "../components/Suggestion";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
 import SideBar from "../components/SideBar";
 import { ADD_FEEDBACK } from "../data/types";
 import LinkButton from "../components/LinkButtons";
 const LandingScreen = () => {
   const [showSideBar, setShowSideBar] = useState(false);
+  const sideBarRef = useRef()
   const { sortedState, loading } = useContext(FeedbackContext);
   const sideBarHandler = () => {
     setShowSideBar(!showSideBar);
   };
+
+  useEffect(() => {
+    const closeSideBar = (event) => {
+      if (sideBarRef.current && !sideBarRef.current.contains(event.target)){
+        setShowSideBar(false)
+      }
+    }
+    document.addEventListener('mousedown', closeSideBar)
+    return () => {
+      document.removeEventListener('mousedown', closeSideBar)
+    }
+  }, [])
+
 
   return (
     <div className="min-h-screen overflow-x-hidden select-none">
@@ -34,7 +48,7 @@ const LandingScreen = () => {
         </div>
       </header>
       <main className="min-h-screen relative bg-grayTheme">
-        {<SideBar showSideBar={showSideBar} />}
+        {<SideBar ref={sideBarRef} showSideBar={showSideBar} />}
         <section className="flex justify-around bg-blueBlackTheme py-2">
           <SortDropDown />
           <LinkButton icon={<FaPlus />} text={ADD_FEEDBACK} color={"#AD1FEA"} />
