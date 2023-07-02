@@ -11,7 +11,7 @@ const SideBar = ({ showSideBar }) => {
   };
   return (
     <div
-      className={`absolute top-0 right-0 z-10 p-4 bg-grayTheme flex flex-col gap-6 h-screen ${
+      className={`absolute top-0 right-0 h-full z-10 p-4 bg-grayTheme flex flex-col gap-6 ${
         showSideBar ? "translate-x-0" : "translate-x-full"
       } ease-in-out duration-300`}
     >

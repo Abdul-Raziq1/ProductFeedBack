@@ -33,46 +33,44 @@ const LandingScreen = () => {
           )}
         </div>
       </header>
-      <div className="relative">{<SideBar showSideBar={showSideBar}/>}</div>
-      <section className="flex justify-around bg-blueBlackTheme py-2">
-        <SortDropDown />
-        <LinkButton
-          icon={<FaPlus />}
-          text={ADD_FEEDBACK}
-          color={"#AD1FEA"}
-        />
-      </section>
-      <main className="bg-grayTheme py-10 px-4 ">
-        {loading === true ? (
-          <></>
-        ) : sortedState?.length === 0 ? (
-          <div className="bg-white py-20 rounded-lg">
-            <div className="flex gap-10 flex-col justify-center items-center">
-              <img
-                className="h-36 w-36"
-                src={detective}
-                alt="searching for results"
-              />
-              <h2 className="text-blueBlackTheme text-3xl font-bold">
-                There is no feedback yet
-              </h2>
+      <main className="min-h-screen relative bg-grayTheme">
+        {<SideBar showSideBar={showSideBar} />}
+        <section className="flex justify-around bg-blueBlackTheme py-2">
+          <SortDropDown />
+          <LinkButton icon={<FaPlus />} text={ADD_FEEDBACK} color={"#AD1FEA"} />
+        </section>
+        <section className="py-10 px-4 ">
+          {loading === true ? (
+            <></>
+          ) : sortedState?.length === 0 ? (
+            <div className="bg-white py-20 rounded-lg">
+              <div className="flex gap-10 flex-col justify-center items-center">
+                <img
+                  className="h-36 w-36"
+                  src={detective}
+                  alt="searching for results"
+                />
+                <h2 className="text-blueBlackTheme text-3xl font-bold">
+                  There is no feedback yet
+                </h2>
 
-              <blockquote className="max-w-sm text-center text-lg">
-                Got a suggestion? Found a bug that needs to be squashed? We love
-                hearing about new ideas to improve our app.
-              </blockquote>
-              <LinkButton
-                icon={<FaPlus />}
-                text={ADD_FEEDBACK}
-                color={"#AD1FEA"}
-              />
+                <blockquote className="max-w-sm text-center text-lg">
+                  Got a suggestion? Found a bug that needs to be squashed? We
+                  love hearing about new ideas to improve our app.
+                </blockquote>
+                <LinkButton
+                  icon={<FaPlus />}
+                  text={ADD_FEEDBACK}
+                  color={"#AD1FEA"}
+                />
+              </div>
             </div>
-          </div>
-        ) : (
-          sortedState?.map((suggestion) => {
-            return <Suggestion key={suggestion.id} suggestion={suggestion} />;
-          })
-        )}
+          ) : (
+            sortedState?.map((suggestion) => {
+              return <Suggestion key={suggestion.id} suggestion={suggestion} />;
+            })
+          )}
+        </section>
       </main>
     </div>
   );
