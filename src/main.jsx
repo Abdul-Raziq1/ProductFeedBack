@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LandingScreen from './screens/LandingScreen.jsx'
 import FeedbackProvider from './context/FeedbackContext'
 import FeedbackScreen from './screens/FeedbackScreen'
+import {Comments, detailsLoader} from './screens/Comments'
+
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,11 @@ const router = createBrowserRouter([
   {
     path: '/addFeedback',
     element: <FeedbackScreen />
+  },
+  {
+    path: '/comments/:id',
+    element: <Comments />,
+    loader: detailsLoader
   }
 ])
 

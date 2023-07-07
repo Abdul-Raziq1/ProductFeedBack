@@ -2,9 +2,14 @@ import PropTypes from "prop-types";
 import Upvote from "./Upvote";
 import Category from "./Category";
 import { FaComment } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const Suggestion = ({ suggestion }) => {
+  const navigate = useNavigate()
+  const viewCommentHandler = () => {
+    navigate(`/comments/${suggestion.id}`)
+  }
   return (
-    <div className="select-none rounded-xl flex flex-col gap-5 p-5 bg-white mb-5">
+    <div onClick={viewCommentHandler} className="select-none rounded-xl flex flex-col gap-5 p-5 bg-white mb-5">
       <div className="flex flex-col gap-3">
         <h2 className="select-text text-blueBlackTheme font-bold text-lg">
           {suggestion.title}

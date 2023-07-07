@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid'
 let suggestions = {
     1: {
         id: 1,
-        title: "Add tags for solutions",
+        title: "This is something",
         description: "Easier to search for solutions based on a specific stack.",
         numOfMessages: 2,
         numOfUpvotes: 112,
@@ -10,7 +10,7 @@ let suggestions = {
         messages: [
             {
                 id: 1111,
-                profile: "img source",
+                profile: "../assets/images/oldman.svg",
                 name: "Elijah Moss",
                 tag: "@hexagon.bestagon",
                 comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
@@ -19,28 +19,37 @@ let suggestions = {
             {
                 id: 2222,
                 profile: "img source",
-                name: "Elijah Moss",
-                tag: "@hexagon.bestagon",
+                name: "James Skinner",
+                tag: "@hummingbird1",
                 comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
                 innerMessages: [
                     {
                         id: 222111,
                         profile: "img source",
-                        name: "Elijah Moss",
-                        tag: "@hexagon.bestagon",
+                        name: "Anne Valentine",
+                        tag: "@annev1990",
                         comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
                         innerMessages: [
-                            {}
+
                         ]
                     },
                     {
                         id: 222222,
                         profile: "img source",
-                        name: "Elijah Moss",
-                        tag: "@hexagon.bestagon",
+                        name: "Ryan Welles",
+                        tag: "@voyager.344",
                         comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
                         innerMessages: [
-                            {}
+                            {
+                                id: 222222444535,
+                                profile: "img source",
+                                name: "Ryan Welles",
+                                tag: "@voyager.344",
+                                comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
+                                innerMessages: [
+
+                                ]
+                            }
                         ]
                     }
                 ]
@@ -69,28 +78,15 @@ let suggestions = {
                 name: "Elijah Moss",
                 tag: "@hexagon.bestagon",
                 comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
-                innerMessages: [
-                    {
-                        id: 222111,
-                        profile: "img source",
-                        name: "Elijah Moss",
-                        tag: "@hexagon.bestagon",
-                        comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
-                        innerMessages: [
-                            {}
-                        ]
-                    },
-                    {
-                        id: 222222,
-                        profile: "img source",
-                        name: "Elijah Moss",
-                        tag: "@hexagon.bestagon",
-                        comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
-                        innerMessages: [
-                            {}
-                        ]
-                    }
-                ]
+                innerMessages: []
+            },
+            {
+                id: 3333,
+                profile: "img source",
+                name: "Elijah Moss",
+                tag: "@hexagon.bestagon",
+                comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
+                innerMessages: []
             },
         ]
     },
@@ -124,7 +120,7 @@ let suggestions = {
                         tag: "@hexagon.bestagon",
                         comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
                         innerMessages: [
-                            {}
+
                         ]
                     },
                     {
@@ -134,7 +130,7 @@ let suggestions = {
                         tag: "@hexagon.bestagon",
                         comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
                         innerMessages: [
-                            {}
+
                         ]
                     }
                 ]
@@ -171,7 +167,7 @@ let suggestions = {
                         tag: "@hexagon.bestagon",
                         comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
                         innerMessages: [
-                            {}
+
                         ]
                     },
                     {
@@ -181,7 +177,7 @@ let suggestions = {
                         tag: "@hexagon.bestagon",
                         comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
                         innerMessages: [
-                            {}
+
                         ]
                     }
                 ]
@@ -228,7 +224,7 @@ let suggestions = {
                         tag: "@hexagon.bestagon",
                         comment: "Qui exercitation deserunt irure Lorem duis nostrud occaecat do labore. Qui nulla tempor dolor exercitation qui est enim et. Commodo officia aute fugiat tempor consectetur velit culpa velit et ipsum. Ullamco ut nisi ipsum cupidatat. Quis minim non irure duis cupidatat. Irure deserunt qui quis pariatur sunt tempor pariatur reprehenderit adipisicing enim.",
                         innerMessages: [
-                            {}
+
                         ]
                     }
                 ]
@@ -248,7 +244,7 @@ const getSuggestions = () => {
         if (!suggestions) {
             return setTimeout(
                 () => reject(new Error("Suggestions not found"))
-            , 250)
+                , 250)
         }
         return setTimeout(() => {
             resolve(Object.values(suggestions))
@@ -258,7 +254,7 @@ const getSuggestions = () => {
 
 const getUpdateStatus = () => {
     return new Promise((resolve, reject) => {
-        if (!updateStatus){
+        if (!updateStatus) {
             return setTimeout(() => {
                 reject(new Error("Update Status not found"))
             }, 250)
@@ -277,7 +273,7 @@ const addFeedBack = (newFeedback) => {
                 id,
                 ...newFeedback
             }
-            suggestions = {...suggestions, [id]: feedback}
+            suggestions = { ...suggestions, [id]: feedback }
             setTimeout(() => {
                 console.log("Added ", feedback)
                 return resolve(true)
@@ -290,4 +286,19 @@ const addFeedBack = (newFeedback) => {
     })
 }
 
-export default { getSuggestions, getUpdateStatus, addFeedBack }
+const getSuggestionWithId = (id) => {
+    return new Promise((resolve, reject) => {
+        const suggestion = suggestions[id]
+
+        if (suggestion === undefined) {
+            return setTimeout(() => {
+                reject("Could not find the feedback. It may have been deleted. Please reload the screen")
+            }, 250);
+        }
+        return setTimeout(() => {
+            resolve(suggestion)
+        }, 250);
+    })
+}
+
+export default { getSuggestions, getSuggestionWithId, getUpdateStatus, addFeedBack }
