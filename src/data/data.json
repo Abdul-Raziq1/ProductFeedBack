@@ -5,8 +5,9 @@
     "username": "velvetround",
     "likes": {
       "2": 2,
+      "6": 6,
       "11": 11,
-      "09e40db0-6702-41c3-a5bf-7259e1dd9f57": "09e40db0-6702-41c3-a5bf-7259e1dd9f57"
+      "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
     }
   },
   "productRequests": [
@@ -48,7 +49,7 @@
       "upvotes": 100,
       "status": "Suggestion",
       "description": "It would help people with light sensitivities and who prefer dark mode.",
-      "numOfComments": 4,
+      "numOfComments": 6,
       "comments": [
         {
           "id": 3,
@@ -90,6 +91,36 @@
               }
             }
           ]
+        },
+        {
+          "id": "3a153a64-11dd-47db-b43c-a6dadf979a93",
+          "content": "Lmao",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "2": 2,
+              "6": 6,
+              "11": 11
+            }
+          },
+          "replies": []
+        },
+        {
+          "id": "e88ad0aa-6afa-4b5c-97e1-7fefb6b77219",
+          "content": "Okay I am really sorry about what I said, it's a good idea...not even trolling.",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "2": 2,
+              "6": 6,
+              "11": 11
+            }
+          },
+          "replies": []
         }
       ]
     },
@@ -191,11 +222,28 @@
       "id": 6,
       "title": "Preview images not loading",
       "category": "Bug",
-      "upvotes": 4,
+      "upvotes": 5,
       "status": "Suggestion",
       "description": "Challenge preview images are missing when you apply a filter.",
-      "numOfComments": 0,
-      "comments": []
+      "numOfComments": 1,
+      "comments": [
+        {
+          "id": "c1c1e21d-d889-4752-ba82-0279290c7aff",
+          "content": "No one has anything to say about this feedback ?",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "2": 2,
+              "6": 6,
+              "11": 11,
+              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+            }
+          },
+          "replies": []
+        }
+      ]
     },
     {
       "id": 7,
@@ -337,10 +385,43 @@
       "title": "Test",
       "description": "TesterTest",
       "category": "Feature",
-      "numOfComments": 0,
-      "upvotes": 5,
+      "numOfComments": 2,
+      "upvotes": 4,
       "status": "suggestion",
-      "comments": [],
+      "comments": [
+        {
+          "id": "2e3f6537-282d-4ba1-8fab-c05edc46be31",
+          "content": "photo",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "2": 2,
+              "6": 6,
+              "11": 11,
+              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+            }
+          },
+          "replies": []
+        },
+        {
+          "id": "9c32e8ff-e1b7-4c62-ab5e-a7b2399f6bbd",
+          "content": "well",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "2": 2,
+              "6": 6,
+              "11": 11,
+              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+            }
+          },
+          "replies": []
+        }
+      ],
       "id": "09e40db0-6702-41c3-a5bf-7259e1dd9f57"
     },
     {
@@ -367,10 +448,26 @@
       "title": "Petrificus Totalus",
       "description": "Binds enemies",
       "category": "UX",
-      "numOfComments": 0,
-      "upvotes": 0,
+      "numOfComments": 1,
+      "upvotes": 1,
       "status": "suggestion",
-      "comments": [],
+      "comments": [
+        {
+          "id": "294c1c25-3b4a-48cd-a2e4-85639fbe357e",
+          "content": "I really love the Harry Potter series.\nHere is an upvote",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "2": 2,
+              "6": 6,
+              "11": 11
+            }
+          },
+          "replies": []
+        }
+      ],
       "id": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
     },
     {

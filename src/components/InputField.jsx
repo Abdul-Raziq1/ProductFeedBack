@@ -3,7 +3,7 @@ import { BUG, ENHANCEMENT, FEATURE, UI, UX } from "../data/types";
 import CustomSelect from "./CustomSelect";
 import { useContext } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
-const InputField = ({ title, description, inputType, warn }) => {
+const InputField = ({ title, description, inputType, warn, placeholder="" }) => {
   const { feedback, setFeedback } = useContext(FeedbackContext);
   const mapTextToInput = (type) => {
     const options = [
@@ -54,6 +54,7 @@ const InputField = ({ title, description, inputType, warn }) => {
       textarea: (
         <textarea
           onChange={descriptionChangeHandler}
+          placeholder={placeholder}
           value={feedback.description}
           rows={3}
           className="rounded bg-grayTheme p-3 focus:outline-blueTheme outline-offset-0 outline-1 outline-none"
@@ -64,10 +65,10 @@ const InputField = ({ title, description, inputType, warn }) => {
   };
   return (
     <div className="flex flex-col">
-      <span className="font-semibold text-lighterBlueBlackTheme">{title}</span>
-      <span className=" mb-5 text-darkGrayTheme text-opacity-50">
+      {title !== undefined && <span className="font-semibold text-lighterBlueBlackTheme">{title}</span>}
+      { description !== undefined && <span className=" mb-5 text-darkGrayTheme text-opacity-50">
         {description}
-      </span>
+      </span>}
       {mapTextToInput(inputType)}
     </div>
   );
@@ -77,6 +78,7 @@ InputField.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   inputType: PropTypes.string,
-  warn: PropTypes.bool
+  warn: PropTypes.bool,
+  placeholder: PropTypes.string
 };
 export default InputField;

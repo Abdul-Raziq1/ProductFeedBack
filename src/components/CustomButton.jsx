@@ -14,7 +14,7 @@ const CustomButton = ({ text, icon, color, onClick, type="button" }) => {
       className="hover:opacity-90 opacity-100"
     >
       <div className="flex justify-center gap-2 items-center px-2">
-        <span className="text-xs text-white">{icon}</span>
+        {icon !== undefined ? <span className="text-xs text-white">{icon}</span> : ""}
         <span className="text-white font-bold whitespace-nowrap">{text}</span>
       </div>
     </button>

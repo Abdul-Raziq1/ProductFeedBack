@@ -110,10 +110,30 @@ const addUpvote = async (id, operation) => {
     }
 }
 
+const addComment = async (id, comment) => {
+    try {
+        const url = `${productRequests}/${id}`
+        const suggestion = await getSuggestionWithId(id)
+        const updatedComments = {...suggestion, comments: [...suggestion.comments, comment], numOfComments: suggestion.numOfComments + 1}
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedComments)
+        })
+        return response.json()
+    }
+    catch (error) {
+        console.log("Error:", error);
+    }
+}
+
 const axiosUtil = {
     addFeedBack,
     addUpvote,
     addToLikes,
+    addComment,
     getProductRequests,
     getUser,
     removeFromLikes
