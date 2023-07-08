@@ -5,7 +5,6 @@
     "username": "velvetround",
     "likes": {
       "2": 2,
-      "6": 6,
       "11": 11,
       "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
     }
@@ -49,7 +48,7 @@
       "upvotes": 100,
       "status": "Suggestion",
       "description": "It would help people with light sensitivities and who prefer dark mode.",
-      "numOfComments": 6,
+      "numOfComments": 9,
       "comments": [
         {
           "id": 3,
@@ -105,7 +104,24 @@
               "11": 11
             }
           },
-          "replies": []
+          "replies": [
+            {
+              "id": "9630aff9-eb11-48c5-aaff-7ebb1175c1c7",
+              "content": "I will delete this as soon as that feature is implemented",
+              "replyingTo": "velvetround",
+              "user": {
+                "image": "/assets/user-images/image-zena.jpg",
+                "name": "Zena Kelley",
+                "username": "velvetround",
+                "likes": {
+                  "2": 2,
+                  "6": 6,
+                  "11": 11,
+                  "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+                }
+              }
+            }
+          ]
         },
         {
           "id": "e88ad0aa-6afa-4b5c-97e1-7fefb6b77219",
@@ -121,6 +137,39 @@
             }
           },
           "replies": []
+        },
+        {
+          "id": "e6f2f005-45ce-41de-97bb-02315f7c0029",
+          "content": "Ah yes, comments added.\nI wonder whether I should add timestamps",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "2": 2,
+              "6": 6,
+              "11": 11,
+              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+            }
+          },
+          "replies": [
+            {
+              "id": "769544a8-bb29-4e2f-981e-73947cdaa2e3",
+              "content": "Replies also implemented. So good.\nMoete kita zo!",
+              "replyingTo": "velvetround",
+              "user": {
+                "image": "/assets/user-images/image-zena.jpg",
+                "name": "Zena Kelley",
+                "username": "velvetround",
+                "likes": {
+                  "2": 2,
+                  "6": 6,
+                  "11": 11,
+                  "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+                }
+              }
+            }
+          ]
         }
       ]
     },
@@ -222,7 +271,7 @@
       "id": 6,
       "title": "Preview images not loading",
       "category": "Bug",
-      "upvotes": 5,
+      "upvotes": 4,
       "status": "Suggestion",
       "description": "Challenge preview images are missing when you apply a filter.",
       "numOfComments": 1,
@@ -304,7 +353,7 @@
       "upvotes": 62,
       "status": "in-progress",
       "description": "Add ability to create professional looking portfolio from profile.",
-      "numOfComments": 1,
+      "numOfComments": 2,
       "comments": [
         {
           "id": 13,
@@ -314,7 +363,24 @@
             "name": "Ryan Welles",
             "username": "voyager.344"
           },
-          "replies": []
+          "replies": [
+            {
+              "id": "0a515d44-f840-483e-9291-9a2a42ffd996",
+              "content": "I see you everywhere.",
+              "replyingTo": "voyager.344",
+              "user": {
+                "image": "/assets/user-images/image-zena.jpg",
+                "name": "Zena Kelley",
+                "username": "velvetround",
+                "likes": {
+                  "2": 2,
+                  "6": 6,
+                  "11": 11,
+                  "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+                }
+              }
+            }
+          ]
         }
       ]
     },
@@ -382,103 +448,30 @@
       ]
     },
     {
-      "title": "Test",
-      "description": "TesterTest",
+      "title": "13th",
+      "description": "13th",
       "category": "Feature",
-      "numOfComments": 2,
-      "upvotes": 4,
-      "status": "suggestion",
-      "comments": [
-        {
-          "id": "2e3f6537-282d-4ba1-8fab-c05edc46be31",
-          "content": "photo",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "2": 2,
-              "6": 6,
-              "11": 11,
-              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
-            }
-          },
-          "replies": []
-        },
-        {
-          "id": "9c32e8ff-e1b7-4c62-ab5e-a7b2399f6bbd",
-          "content": "well",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "2": 2,
-              "6": 6,
-              "11": 11,
-              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
-            }
-          },
-          "replies": []
-        }
-      ],
-      "id": "09e40db0-6702-41c3-a5bf-7259e1dd9f57"
-    },
-    {
-      "title": "Friends",
-      "description": "First UI Feedback",
-      "category": "UI",
-      "numOfComments": 0,
-      "upvotes": 6,
-      "status": "suggestion",
-      "comments": [],
-      "id": "051e0f02-e824-4e0d-bd3c-6394b5252b14"
-    },
-    {
-      "title": "Extremely long title for a new feedback tester",
-      "description": "Long feedback",
-      "category": "UX",
-      "numOfComments": 0,
-      "upvotes": 9,
-      "status": "suggestion",
-      "comments": [],
-      "id": "2cd002f3-7400-4b96-8f24-7944d461d907"
-    },
-    {
-      "title": "Petrificus Totalus",
-      "description": "Binds enemies",
-      "category": "UX",
       "numOfComments": 1,
-      "upvotes": 1,
-      "status": "suggestion",
-      "comments": [
-        {
-          "id": "294c1c25-3b4a-48cd-a2e4-85639fbe357e",
-          "content": "I really love the Harry Potter series.\nHere is an upvote",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "2": 2,
-              "6": 6,
-              "11": 11
-            }
-          },
-          "replies": []
-        }
-      ],
-      "id": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
-    },
-    {
-      "title": "Indigo",
-      "description": "",
-      "category": "Feature",
-      "numOfComments": 0,
       "upvotes": 0,
       "status": "suggestion",
-      "comments": [],
-      "id": "9a5e3391-60b5-491d-b3c2-8c23af5689df"
+      "comments": [
+        {
+          "id": "e72a0b14-97bc-4e14-8689-c41b503c6d81",
+          "content": "First to comment here",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "2": 2,
+              "11": 11,
+              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+            }
+          },
+          "replies": []
+        }
+      ],
+      "id": 13
     }
   ]
 }

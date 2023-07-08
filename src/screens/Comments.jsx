@@ -3,7 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import CustomButton from "../components/CustomButton";
 import Suggestion from "../components/Suggestion";
 import DetailedComments from "../components/DetailedComments";
-import { productRequests } from "../data/types";
+import { INITIAL_CHARS, productRequests } from "../data/types";
 import { useContext, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { FeedbackContext } from "../context/FeedbackContext";
@@ -16,47 +16,53 @@ async function detailsLoader({ params }) {
   return suggestion;
 }
 
-const INITIAL_CHARS = 250
 const Comments = () => {
   const [comment, setComment] = useState("");
+  const [showWarning, setShowWarning] = useState(false);
   const [charactersLeft, setCharactersLeft] = useState(INITIAL_CHARS);
-  const [suggestion, setSuggestion] = useState(useLoaderData())
-  // const suggestion = useLoaderData();
-  const { currentUserData } = useContext(FeedbackContext)
+  const [suggestion, setSuggestion] = useState(useLoaderData());
+  const { currentUserData } = useContext(FeedbackContext);
   const navigate = useNavigate();
   const backClickHandler = () => {
     navigate(-1);
   };
   const postCommentHandler = (event) => {
     event.preventDefault();
-    console.log("Suggestion ID", suggestion.id, currentUserData);
-    const id = uuid()
+    if (comment === "") {
+      setShowWarning(true);
+      setTimeout(() => {
+        setShowWarning(false);
+      }, 1500);
+      return;
+    }
+    const id = uuid();
     const commentObject = {
       id,
       content: comment,
       user: currentUserData,
-      replies: []
-    }
-    setComment("")
-    setCharactersLeft(INITIAL_CHARS)
-    axiosUtil.addComment(suggestion.id, commentObject)
-    .then(response => setSuggestion(response))
+      replies: [],
+    };
+    setComment("");
+    setCharactersLeft(INITIAL_CHARS);
+    axiosUtil
+      .addComment(suggestion.id, commentObject)
+      .then((response) => setSuggestion(response));
   };
   const commentHandler = (event) => {
-    const value = event.target.value
-    const charsLeft = INITIAL_CHARS - value.length
-    if (charactersLeft > 0){
-      setCharactersLeft(charsLeft)
+    const value = event.target.value;
+    const charsLeft = INITIAL_CHARS - value.length;
+    if (charactersLeft > 0) {
+      setCharactersLeft(charsLeft);
       setComment(value);
     } else {
-      setComment(prevValue => {
-        if (prevValue.length > value.length){
-          setCharactersLeft(charsLeft)
-          return value
-        } else{
-          return prevValue
+      setComment((prevValue) => {
+        if (prevValue.length > value.length) {
+          setCharactersLeft(charsLeft);
+          return value;
+        } else {
+          return prevValue;
         }
-      })
+      });
     }
   };
   return (
@@ -80,7 +86,14 @@ const Comments = () => {
           </span>
           {suggestion.comments.length !== 0 &&
             suggestion.comments.map((message) => {
-              return <DetailedComments key={message.id} message={message} />;
+              return (
+                <DetailedComments
+                  key={message.id}
+                  message={message}
+                  suggestionId={suggestion.id}
+                  setSuggestion={setSuggestion}
+                />
+              );
             })}
         </div>
       </div>
@@ -94,11 +107,17 @@ const Comments = () => {
             placeholder="Type your comment here"
             value={comment}
             rows={3}
-            className="rounded bg-grayTheme p-3 focus:outline-blueTheme outline-offset-0 outline-1 outline-none"
-          ></textarea>
+            className={`rounded bg-grayTheme p-3 ${
+              showWarning ? "outline-red-500" : "focus:outline-blueTheme"
+            } outline-offset-0 outline-1 outline-none`}
+          />
+          {showWarning && (
+            <span className="text-red-600">Can&apos;t be empty</span>
+          )}
           <div className="flex items-center justify-between">
             <span className="text-darkGrayTheme">
-              {charactersLeft} {charactersLeft === 1 ? "Character" : "Characters"} left
+              {charactersLeft}{" "}
+              {charactersLeft === 1 ? "Character" : "Characters"} left
             </span>
             <CustomButton
               text={"Post Comment"}

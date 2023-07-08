@@ -1,9 +1,9 @@
 import { currentUser, productRequests } from "./types"
 
-import { v4 as uuid } from "uuid"
 const addFeedBack = async (newFeedback) => {
     try {
-        const id = uuid()
+        const allProducts = await getProductRequests(productRequests)
+        const id = allProducts.length + 1
         await fetch(productRequests, {
             method: 'POST',
             headers: {
@@ -129,11 +129,39 @@ const addComment = async (id, comment) => {
     }
 }
 
+const addReply = async (suggestionId, messageId, reply) => {
+try {
+        const url = `${productRequests}/${suggestionId}`
+        const suggestion = await getSuggestionWithId(suggestionId)
+        const updated = suggestion.comments.map((comment) => {
+            if (comment.id === messageId){
+                return {...comment, replies: [...comment.replies, reply]}
+            }
+            return comment
+        })
+        console.log("suggestion", suggestion)
+        console.log("Updated", updated);
+        const updatedComments = {...suggestion, comments: updated, numOfComments: suggestion.numOfComments + 1}
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedComments)
+        })
+        return response.json()
+    }
+    catch (error) {
+        console.log("Error:", error);
+    }
+}
+
 const axiosUtil = {
     addFeedBack,
     addUpvote,
     addToLikes,
     addComment,
+    addReply,
     getProductRequests,
     getUser,
     removeFromLikes

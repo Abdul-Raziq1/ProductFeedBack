@@ -18,3 +18,6 @@ export const ADD_FEEDBACK = "Add Feedback"
 // Server url
 export const currentUser = "http://localhost:3000/currentUser";
 export const productRequests = "http://localhost:3000/productRequests";
+
+// Character limit
+export const INITIAL_CHARS = 250

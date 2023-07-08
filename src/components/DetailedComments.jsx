@@ -1,16 +1,20 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import Comment from "./Comment";
-const DetailedComments = ({ message }) => {
+import { createContext } from "react";
+
+export const IdContext = createContext();
+
+const DetailedComments = ({ message, suggestionId, setSuggestion }) => {
   return (
-    <div>
+    <IdContext.Provider value={{suggestionId, messageId: message.id, replyingTo: message.user.username, setSuggestion}}>
       <Comment message={message} />
       <div className="">
         {message.replies?.length !== 0 ? (
           message.replies?.map((reply) => {
             return (
               <div key={reply.id} className="border-l-2 ml-4">
-                <Comment message={reply} isReply={true}  replyToUser={reply.replyingTo}/>
+                <Comment message={reply} isReply={true} replyToUser={reply.replyingTo}/>
               </div>
             );
           })
@@ -18,7 +22,7 @@ const DetailedComments = ({ message }) => {
           <hr className="mx-4" />
         )}
       </div>
-    </div>
+    </IdContext.Provider>
   );
 };
 
