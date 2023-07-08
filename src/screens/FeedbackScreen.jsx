@@ -31,9 +31,9 @@ const FeedbackScreen = () => {
           title: "",
           description: "",
           category: "Feature",
-          numOfMessages: 0,
-          numOfUpvotes: 0,
-          messages: [],
+          numOfComments: 0,
+          upvotes: 0,
+          comments: [],
         });
         navigate(-1)
         setFetchData(true)

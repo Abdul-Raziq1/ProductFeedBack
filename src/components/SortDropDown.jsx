@@ -4,7 +4,7 @@ import { FeedbackContext } from "../context/FeedbackContext";
 import { LEAST_COMMENTS, LEAST_UPVOTES, MOST_COMMENTS, MOST_UPVOTES } from "../data/types";
 
 const SortDropDown = () => {
-  const { setSortBy } = useContext(FeedbackContext)
+  const { setSortBy, sortBy } = useContext(FeedbackContext)
   const dropDownItems = [
     { label: MOST_UPVOTES, value: MOST_UPVOTES },
     { label: LEAST_UPVOTES, value: LEAST_UPVOTES },
@@ -17,7 +17,7 @@ const SortDropDown = () => {
   return (
     <div className="flex items-center">
       <span className="font-bold whitespace-nowrap text-grayTheme">Sort by :</span>
-      <CustomSelect options={dropDownItems} onChange={handleChange}/>
+      <CustomSelect options={dropDownItems} onChange={handleChange} defaultValue={{label: sortBy, value: sortBy}}/>
     </div>
   );
 };

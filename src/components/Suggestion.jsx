@@ -20,10 +20,10 @@ const Suggestion = ({ suggestion }) => {
         </div>
       </div>
       <div className="flex justify-between items-center">
-        <Upvote numOfUpvotes={suggestion.numOfUpvotes} />
+        <Upvote upvotes={suggestion.upvotes} />
         <div className="flex gap-2 items-center ">
           <FaComment className="text-xl text-darkGrayTheme text-opacity-40"/>
-          <span className="text-blueBlackTheme font-bold">{suggestion.numOfMessages}</span>
+          <span className="text-blueBlackTheme font-bold">{suggestion.numOfComments}</span>
         </div>
       </div>
     </div>

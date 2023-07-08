@@ -1,12 +1,14 @@
 import { FaChevronLeft } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import CustomButton from "../components/CustomButton";
-import axiosUtil from "../data/suggestions";
 import Suggestion from "../components/Suggestion";
 import DetailedComments from "../components/DetailedComments";
+import { productRequests } from "../data/types";
 
 async function detailsLoader({ params }) {
-  const suggestion = await axiosUtil.getSuggestionWithId(params.id);
+  const suggestionUrl = `${productRequests}/${params.id}`;
+  const response = await fetch(suggestionUrl);
+  const suggestion = await response.json();
   return suggestion;
 }
 
@@ -16,7 +18,6 @@ const Comments = () => {
     navigate(-1);
   };
   const suggestion = useLoaderData();
-
   return (
     <div className="min-h-screen p-7 bg-grayTheme flex flex-col gap-10 select-none">
       <div className="flex justify-between">
@@ -30,11 +31,15 @@ const Comments = () => {
       </div>
       <div className="flex flex-col">
         <Suggestion suggestion={suggestion} />
-        <span>{suggestion.numOfMessages}</span>
         <div className=" p-3 bg-white rounded-xl">
-          {suggestion.messages.map((message) => {
-            return <DetailedComments key={message.id} message={message} />;
-          })}
+          <span className="px-4 text-2xl font-semibold text-lighterBlueBlackTheme">
+            {suggestion.numOfComments}{" "}
+            {suggestion.numOfComments === 1 ? "Comment" : "Comments"}
+          </span>
+          {suggestion.comments.length !== 0 &&
+            suggestion.comments.map((message) => {
+              return <DetailedComments key={message.id} message={message} />;
+            })}
         </div>
       </div>
     </div>

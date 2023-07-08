@@ -12,7 +12,7 @@ const CustomOption = (props) => (
     </span>
   </components.Option>
 );
-const CustomSelect = ({ options, onChange, override }) => {
+const CustomSelect = ({ options, onChange, defaultValue, override }) => {
   const customStyle = {
     control: (styles) => ({
       ...styles,
@@ -83,7 +83,7 @@ const CustomSelect = ({ options, onChange, override }) => {
       styles={customStyle}
       options={options}
       placeholder={options[0]?.label}
-      defaultValue={options[0]}
+      defaultValue={defaultValue}
       onChange={onChange}
       isSearchable={false}
     />

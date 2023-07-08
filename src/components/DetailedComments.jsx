@@ -2,12 +2,13 @@
 import PropTypes from "prop-types";
 import Comment from "./Comment";
 const DetailedComments = ({ message }) => {
+  console.log("Message", message);
   return (
     <div>
       <Comment message={message} />
       <div className="">
-        {message.innerMessages?.length !== 0 ? (
-          message.innerMessages?.map((message) => {
+        {message.replies?.length !== 0 ? (
+          message.replies?.map((message) => {
             return (
               <div key={message.id} className="border-l-2 ml-4">
                 <Comment message={message} />
