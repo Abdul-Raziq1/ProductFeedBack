@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from "react";
 import fakeApi from "../data/suggestions";
-import { ALL, LEAST_UPVOTES, MOST_COMMENTS, MOST_UPVOTES, productRequests } from "../data/types";
+import { ALL, LEAST_UPVOTES, MOST_COMMENTS, MOST_UPVOTES } from "../data/types";
+import axiosUtil from "../data/service";
 export const FeedbackContext = createContext();
-
-
 
 const FeedbackProvider = ({ children }) => {
   const [suggestions, setSuggestions] = useState([]);
@@ -22,8 +20,16 @@ const FeedbackProvider = ({ children }) => {
     category: "Feature",
     numOfComments: 0,
     upvotes: 0,
+    status: "suggestion",
     comments: [],
   });
+  const [currentUserData, setCurrentUserData] = useState({
+    image: "",
+    name: "",
+    username: "",
+    likes: {}
+  });
+
   const sorter = (sortBy, arrayToSort) => {
     let copy;
     // Sort Logic
@@ -53,18 +59,18 @@ const FeedbackProvider = ({ children }) => {
     return filteredArray;
   };
   useEffect(() => {
-    // fakeApi
-    //   .getSuggestions()
-    //   .then((response) => {
-    //     setSuggestions(sorter(sortBy, response));
-    //     setSortedState(sorter(sortBy, filterate(filterBy, response)));
+    console.log("Getting user")
+    axiosUtil.getUser().then((response) => {
+      setCurrentUserData(response);
+    });
+  }, []);
 
-    //     // setTimeout(() => {
-      //     // }, 2000)
-      //   })
+  useEffect(() => {
+    console.log("Fetching data");
     setLoading(false);
-    fetch(productRequests)
-      .then((res) => res.json())
+
+    axiosUtil
+      .getProductRequests()
       .then((response) => {
         setSuggestions(sorter(sortBy, response));
         setSortedState(sorter(sortBy, filterate(filterBy, response)));
@@ -86,8 +92,8 @@ const FeedbackProvider = ({ children }) => {
 
   useEffect(() => {
     setSortedState(sorter(sortBy, filterate(filterBy, suggestions)));
-  }, [sortBy, filterBy]);
-  console.log("Sort by", sortBy);
+  }, [sortBy, filterBy, setSortBy]);
+
   return (
     <FeedbackContext.Provider
       value={{
@@ -98,11 +104,18 @@ const FeedbackProvider = ({ children }) => {
         updateStatus,
         feedback,
         sortBy,
+        suggestions,
+        currentUserData,
+        sorter,
+        filterate,
         setSortBy,
         setFilterBy,
         setSelected,
         setFeedback,
         setFetchData,
+        setSuggestions,
+        setSortedState,
+        setCurrentUserData
       }}
     >
       {children}

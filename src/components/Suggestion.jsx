@@ -3,9 +3,12 @@ import Upvote from "./Upvote";
 import Category from "./Category";
 import { FaComment } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-const Suggestion = ({ suggestion }) => {
+const Suggestion = ({ suggestion, isPresentational=false}) => {
   const navigate = useNavigate()
   const viewCommentHandler = () => {
+    if (isPresentational === true ) {
+      return
+    }
     navigate(`/comments/${suggestion.id}`)
   }
   return (
@@ -20,7 +23,7 @@ const Suggestion = ({ suggestion }) => {
         </div>
       </div>
       <div className="flex justify-between items-center">
-        <Upvote upvotes={suggestion.upvotes} />
+        <Upvote upvotes={suggestion.upvotes} id={suggestion.id}/>
         <div className="flex gap-2 items-center ">
           <FaComment className="text-xl text-darkGrayTheme text-opacity-40"/>
           <span className="text-blueBlackTheme font-bold">{suggestion.numOfComments}</span>
@@ -32,5 +35,6 @@ const Suggestion = ({ suggestion }) => {
 
 Suggestion.propTypes = {
   suggestion: PropTypes.object,
+  isPresentational: PropTypes.bool
 };
 export default Suggestion;

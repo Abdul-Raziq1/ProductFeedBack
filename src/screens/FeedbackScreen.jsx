@@ -6,7 +6,7 @@ import CustomButton from "../components/CustomButton";
 import { ADD_FEEDBACK } from "../data/types";
 import { useContext, useState } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
-import fakeApi from "../data/suggestions";
+import axiosUtil from "../data/service";
 
 const FeedbackScreen = () => {
   const { feedback, setFeedback, setFetchData } = useContext(FeedbackContext);
@@ -24,7 +24,7 @@ const FeedbackScreen = () => {
       }, 1500);
       return;
     }
-    fakeApi
+    axiosUtil
       .addFeedBack(feedback)
       .then(() => {
         setFeedback({
@@ -33,10 +33,11 @@ const FeedbackScreen = () => {
           category: "Feature",
           numOfComments: 0,
           upvotes: 0,
+          status: "suggestion",
           comments: [],
         });
-        navigate(-1)
-        setFetchData(true)
+        navigate(-1);
+        setFetchData(true);
       })
       .catch((error) => {
         console.log("Error: ", error);

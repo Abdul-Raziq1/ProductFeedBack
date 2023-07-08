@@ -30,7 +30,7 @@ const Comments = () => {
         <CustomButton text={"Edit Feedback"} color={"#4661E6"} />
       </div>
       <div className="flex flex-col">
-        <Suggestion suggestion={suggestion} />
+        <Suggestion suggestion={suggestion} isPresentational={true}/>
         <div className=" p-3 bg-white rounded-xl">
           <span className="px-4 text-2xl font-semibold text-lighterBlueBlackTheme">
             {suggestion.numOfComments}{" "}

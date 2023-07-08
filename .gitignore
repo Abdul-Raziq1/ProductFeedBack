@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+.DS_Store
+.prettierignore
+
+*.sketch
+*.fig
+
+*.xd
+
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

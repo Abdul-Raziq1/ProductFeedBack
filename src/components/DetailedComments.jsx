@@ -2,7 +2,6 @@
 import PropTypes from "prop-types";
 import Comment from "./Comment";
 const DetailedComments = ({ message }) => {
-  console.log("Message", message);
   return (
     <div>
       <Comment message={message} />

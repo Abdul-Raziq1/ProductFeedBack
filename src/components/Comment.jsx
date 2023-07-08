@@ -1,22 +1,23 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 const Comment = ({ message }) => {
+  const { user, content } = message;
+  const { name, username, image } = user;
   return (
     <div className="p-4 bg-white">
       <div className="flex items-center justify-between text-lg">
-        {/* <img src={message.profile}/> */}
-        <div className="flex items-center gap-4">
-          <div className="p-3 w-10 h-10 bg-red-500 rounded-full"></div>
+        <div className="flex items-center gap-3">
+        <img src={image} className="rounded-full w-16"/>
           <div className="leading-6">
             <div className="font-semibold text-lighterBlueBlackTheme">
-              <span>{message.user.name}</span>
+              <span>{name}</span>
             </div>
-            <span className=" text-darkGrayTheme">@{message.user.username}</span>
+            <span className=" text-darkGrayTheme">@{username}</span>
           </div>
         </div>
         <button className="text-blueTheme font-semibold">Reply</button>
       </div>
-      <p className="pt-3 text-lg text-darkGrayTheme">{message.content}</p>
+      <p className="pt-3 text-lg text-darkGrayTheme">{content}</p>
     </div>
   );
 };
