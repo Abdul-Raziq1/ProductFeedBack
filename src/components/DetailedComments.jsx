@@ -7,10 +7,10 @@ const DetailedComments = ({ message }) => {
       <Comment message={message} />
       <div className="">
         {message.replies?.length !== 0 ? (
-          message.replies?.map((message) => {
+          message.replies?.map((reply) => {
             return (
-              <div key={message.id} className="border-l-2 ml-4">
-                <Comment message={message} />
+              <div key={reply.id} className="border-l-2 ml-4">
+                <Comment message={reply} isReply={true}  replyToUser={reply.replyingTo}/>
               </div>
             );
           })

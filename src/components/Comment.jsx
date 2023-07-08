@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
-const Comment = ({ message }) => {
+const Comment = ({ message, isReply=false, replyToUser }) => {
   const { user, content } = message;
   const { name, username, image } = user;
   return (
@@ -17,7 +17,7 @@ const Comment = ({ message }) => {
         </div>
         <button className="text-blueTheme font-semibold">Reply</button>
       </div>
-      <p className="pt-3 text-lg text-darkGrayTheme">{content}</p>
+      <span className="pt-3 text-lg text-darkGrayTheme"><span className="text-purpleTheme font-bold">{isReply ? `@${replyToUser} ` : ""}</span>{content}</span>
     </div>
   );
 };
@@ -29,5 +29,6 @@ Comment.propTypes = {
   tag: PropTypes.string,
   comment: PropTypes.string,
   innerMessages: PropTypes.array,
+  isReply: PropTypes.bool
 };
 export default Comment;
