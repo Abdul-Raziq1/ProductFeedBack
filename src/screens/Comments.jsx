@@ -49,11 +49,9 @@ const Comments = () => {
       .addComment(suggestion.id, commentObject)
       .then((response) => {
         setSuggestion(response)
-        console.log(response);
         setSuggestions(prevState => {
             const updatedSuggestions = prevState.map((state) => {
                 if (state.id === response.id) {
-                  console.log(state, response);
                     return response
                 }
                 return state

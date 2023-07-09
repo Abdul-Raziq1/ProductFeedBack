@@ -14,7 +14,6 @@ const Upvote = ({ upvotes, id }) => {
   });
   const upvoteHandler = (event) => {
     event.stopPropagation();
-    // console.log("User", currentUserData)
     if (numOfUpvotes.once === false) {
       setNumOfUpvotes((prevState) => ({
         upvotes: prevState.upvotes + 1,

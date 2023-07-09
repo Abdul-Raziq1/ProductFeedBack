@@ -139,8 +139,6 @@ try {
             }
             return comment
         })
-        console.log("suggestion", suggestion)
-        console.log("Updated", updated);
         const updatedComments = {...suggestion, comments: updated, numOfComments: suggestion.numOfComments + 1}
         const response = await fetch(url, {
             method: 'PUT',

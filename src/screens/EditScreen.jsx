@@ -17,7 +17,6 @@ import axiosUtil from "../data/service";
 import { FeedbackContext } from "../context/FeedbackContext";
 
 async function editLoader({ params }) {
-  console.log("Params", params);
   const suggestionUrl = `${productRequests}/${params.id}`;
   const response = await fetch(suggestionUrl);
   const suggestion = await response.json();
@@ -73,7 +72,6 @@ const EditScreen = () => {
         setSuggestions(prevState => {
             const updatedSuggestions = prevState.map((state) => {
                 if (state.id === response.id) {
-                  console.log(state, response);
                     return response
                 }
                 return state

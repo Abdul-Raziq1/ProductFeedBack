@@ -490,10 +490,39 @@
       "title": "14th",
       "description": "First UX ",
       "category": "UX",
-      "numOfComments": 0,
+      "numOfComments": 2,
       "upvotes": 0,
       "status": "Suggestion",
-      "comments": [],
+      "comments": [
+        {
+          "id": "8c6b5df3-3788-4141-a484-8757811895fe",
+          "content": "UX ",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "1": 1,
+              "6": 6
+            }
+          },
+          "replies": []
+        },
+        {
+          "id": "69e4a4ae-5cba-4668-b468-a6fc5aed76f0",
+          "content": "\"nd",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "1": 1,
+              "6": 6
+            }
+          },
+          "replies": []
+        }
+      ],
       "id": 14
     }
   ]
