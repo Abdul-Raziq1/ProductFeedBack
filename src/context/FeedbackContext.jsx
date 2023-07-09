@@ -1,8 +1,16 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from "react";
-import fakeApi from "../data/suggestions";
-import { ALL, LEAST_UPVOTES, MOST_COMMENTS, MOST_UPVOTES } from "../data/types";
+import {
+  ALL,
+  IN_PROGRESS,
+  LEAST_UPVOTES,
+  LIVE,
+  MOST_COMMENTS,
+  MOST_UPVOTES,
+  PLANNED,
+} from "../data/types";
 import axiosUtil from "../data/service";
+import { SUGGESTION } from "../data/types";
 export const FeedbackContext = createContext();
 
 const FeedbackProvider = ({ children }) => {
@@ -12,7 +20,11 @@ const FeedbackProvider = ({ children }) => {
   const [filterBy, setFilterBy] = useState(ALL);
   const [sortedState, setSortedState] = useState([]);
   const [selected, setSelected] = useState(true);
-  const [updateStatus, setUpdateStatus] = useState({});
+  const [updateStatus, setUpdateStatus] = useState({
+    planned: [],
+    inProgress: [],
+    live: [],
+  });
   const [fetchData, setFetchData] = useState(true);
   const [feedback, setFeedback] = useState({
     title: "",
@@ -27,10 +39,13 @@ const FeedbackProvider = ({ children }) => {
     image: "",
     name: "",
     username: "",
-    likes: {}
+    likes: {},
   });
 
   const sorter = (sortBy, arrayToSort) => {
+    arrayToSort = arrayToSort.filter(
+      (suggestion) => suggestion.status === SUGGESTION
+    );
     let copy;
     // Sort Logic
     if (sortBy === MOST_UPVOTES) {
@@ -59,7 +74,7 @@ const FeedbackProvider = ({ children }) => {
     return filteredArray;
   };
   useEffect(() => {
-    console.log("Getting user")
+    console.log("Getting user");
     axiosUtil.getUser().then((response) => {
       setCurrentUserData(response);
     });
@@ -73,20 +88,18 @@ const FeedbackProvider = ({ children }) => {
     axiosUtil
       .getProductRequests()
       .then((response) => {
+        setUpdateStatus(() => {
+          return {
+            planned: response.filter((res) => res.status === PLANNED),
+            inProgress: response.filter((res) => res.status === IN_PROGRESS),
+            live: response.filter((res) => res.status === LIVE)
+          };
+        });
         setSuggestions(sorter(sortBy, response));
         setSortedState(sorter(sortBy, filterate(filterBy, response)));
       })
       .catch(() => {
         console.log("Error fetching the data ");
-      });
-
-    fakeApi
-      .getUpdateStatus()
-      .then((response) => {
-        setUpdateStatus(response);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
       });
     setFetchData(false);
   }, [fetchData, setFetchData]);
@@ -94,7 +107,6 @@ const FeedbackProvider = ({ children }) => {
   useEffect(() => {
     setSortedState(sorter(sortBy, filterate(filterBy, suggestions)));
   }, [sortBy, filterBy, setSortBy]);
-
   return (
     <FeedbackContext.Provider
       value={{
@@ -116,7 +128,7 @@ const FeedbackProvider = ({ children }) => {
         setFetchData,
         setSuggestions,
         setSortedState,
-        setCurrentUserData
+        setCurrentUserData,
       }}
     >
       {children}

@@ -3,6 +3,7 @@ import Category from "./Category";
 import PropTypes from "prop-types";
 import { FeedbackContext } from "../context/FeedbackContext";
 import UpdateStatus from "./UpdateStatus";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/display-name
 const SideBar = forwardRef(({ showSideBar }, ref) => {
@@ -57,18 +58,17 @@ const SideBar = forwardRef(({ showSideBar }, ref) => {
       <div className="flex flex-col gap-5 bg-white rounded-xl p-7">
         <div className="flex justify-between items-center ">
           <h2 className="text-xl font-semibold text-blueBlackTheme">Roadmap</h2>
-          {/*TODO: Add Link tag soon */}
-          <a
-            href="/roadmap"
+          <Link
+            to={"/roadmap"}
             className="text-sm text-darkGrayTheme text-opacity-30 font-semibold underline"
           >
             View
-          </a>
+          </Link>
         </div>
         <div className="flex flex-col gap-2">
-          <UpdateStatus text={"Planned"} color={"bg-amber-600"} number={updateStatus.planned?.length}/>
-          <UpdateStatus text={"In-Progress"} color={"bg-purpleTheme"} number={updateStatus.inProgress?.length}/>
-          <UpdateStatus text={"Live"} color={"bg-blueTheme"} number={updateStatus.live?.length}/>
+          <UpdateStatus text={"Planned"} number={updateStatus.planned?.length}/>
+          <UpdateStatus text={"In-Progress"} number={updateStatus.inProgress?.length}/>
+          <UpdateStatus text={"Live"} number={updateStatus.live?.length}/>
         </div>
       </div>
     </div>

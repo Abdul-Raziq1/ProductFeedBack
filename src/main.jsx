@@ -6,6 +6,7 @@ import FeedbackProvider from "./context/FeedbackContext";
 import FeedbackScreen from "./screens/FeedbackScreen";
 import { Comments, detailsLoader } from "./screens/Comments";
 import { EditScreen, editLoader } from "./screens/EditScreen";
+import Roadmap from "./screens/Roadmap";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     path: "comments/:id/edit/",
     element: <EditScreen />,
     loader: editLoader
+  },
+  {
+    path: "/roadmap",
+    element: <Roadmap />
   },
   {
     path: "*",

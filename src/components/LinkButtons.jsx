@@ -10,7 +10,7 @@ const LinkButton = ({ text, icon, color }) => {
   }
   const mapTextToLink = (text) => {
     const links = {
-      'Add Feedback': 'addFeedback',
+      'Add Feedback': '/addFeedback',
       'Edit Feedback': 'edit'
     }
     return links[text]

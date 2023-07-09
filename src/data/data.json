@@ -328,7 +328,7 @@
       "title": "More comprehensive reports",
       "category": "Feature",
       "upvotes": 99,
-      "status": "planned",
+      "status": "Planned",
       "description": "It would be great to see a more detailed breakdown of solutions.",
       "numOfComments": 2,
       "comments": [
@@ -359,7 +359,7 @@
       "title": "Learning paths",
       "category": "Feature",
       "upvotes": 28,
-      "status": "planned",
+      "status": "Planned",
       "description": "Sequenced projects for different goals to help people improve.",
       "numOfComments": 1,
       "comments": [
@@ -380,7 +380,7 @@
       "title": "One-click portfolio generation",
       "category": "Feature",
       "upvotes": 62,
-      "status": "in-progress",
+      "status": "In-Progress",
       "description": "Add ability to create professional looking portfolio from profile.",
       "numOfComments": 2,
       "comments": [
@@ -418,7 +418,7 @@
       "title": "Bookmark challenges",
       "category": "Feature",
       "upvotes": 31,
-      "status": "in-progress",
+      "status": "In-Progress",
       "description": "Be able to bookmark challenges to take later on.",
       "numOfComments": 1,
       "comments": [
@@ -439,7 +439,7 @@
       "title": "Animated solution screenshots",
       "category": "Bug",
       "upvotes": 10,
-      "status": "in-progress",
+      "status": "In-Progress",
       "description": "Screenshots of solutions with animations don’t display correctly.",
       "numOfComments": 0,
       "comments": []
@@ -449,7 +449,7 @@
       "title": "Add micro-interactions",
       "category": "Enhancement",
       "upvotes": 71,
-      "status": "live",
+      "status": "Live",
       "description": "Small animations at specific points can add delight.",
       "numOfComments": 2,
       "comments": [
@@ -524,6 +524,16 @@
         }
       ],
       "id": 14
+    },
+    {
+      "title": "15th",
+      "description": "",
+      "category": "Feature",
+      "numOfComments": 0,
+      "upvotes": 0,
+      "status": "Suggestion",
+      "comments": [],
+      "id": 15
     }
   ]
 }
