@@ -9,9 +9,10 @@ import { FeedbackContext } from "../context/FeedbackContext";
 import SideBar from "../components/SideBar";
 import { ADD_FEEDBACK } from "../data/types";
 import LinkButton from "../components/LinkButtons";
+import Loading from "../components/Loading";
 const LandingScreen = () => {
   const [showSideBar, setShowSideBar] = useState(false);
-  const sideBarRef = useRef()
+  const sideBarRef = useRef();
   const { sortedState, loading } = useContext(FeedbackContext);
   const sideBarHandler = () => {
     setShowSideBar(!showSideBar);
@@ -19,17 +20,23 @@ const LandingScreen = () => {
 
   useEffect(() => {
     const closeSideBar = (event) => {
-      if (sideBarRef.current && !sideBarRef.current.contains(event.target)){
-        setShowSideBar(false)
+      if (sideBarRef.current && !sideBarRef.current.contains(event.target)) {
+        setShowSideBar(false);
       }
-    }
-    document.addEventListener('mousedown', closeSideBar)
+    };
+    document.addEventListener("mousedown", closeSideBar);
     return () => {
-      document.removeEventListener('mousedown', closeSideBar)
-    }
-  }, [])
+      document.removeEventListener("mousedown", closeSideBar);
+    };
+  }, []);
 
-
+  if (loading === true) {
+    return (
+      <div className="min-h-screen min-w-screen flex flex-col justify-center">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen overflow-x-hidden select-none">
       <header className=" flex pl-3 py-1 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
@@ -55,7 +62,9 @@ const LandingScreen = () => {
         </section>
         <section className="py-10 px-4 ">
           {loading === true ? (
-            <></>
+            <div className="min-h-screen w-full bg-white p-3 mr-3">
+              <Loading />
+            </div>
           ) : sortedState?.length === 0 ? (
             <div className="bg-white py-20 rounded-lg">
               <div className="flex gap-10 flex-col justify-center items-center">

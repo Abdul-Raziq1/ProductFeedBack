@@ -1,18 +1,9 @@
 import Lottie from "lottie-react";
-import loadingAnimation from "../assets/animations/loading.json";
+// import loadingAnimation from "../assets/animations/loading.json";
+import loadingAnimation from "../assets/animations/99297-loading-files.json";
 
 const Loading = () => {
-  return (
-    <div className="bg-blackish w-screen h-screen relative">
-      <Lottie
-        animationData={loadingAnimation}
-        className="absolute inset-0 m-auto"
-        loop={true}
-      />
-    </div>
-  );
+  return <Lottie animationData={loadingAnimation} className="" loop={true} />;
 };
 
-
-
-export { Loading };
+export default Loading;

@@ -67,8 +67,9 @@ const FeedbackProvider = ({ children }) => {
 
   useEffect(() => {
     console.log("Fetching data");
-    setLoading(false);
-
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     axiosUtil
       .getProductRequests()
       .then((response) => {
