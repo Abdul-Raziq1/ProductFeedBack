@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FloatingActionButton from "../components/FloatingActionButton";
 import InputField from "../components/InputField";
 import CustomButton from "../components/CustomButton";
-import { ADD_FEEDBACK } from "../data/types";
+import { ADD_FEEDBACK, categoryOptions } from "../data/types";
 import { useContext, useState } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
 import axiosUtil from "../data/service";
@@ -33,7 +33,7 @@ const FeedbackScreen = () => {
           category: "Feature",
           numOfComments: 0,
           upvotes: 0,
-          status: "suggestion",
+          status: "Suggestion",
           comments: [],
         });
         navigate(-1);
@@ -42,6 +42,23 @@ const FeedbackScreen = () => {
       .catch((error) => {
         console.log("Error: ", error);
       });
+  };
+  const titleChangeHandler = (event) => {
+    setFeedback((prevState) => {
+      return { ...prevState, title: event.target.value };
+    });
+  };
+
+  const descriptionChangeHandler = (event) => {
+    setFeedback((prevState) => {
+      return { ...prevState, description: event.target.value };
+    });
+  };
+
+  const addCategoryHandler = (selectedValue) => {
+    setFeedback((prevState) => {
+      return { ...prevState, category: selectedValue.value };
+    });
   };
   return (
     <div className="min-h-screen p-7 bg-grayTheme flex flex-col gap-10 select-none">
@@ -63,6 +80,8 @@ const FeedbackScreen = () => {
           <div>
             <InputField
               title={"Feedback Title"}
+              titleHandler={titleChangeHandler}
+              titleValue={feedback.title}
               description={"Add a short descriptive headline"}
               inputType={"text"}
               warn={showWarning}
@@ -76,6 +95,9 @@ const FeedbackScreen = () => {
             title={"Category"}
             description={"Choose a category for your feedback"}
             inputType={"select"}
+            categoryHandler={addCategoryHandler}
+            options={categoryOptions}
+            categoryValue={feedback.category}
           />
           <InputField
             title={"Feedback Detail"}
@@ -83,6 +105,8 @@ const FeedbackScreen = () => {
               "Include any specific comments on what should be improved, added, etc"
             }
             inputType={"textarea"}
+            descriptionHandler={descriptionChangeHandler}
+            descriptionValue={feedback.description}
           />
           <div className="flex flex-col gap-3">
             <CustomButton

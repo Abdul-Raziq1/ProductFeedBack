@@ -4,9 +4,8 @@
     "name": "Zena Kelley",
     "username": "velvetround",
     "likes": {
-      "2": 2,
-      "11": 11,
-      "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
+      "1": 1,
+      "6": 6
     }
   },
   "productRequests": [
@@ -14,7 +13,7 @@
       "id": 1,
       "title": "Add tags for solutions",
       "category": "Enhancement",
-      "upvotes": 99,
+      "upvotes": 100,
       "status": "Suggestion",
       "description": "Easier to search for solutions based on a specific stack.",
       "numOfComments": 2,
@@ -48,7 +47,7 @@
       "upvotes": 100,
       "status": "Suggestion",
       "description": "It would help people with light sensitivities and who prefer dark mode.",
-      "numOfComments": 9,
+      "numOfComments": 11,
       "comments": [
         {
           "id": 3,
@@ -170,6 +169,36 @@
               }
             }
           ]
+        },
+        {
+          "id": "4a61537f-3bd3-4612-9a37-2170f54ca41d",
+          "content": "Okay folks, implemented the delete functionality. Time to delete",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "1": 1,
+              "6": 6,
+              "11": 11
+            }
+          },
+          "replies": []
+        },
+        {
+          "id": "a4f75f30-1eda-44b8-a2b8-e84d3ffbe26b",
+          "content": "Oh wait xDDD,\nI can't delete replies, just feedback. LMAO",
+          "user": {
+            "image": "/assets/user-images/image-zena.jpg",
+            "name": "Zena Kelley",
+            "username": "velvetround",
+            "likes": {
+              "1": 1,
+              "6": 6,
+              "11": 11
+            }
+          },
+          "replies": []
         }
       ]
     },
@@ -271,7 +300,7 @@
       "id": 6,
       "title": "Preview images not loading",
       "category": "Bug",
-      "upvotes": 4,
+      "upvotes": 5,
       "status": "Suggestion",
       "description": "Challenge preview images are missing when you apply a filter.",
       "numOfComments": 1,
@@ -446,32 +475,6 @@
           ]
         }
       ]
-    },
-    {
-      "title": "13th",
-      "description": "13th",
-      "category": "Feature",
-      "numOfComments": 1,
-      "upvotes": 0,
-      "status": "suggestion",
-      "comments": [
-        {
-          "id": "e72a0b14-97bc-4e14-8689-c41b503c6d81",
-          "content": "First to comment here",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "2": 2,
-              "11": 11,
-              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
-            }
-          },
-          "replies": []
-        }
-      ],
-      "id": 13
     }
   ]
 }

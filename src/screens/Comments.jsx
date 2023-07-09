@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { FeedbackContext } from "../context/FeedbackContext";
 import axiosUtil from "../data/service";
+import LinkButton from "../components/LinkButtons";
 
 async function detailsLoader({ params }) {
   const suggestionUrl = `${productRequests}/${params.id}`;
@@ -74,7 +75,7 @@ const Comments = () => {
             Go Back
           </span>
         </div>
-        <CustomButton text={"Edit Feedback"} color={"#4661E6"} />
+        <LinkButton color={"#4661E6"} text={"Edit Feedback"} />
       </div>
 
       <div className="flex flex-col">

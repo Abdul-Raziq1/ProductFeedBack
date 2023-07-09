@@ -10,7 +10,8 @@ const LinkButton = ({ text, icon, color }) => {
   }
   const mapTextToLink = (text) => {
     const links = {
-      'Add Feedback': 'addFeedback'
+      'Add Feedback': 'addFeedback',
+      'Edit Feedback': 'edit'
     }
     return links[text]
   }
@@ -21,7 +22,7 @@ const LinkButton = ({ text, icon, color }) => {
       className="hover:opacity-100 opacity-90 "
     >
       <div className="flex justify-center gap-1 items-center ">
-        <span className="text-xs text-white">{icon}</span>
+        {icon !== undefined && <span className="text-xs text-white">{icon}</span>}
         <span className="text-white font-bold whitespace-nowrap">{text}</span>
       </div>
     </Link>

@@ -156,12 +156,50 @@ try {
     }
 }
 
+const editFeedback = async (id, editedFeedback) => {
+    try {
+        const url = `${productRequests}/${id}`
+        // const suggestion = await getSuggestionWithId(id)
+
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedFeedback)
+        })
+        return response.json()
+    }
+    catch (error) {
+        console.log("Error:", error);
+    }
+}
+
+const deleteFeedback = async (id) => {
+    try {
+        const url = `${productRequests}/${id}`
+        // const suggestion = await getSuggestionWithId(id)
+
+        await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+    }
+    catch (error) {
+        console.log("Error:", error);
+    }
+}
+
 const axiosUtil = {
     addFeedBack,
     addUpvote,
     addToLikes,
     addComment,
     addReply,
+    deleteFeedback,
+    editFeedback,
     getProductRequests,
     getUser,
     removeFromLikes

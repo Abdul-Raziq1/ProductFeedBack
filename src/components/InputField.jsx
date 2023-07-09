@@ -1,42 +1,26 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
-import { BUG, ENHANCEMENT, FEATURE, UI, UX } from "../data/types";
 import CustomSelect from "./CustomSelect";
-import { useContext } from "react";
-import { FeedbackContext } from "../context/FeedbackContext";
-const InputField = ({ title, description, inputType, warn, placeholder="" }) => {
-  const { feedback, setFeedback } = useContext(FeedbackContext);
+const InputField = ({
+  title,
+  titleValue,
+  descriptionValue,
+  categoryValue,
+  titleHandler,
+  descriptionHandler,
+  categoryHandler,
+  options,
+  description,
+  inputType,
+  warn,
+  placeholder = "",
+}) => {
   const mapTextToInput = (type) => {
-    const options = [
-      { value: FEATURE, label: FEATURE },
-      { value: UI, label: UI },
-      { value: UX, label: UX },
-      { value: ENHANCEMENT, label: ENHANCEMENT },
-      { value: BUG, label: BUG },
-    ];
-
-    const titleChangeHandler = (event) => {
-      setFeedback((prevState) => {
-        return { ...prevState, title: event.target.value };
-      });
-    };
-
-    const descriptionChangeHandler = (event) => {
-      setFeedback((prevState) => {
-        return { ...prevState, description: event.target.value };
-      });
-    };
-
-    const addCategoryHandler = (selectedValue) => {
-      setFeedback((prevState) => {
-        return { ...prevState, category: selectedValue.value };
-      });
-    };
-
     const inputElements = {
       text: (
         <input
-          onChange={titleChangeHandler}
-          value={feedback.title}
+          onChange={titleHandler}
+          value={titleValue}
           type="text"
           className={`rounded ${
             warn ? "outline-red-500" : "focus:outline-blueTheme"
@@ -48,14 +32,15 @@ const InputField = ({ title, description, inputType, warn, placeholder="" }) => 
           override
           className="rounded p-3"
           options={options}
-          onChange={addCategoryHandler}
+          onChange={categoryHandler}
+          defaultValue={{label: categoryValue, value: categoryValue}}
         />
       ),
       textarea: (
         <textarea
-          onChange={descriptionChangeHandler}
+          onChange={descriptionHandler}
           placeholder={placeholder}
-          value={feedback.description}
+          value={descriptionValue}
           rows={3}
           className="rounded bg-grayTheme p-3 focus:outline-blueTheme outline-offset-0 outline-1 outline-none"
         ></textarea>
@@ -65,10 +50,16 @@ const InputField = ({ title, description, inputType, warn, placeholder="" }) => 
   };
   return (
     <div className="flex flex-col">
-      {title !== undefined && <span className="font-semibold text-lighterBlueBlackTheme">{title}</span>}
-      { description !== undefined && <span className=" mb-5 text-darkGrayTheme text-opacity-50">
-        {description}
-      </span>}
+      {title !== undefined && (
+        <span className="font-semibold text-lighterBlueBlackTheme">
+          {title}
+        </span>
+      )}
+      {description !== undefined && (
+        <span className=" mb-5 text-darkGrayTheme text-opacity-50">
+          {description}
+        </span>
+      )}
       {mapTextToInput(inputType)}
     </div>
   );
@@ -79,6 +70,6 @@ InputField.propTypes = {
   description: PropTypes.string,
   inputType: PropTypes.string,
   warn: PropTypes.bool,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 };
 export default InputField;

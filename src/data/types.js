@@ -12,6 +12,13 @@ export const UX = "UX"
 export const BUG = "Bug"
 export const FEATURE = "Feature"
 
+// Status
+export const PLANNED = "Planned"
+export const IN_PROGRESS = "In-Progress"
+export const LIVE = "Live"
+export const SUGGESTION = "Suggestion"
+
+
 // Buttons
 export const ADD_FEEDBACK = "Add Feedback"
 
@@ -21,3 +28,19 @@ export const productRequests = "http://localhost:3000/productRequests";
 
 // Character limit
 export const INITIAL_CHARS = 250
+
+// Select options
+export const categoryOptions = [
+    { value: FEATURE, label: FEATURE },
+    { value: UI, label: UI },
+    { value: UX, label: UX },
+    { value: ENHANCEMENT, label: ENHANCEMENT },
+    { value: BUG, label: BUG },
+];
+
+export const statusOptions = [
+    { value: SUGGESTION, label: SUGGESTION },
+    { value: PLANNED, label: PLANNED },
+    { value: IN_PROGRESS, label: IN_PROGRESS },
+    { value: LIVE, label: LIVE },
+];

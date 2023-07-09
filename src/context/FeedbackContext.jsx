@@ -20,7 +20,7 @@ const FeedbackProvider = ({ children }) => {
     category: "Feature",
     numOfComments: 0,
     upvotes: 0,
-    status: "suggestion",
+    status: "Suggestion",
     comments: [],
   });
   const [currentUserData, setCurrentUserData] = useState({
@@ -88,7 +88,7 @@ const FeedbackProvider = ({ children }) => {
         console.log("Error:", error);
       });
     setFetchData(false);
-  }, [fetchData]);
+  }, [fetchData, setFetchData]);
 
   useEffect(() => {
     setSortedState(sorter(sortBy, filterate(filterBy, suggestions)));
