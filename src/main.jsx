@@ -26,6 +26,10 @@ const router = createBrowserRouter([
     element: <EditScreen />,
     loader: editLoader
   },
+  {
+    path: "*",
+    element: <LandingScreen />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
