@@ -12,8 +12,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import FloatingActionButton from "../components/FloatingActionButton";
 import InputField from "../components/InputField";
 import { useContext, useState } from "react";
-import editIcon from "../../public/assets/shared/icon-edit-feedback.svg";
-import suggestions from "../data/suggestions";
+import editIcon from "/assets/shared/icon-edit-feedback.svg";
 import axiosUtil from "../data/service";
 import { FeedbackContext } from "../context/FeedbackContext";
 
@@ -74,6 +73,7 @@ const EditScreen = () => {
         setSuggestions(prevState => {
             const updatedSuggestions = prevState.map((state) => {
                 if (state.id === response.id) {
+                  console.log(state, response);
                     return response
                 }
                 return state
@@ -81,7 +81,7 @@ const EditScreen = () => {
             return updatedSuggestions
         })
       });
-    setFetchData(true);
+    setFetchData(prevState => !prevState);
     navigate(-1);
   };
 
@@ -94,7 +94,7 @@ const EditScreen = () => {
             return updatedSuggestions
         })
     })
-    setFetchData(true);
+    setFetchData(prevState => !prevState);
     navigate('/')
   }
 

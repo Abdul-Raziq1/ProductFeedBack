@@ -29,7 +29,7 @@ const Comment = ({ message, isReply = false, replyToUser }) => {
       </div>
       <span className="pt-3 text-lg text-darkGrayTheme">
         <span className="text-purpleTheme font-bold">
-          {isReply ? `@${replyToUser} ` : ""}
+          {isReply && replyToUser !== username ? `@${replyToUser} ` : ""}
         </span>
         {content}
       </span>

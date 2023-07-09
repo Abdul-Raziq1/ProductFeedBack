@@ -22,7 +22,7 @@ const Comments = () => {
   const [showWarning, setShowWarning] = useState(false);
   const [charactersLeft, setCharactersLeft] = useState(INITIAL_CHARS);
   const [suggestion, setSuggestion] = useState(useLoaderData());
-  const { currentUserData } = useContext(FeedbackContext);
+  const { currentUserData, setSuggestions, setFetchData } = useContext(FeedbackContext);
   const navigate = useNavigate();
   const backClickHandler = () => {
     navigate(-1);
@@ -47,7 +47,22 @@ const Comments = () => {
     setCharactersLeft(INITIAL_CHARS);
     axiosUtil
       .addComment(suggestion.id, commentObject)
-      .then((response) => setSuggestion(response));
+      .then((response) => {
+        setSuggestion(response)
+        console.log(response);
+        setSuggestions(prevState => {
+            const updatedSuggestions = prevState.map((state) => {
+                if (state.id === response.id) {
+                  console.log(state, response);
+                    return response
+                }
+                return state
+            })
+            return updatedSuggestions
+        })
+        setFetchData(prevState => !prevState)
+      })
+
   };
   const commentHandler = (event) => {
     const value = event.target.value;
@@ -98,7 +113,7 @@ const Comments = () => {
             })}
         </div>
       </div>
-      <div className="mt-6 p-6 bg-white rounded-xl">
+      <div className="mt-6 py-6 px-3 bg-white rounded-xl">
         <form className="flex flex-col gap-4">
           <h2 className=" text-2xl font-semibold text-lighterBlueBlackTheme">
             Add Comment
