@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from "react";
+import localData from "../data/data.json";
 import {
   ALL,
   IN_PROGRESS,
@@ -9,7 +10,8 @@ import {
   MOST_UPVOTES,
   PLANNED,
 } from "../data/types";
-import axiosUtil from "../data/service";
+// import axiosUtil from "../data/service";
+import util from "../data/newService";
 import { SUGGESTION } from "../data/types";
 export const FeedbackContext = createContext();
 
@@ -75,24 +77,39 @@ const FeedbackProvider = ({ children }) => {
   };
   useEffect(() => {
     console.log("Getting user");
-    axiosUtil.getUser().then((response) => {
+    localStorage.setItem(
+      "productRequests",
+      JSON.stringify(
+        JSON.parse(localStorage.getItem("productRequests")) ||
+          localData.productRequests
+      )
+    );
+    localStorage.setItem(
+      "currentUser",
+      JSON.stringify(
+        JSON.parse(localStorage.getItem("currentUser")) ||
+          localData.currentUser
+      )
+    );
+    util.getUser().then((response) => {
       setCurrentUserData(response);
     });
   }, []);
 
   useEffect(() => {
     console.log("Fetching data");
+
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-    axiosUtil
+    util
       .getProductRequests()
       .then((response) => {
         setUpdateStatus(() => {
           return {
             planned: response.filter((res) => res.status === PLANNED),
             inProgress: response.filter((res) => res.status === IN_PROGRESS),
-            live: response.filter((res) => res.status === LIVE)
+            live: response.filter((res) => res.status === LIVE),
           };
         });
         setSuggestions(sorter(sortBy, response));

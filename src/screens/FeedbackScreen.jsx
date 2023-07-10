@@ -7,6 +7,7 @@ import { ADD_FEEDBACK, categoryOptions } from "../data/types";
 import { useContext, useState } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
 import axiosUtil from "../data/service";
+import util from "../data/newService";
 
 const FeedbackScreen = () => {
   const { feedback, setFeedback, setFetchData } = useContext(FeedbackContext);
@@ -24,7 +25,7 @@ const FeedbackScreen = () => {
       }, 1500);
       return;
     }
-    axiosUtil
+    util
       .addFeedBack(feedback)
       .then(() => {
         setFeedback({

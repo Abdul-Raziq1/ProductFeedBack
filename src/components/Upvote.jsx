@@ -10,7 +10,7 @@ const Upvote = ({ upvotes, id }) => {
     useContext(FeedbackContext);
   const [numOfUpvotes, setNumOfUpvotes] = useState({
     upvotes,
-    once: !!currentUserData.likes[id],
+    once: !!currentUserData?.likes[id],
   });
   const upvoteHandler = (event) => {
     event.stopPropagation();
