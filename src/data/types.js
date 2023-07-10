@@ -23,8 +23,8 @@ export const SUGGESTION = "Suggestion"
 export const ADD_FEEDBACK = "Add Feedback"
 
 // Server url
-export const currentUser = "http://localhost:3000/currentUser";
-export const productRequests = "http://localhost:3000/productRequests";
+export const currentUser = "https://angry-bikini-worm.cyclic.app/currentUser";
+export const productRequests = "https://angry-bikini-worm.cyclic.app/productRequests";
 
 // Character limit
 export const INITIAL_CHARS = 250
