@@ -3,14 +3,14 @@ import CustomButton from "./CustomButton";
 import { INITIAL_CHARS } from "../data/types";
 import { v4 as uuid } from "uuid";
 import { FeedbackContext } from "../context/FeedbackContext";
-import axiosUtil from "../data/service";
 import { IdContext } from "../components/DetailedComments";
 import PropTypes from "prop-types";
+import util from "../data/service";
 
-const Reply = ({ setIsReplying }) => {
+const Reply = ({ setIsReplying, replyingTo }) => {
   const [reply, setReply] = useState("");
   const { currentUserData } = useContext(FeedbackContext);
-  const { suggestionId, messageId, replyingTo, setSuggestion } =
+  const { suggestionId, messageId, setSuggestion } =
     useContext(IdContext);
   const [charactersLeft, setCharactersLeft] = useState(INITIAL_CHARS);
   const [showWarning, setShowWarning] = useState(false);
@@ -48,7 +48,7 @@ const Reply = ({ setIsReplying }) => {
     }
 
     const id = uuid();
-
+    console.log("Replying to", replyingTo, messageId)
     const replyObject = {
       id,
       content: reply,
@@ -57,7 +57,7 @@ const Reply = ({ setIsReplying }) => {
     };
     setReply("");
     setCharactersLeft(INITIAL_CHARS);
-    axiosUtil
+    util
       .addReply(suggestionId, messageId, replyObject)
       .then((response) => {
         setSuggestion(response);
@@ -97,6 +97,7 @@ const Reply = ({ setIsReplying }) => {
 
 Reply.propTypes = {
   setIsReplying: PropTypes.func,
+  replyingTo: PropTypes.string
 };
 
 export default Reply;

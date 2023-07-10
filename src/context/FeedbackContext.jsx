@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useState, useEffect } from "react";
 import {
   ALL,
@@ -9,14 +9,15 @@ import {
   MOST_UPVOTES,
   PLANNED,
 } from "../data/types";
-import axiosUtil from "../data/service";
+import PropTypes from 'prop-types'
+import util from "../data/service";
 import { SUGGESTION } from "../data/types";
 export const FeedbackContext = createContext();
 
 const FeedbackProvider = ({ children }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState(MOST_UPVOTES);
+  const [sortBy, setSortBy] = useState(LEAST_UPVOTES);
   const [filterBy, setFilterBy] = useState(ALL);
   const [sortedState, setSortedState] = useState([]);
   const [selected, setSelected] = useState(true);
@@ -74,25 +75,23 @@ const FeedbackProvider = ({ children }) => {
     return filteredArray;
   };
   useEffect(() => {
-    console.log("Getting user");
-    axiosUtil.getUser().then((response) => {
+    util.getUser().then((response) => {
       setCurrentUserData(response);
     });
   }, []);
 
   useEffect(() => {
-    console.log("Fetching data");
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-    axiosUtil
+    util
       .getProductRequests()
       .then((response) => {
         setUpdateStatus(() => {
           return {
             planned: response.filter((res) => res.status === PLANNED),
             inProgress: response.filter((res) => res.status === IN_PROGRESS),
-            live: response.filter((res) => res.status === LIVE)
+            live: response.filter((res) => res.status === LIVE),
           };
         });
         setSuggestions(sorter(sortBy, response));
@@ -136,4 +135,7 @@ const FeedbackProvider = ({ children }) => {
   );
 };
 
+FeedbackProvider.propTypes = {
+  children: PropTypes.any,
+};
 export default FeedbackProvider;

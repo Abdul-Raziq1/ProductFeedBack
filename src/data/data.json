@@ -3,10 +3,7 @@
     "image": "/assets/user-images/image-zena.jpg",
     "name": "Zena Kelley",
     "username": "velvetround",
-    "likes": {
-      "1": 1,
-      "6": 6
-    }
+    "likes": {}
   },
   "productRequests": [
     {
@@ -99,7 +96,7 @@
             "username": "velvetround",
             "likes": {
               "2": 2,
-              "6": 6,
+              "6": 6, 
               "11": 11
             }
           },

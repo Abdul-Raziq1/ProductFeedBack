@@ -32,10 +32,10 @@ const Suggestion = ({ suggestion, isPresentational = false, screen="homepage", c
       }
 
       <div className="flex flex-col gap-3">
-        <h2 className="select-text text-blueBlackTheme font-bold text-lg">
+        <h2 className="text-blueBlackTheme font-bold text-lg">
           {suggestion.title}
         </h2>
-        <p className="select-text text-darkGrayTheme">
+        <p className="text-darkGrayTheme">
           {suggestion.description}
         </p>
         <div className="flex gap-3">

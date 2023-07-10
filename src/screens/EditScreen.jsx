@@ -1,27 +1,16 @@
-/* eslint-disable no-unused-vars */
 // import PropType from 'prop-types'
 import CustomButton from "../components/CustomButton";
-import {
-  ADD_FEEDBACK,
-  categoryOptions,
-  productRequests,
-  statusOptions,
-} from "../data/types";
+import { categoryOptions, statusOptions } from "../data/types";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import FloatingActionButton from "../components/FloatingActionButton";
 import InputField from "../components/InputField";
 import { useContext, useState } from "react";
 import editIcon from "/assets/shared/icon-edit-feedback.svg";
-import axiosUtil from "../data/service";
 import { FeedbackContext } from "../context/FeedbackContext";
+import util from "../data/service";
 
-async function editLoader({ params }) {
-  const suggestionUrl = `${productRequests}/${params.id}`;
-  const response = await fetch(suggestionUrl);
-  const suggestion = await response.json();
-  return suggestion;
-}
+
 
 const EditScreen = () => {
   const [showWarning, setShowWarning] = useState(false);
@@ -66,35 +55,34 @@ const EditScreen = () => {
       }, 1500);
       return;
     }
-    axiosUtil
-      .editFeedback(editedFeedback.id, editedFeedback)
-      .then((response) => {
-        setSuggestions(prevState => {
-            const updatedSuggestions = prevState.map((state) => {
-                if (state.id === response.id) {
-                    return response
-                }
-                return state
-            })
-            return updatedSuggestions
-        })
+    util.editFeedback(editedFeedback.id, editedFeedback).then((response) => {
+      setSuggestions((prevState) => {
+        const updatedSuggestions = prevState.map((state) => {
+          if (state.id === response.id) {
+            return response;
+          }
+          return state;
+        });
+        return updatedSuggestions;
       });
-    setFetchData(prevState => !prevState);
+    });
+    setFetchData((prevState) => !prevState);
     navigate(-1);
   };
 
   const deleteHandler = () => {
-    const deletedId = editedFeedback.id
-    axiosUtil.deleteFeedback(editedFeedback.id)
-    .then(() => {
-        setSuggestions(prevState => {
-            const updatedSuggestions = prevState.filter((state) => state.id !== deletedId)
-            return updatedSuggestions
-        })
-    })
-    setFetchData(prevState => !prevState);
-    navigate('/')
-  }
+    const deletedId = editedFeedback.id;
+    util.deleteFeedback(editedFeedback.id).then(() => {
+      setSuggestions((prevState) => {
+        const updatedSuggestions = prevState.filter(
+          (state) => state.id !== deletedId
+        );
+        return updatedSuggestions;
+      });
+    });
+    setFetchData((prevState) => !prevState);
+    navigate("/");
+  };
 
   return (
     <div className="min-h-screen p-7 bg-grayTheme flex flex-col gap-10 select-none">
@@ -178,4 +166,4 @@ const EditScreen = () => {
   );
 };
 
-export { editLoader, EditScreen };
+export default EditScreen;

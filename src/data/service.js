@@ -1,84 +1,67 @@
-import { currentUser, productRequests } from "./types"
+import localData from "./data.json";
 
-const addFeedBack = async (newFeedback) => {
-    try {
-        const allProducts = await getProductRequests(productRequests)
-        const id = allProducts.length + 1
-        await fetch(productRequests, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ ...newFeedback, id })
-        })
-    }
-    catch (error) {
-        console.log("Error:", error);
-    }
+const updateProductRequest = (values) => {
+    localStorage.setItem('productRequests', JSON.stringify(values))
 }
 
-const getSuggestionWithId = async (id) => {
-    try {
-        const url = `${productRequests}/${id}`
-        const response = await fetch(url)
-        return response.json()
-    }
-    catch (error) {
-        console.log("Error:", error);
-    }
-}
+const updateProductRequestWithID = (id, suggestion) => {
 
-const getProductRequests = async () => {
-    try {
-        const response = await fetch(productRequests)
-        return response.json()
-    }
-    catch (error) {
-        console.log("Error:", error);
-    }
+    let productRequests = JSON.parse(localStorage.getItem('productRequests'))
+    productRequests = productRequests.map((request) => {
+        if (request.id === id) {
+            return suggestion
+        }
+        return request
+    })
+    localStorage.setItem('productRequests', JSON.stringify(productRequests))
 }
-
-const getUser = async () => {
-    try {
-        const response = await fetch(currentUser)
-        return response.json()
-    }
-    catch (error) {
-        console.log("Error:", error);
-    }
+const updateCurrentUser = (values) => {
+    localStorage.setItem('currentUser', JSON.stringify(values))
+}
+const addFeedBack = (newFeedback) => {
+    return new Promise((resolve, reject) => {
+        try {
+            let productRequests = JSON.parse(localStorage.getItem('productRequests'))
+            const id = productRequests.length + 1
+            const feedback = {
+                id,
+                ...newFeedback
+            }
+            productRequests = [ ...productRequests, feedback ]
+            updateProductRequest(productRequests)
+            setTimeout(() => {
+                return resolve(productRequests)
+            }, 250);
+        }
+        catch (error) {
+            reject(new Error("Something wrong occured"))
+        }
+    })
+}
+const addComment = (id, comment) => {
+    return new Promise((resolve, reject) => {
+        getSuggestionWithId(id)
+            .then((suggestion) => {
+                const updatedComments = { ...suggestion, comments: [...suggestion.comments, comment], numOfComments: suggestion.numOfComments + 1 }
+                setTimeout(() => {
+                    updateProductRequestWithID(id, updatedComments)
+                    resolve(updatedComments)
+                }, 250);
+            })
+            .catch(() => {
+                return setTimeout(() => {
+                    reject("Could not find the feedback. It may have been deleted. Please reload the screen")
+                }, 250);
+            })
+    })
 }
 
 const addToLikes = async (id) => {
     try {
-
         const user = await getUser()
         const updatedUser = { ...user, likes: { ...user.likes, [id]: id } }
-        const response = await fetch(currentUser, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedUser)
-        })
-        return response.json()
-    }
-    catch (error) {
-        console.log("Error:", error);
-    }
-}
-const removeFromLikes = async (id) => {
-    try {
-
-        const user = await getUser()
-        delete user.likes[id]
-        const response = await fetch(currentUser, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-        return response.json()
+        updateCurrentUser(updatedUser)
+        return updatedUser
     }
     catch (error) {
         console.log("Error:", error);
@@ -87,7 +70,6 @@ const removeFromLikes = async (id) => {
 
 const addUpvote = async (id, operation) => {
     try {
-        const url = `${productRequests}/${id}`
         const feedback = await getSuggestionWithId(id)
         let updatedFeedback;
         if (operation === 'decrement') {
@@ -95,43 +77,28 @@ const addUpvote = async (id, operation) => {
         } else {
             updatedFeedback = { ...feedback, upvotes: feedback.upvotes + 1 }
         }
-        const response = await fetch(url, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(updatedFeedback)
-
-        })
-        return response.json()
+        updateProductRequestWithID(id, updatedFeedback)
+        return updatedFeedback
     }
     catch (error) {
         console.log("Error:", error);
     }
 }
 
-const addComment = async (id, comment) => {
+const removeFromLikes = async (id) => {
     try {
-        const url = `${productRequests}/${id}`
-        const suggestion = await getSuggestionWithId(id)
-        const updatedComments = {...suggestion, comments: [...suggestion.comments, comment], numOfComments: suggestion.numOfComments + 1}
-        const response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedComments)
-        })
-        return response.json()
+        const user = await getUser()
+        delete user.likes[id]
+        updateCurrentUser(user)
+        return user
     }
-    catch (error) {
+     catch (error) {
         console.log("Error:", error);
     }
 }
 
 const addReply = async (suggestionId, messageId, reply) => {
-try {
-        const url = `${productRequests}/${suggestionId}`
+    try {
         const suggestion = await getSuggestionWithId(suggestionId)
         const updated = suggestion.comments.map((comment) => {
             if (comment.id === messageId){
@@ -139,15 +106,9 @@ try {
             }
             return comment
         })
-        const updatedComments = {...suggestion, comments: updated, numOfComments: suggestion.numOfComments + 1}
-        const response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedComments)
-        })
-        return response.json()
+        const updatedReplies = {...suggestion, comments: updated, numOfComments: suggestion.numOfComments + 1}
+        updateProductRequestWithID(suggestionId, updatedReplies)
+        return updatedReplies
     }
     catch (error) {
         console.log("Error:", error);
@@ -156,17 +117,8 @@ try {
 
 const editFeedback = async (id, editedFeedback) => {
     try {
-        const url = `${productRequests}/${id}`
-        // const suggestion = await getSuggestionWithId(id)
-
-        const response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(editedFeedback)
-        })
-        return response.json()
+        updateProductRequestWithID(id, editedFeedback)
+        return editFeedback
     }
     catch (error) {
         console.log("Error:", error);
@@ -174,32 +126,68 @@ const editFeedback = async (id, editedFeedback) => {
 }
 
 const deleteFeedback = async (id) => {
-    try {
-        const url = `${productRequests}/${id}`
-        // const suggestion = await getSuggestionWithId(id)
-
-        await fetch(url, {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json"
-            },
-        })
-    }
-    catch (error) {
-        console.log("Error:", error);
-    }
+    let productRequests = JSON.parse(localStorage.getItem('productRequests'))
+    productRequests = productRequests.filter((request) => request.id !== id)
+    localStorage.setItem('productRequests', JSON.stringify(productRequests))
 }
 
-const axiosUtil = {
+const getProductRequests = () => {
+    return new Promise((resolve, reject) => {
+        const productRequests = JSON.parse(localStorage.getItem("productRequests")) || localData.productRequests
+        localStorage.setItem("productRequests", JSON.stringify(productRequests))
+        if (productRequests === undefined) {
+            return setTimeout(
+                () => reject(new Error("Suggestions not found"))
+                , 250)
+        }
+        return setTimeout(() => {
+            resolve(productRequests)
+        }, 250)
+    })
+}
+
+const getUser = () => {
+    return new Promise((resolve, reject) => {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser")) || localData.currentUser
+        localStorage.setItem("currentUser", JSON.stringify(currentUser))
+        if (currentUser === undefined) {
+            return setTimeout(
+                () => reject(new Error("User not found"))
+                , 250)
+        }
+        return setTimeout(() => {
+            resolve(currentUser)
+        }, 250)
+    })
+}
+
+const getSuggestionWithId = (id) => {
+    return new Promise((resolve, reject) => {
+        let productRequests = JSON.parse(localStorage.getItem('productRequests'))
+        const suggestion = productRequests[id - 1]
+
+        if (suggestion === undefined) {
+            return setTimeout(() => {
+                reject("Could not find the feedback. It may have been deleted. Please reload the screen")
+            }, 250);
+        }
+        return setTimeout(() => {
+            resolve(suggestion)
+        }, 250);
+    })
+}
+const util = {
     addFeedBack,
+    addComment,
     addUpvote,
     addToLikes,
-    addComment,
     addReply,
-    deleteFeedback,
     editFeedback,
+    deleteFeedback,
+    removeFromLikes,
     getProductRequests,
     getUser,
-    removeFromLikes
+    getSuggestionWithId
 }
-export default axiosUtil
+
+export default util
