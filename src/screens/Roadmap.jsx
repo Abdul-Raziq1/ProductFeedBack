@@ -2,14 +2,14 @@ import { FaChevronLeft, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { ADD_FEEDBACK, IN_PROGRESS, LIVE, PLANNED } from "../data/types";
 import LinkButton from "../components/LinkButtons";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import ShowRoadMap from "../components/ShowRoadMap";
 import { FeedbackContext } from "../context/FeedbackContext";
 
 const Roadmap = () => {
   const [index, setIndex] = useState({ currentIndex: 0, prevIndex: 0 });
   const { updateStatus } = useContext(FeedbackContext);
-
+  const roadmapRef = useRef();
   const navigate = useNavigate();
   const backClickHandler = () => {
     navigate(-1);
@@ -42,8 +42,52 @@ const Roadmap = () => {
     };
     return status[index];
   };
+  useEffect(() => {
+    const roadmap = roadmapRef.current;
+    const MOVE_THRESHOLD = 100;
+
+    let initialX = 0;
+    let moveX = 0;
+    const onTouchStart = (e) => {
+      initialX = e.touches[0].pageX;
+    };
+    const onTouchMove = (e) => {
+      let currentX = e.touches[0].pageX;
+      moveX = currentX - initialX;
+    };
+    const onTouchEnd = () => {
+      if (moveX < MOVE_THRESHOLD * Math.sign(moveX)) {
+        if (index.currentIndex === 2) {
+          return;
+        } else {
+          setIndex((prevState) => {
+            return { ...prevState, currentIndex: prevState.currentIndex + 1 };
+          });
+        }
+      } else if (moveX > MOVE_THRESHOLD * Math.sign(moveX)) {
+        if (index.currentIndex === 0) {
+          return;
+        } else {
+          setIndex((prevState) => {
+            return { ...prevState, currentIndex: prevState.currentIndex - 1 };
+          });
+        }
+      }
+      moveX = 0;
+    };
+    roadmap.addEventListener("touchstart", onTouchStart);
+    roadmap.addEventListener("touchmove", onTouchMove);
+    roadmap.addEventListener("touchend", onTouchEnd);
+
+
+    return () => {
+      roadmap.removeEventListener("touchstart", onTouchStart);
+      roadmap.removeEventListener("touchmove", onTouchMove);
+      roadmap.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [index]);
   return (
-    <div className="min-h-screen w-screen bg-grayTheme">
+    <div className="min-h-screen w-screen bg-grayTheme overflow-x-hidden">
       <div className="bg-blueBlackTheme text-white p-6 flex justify-between items-center">
         <div className="flex flex-col">
           <div
@@ -122,8 +166,10 @@ const Roadmap = () => {
           ></div>
         </div>
       </div>
-      <div className="mx-4">
-        <ShowRoadMap status={mapIndexToStatus(index.currentIndex)} />
+      <div ref={roadmapRef} className="">
+        <div className="mx-4">
+          <ShowRoadMap status={mapIndexToStatus(index.currentIndex)} />
+        </div>
       </div>
     </div>
   );
