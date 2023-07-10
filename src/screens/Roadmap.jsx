@@ -166,7 +166,7 @@ const Roadmap = () => {
           ></div>
         </div>
       </div>
-      <div ref={roadmapRef} className="">
+      <div ref={roadmapRef}>
         <div className="mx-4">
           <ShowRoadMap status={mapIndexToStatus(index.currentIndex)} />
         </div>
