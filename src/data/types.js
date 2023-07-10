@@ -23,8 +23,8 @@ export const SUGGESTION = "Suggestion"
 export const ADD_FEEDBACK = "Add Feedback"
 
 // Server url
-export const currentUser = "https://angry-bikini-worm.cyclic.app/currentUser";
-export const productRequests = "https://angry-bikini-worm.cyclic.app/productRequests";
+export const currentUser = "https://json-server-backend-zeta.vercel.app/currentUser";
+export const productRequests = "https://json-server-backend-zeta.vercel.app/productRequests";
 
 // Character limit
 export const INITIAL_CHARS = 250
