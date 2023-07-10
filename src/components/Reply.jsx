@@ -7,10 +7,10 @@ import { IdContext } from "../components/DetailedComments";
 import PropTypes from "prop-types";
 import util from "../data/service";
 
-const Reply = ({ setIsReplying }) => {
+const Reply = ({ setIsReplying, replyingTo }) => {
   const [reply, setReply] = useState("");
   const { currentUserData } = useContext(FeedbackContext);
-  const { suggestionId, messageId, replyingTo, setSuggestion } =
+  const { suggestionId, messageId, setSuggestion } =
     useContext(IdContext);
   const [charactersLeft, setCharactersLeft] = useState(INITIAL_CHARS);
   const [showWarning, setShowWarning] = useState(false);
@@ -48,7 +48,7 @@ const Reply = ({ setIsReplying }) => {
     }
 
     const id = uuid();
-
+    console.log("Replying to", replyingTo, messageId)
     const replyObject = {
       id,
       content: reply,
@@ -97,6 +97,7 @@ const Reply = ({ setIsReplying }) => {
 
 Reply.propTypes = {
   setIsReplying: PropTypes.func,
+  replyingTo: PropTypes.string
 };
 
 export default Reply;

@@ -8,6 +8,7 @@ const Comment = ({ message, isReply = false, replyToUser }) => {
   const { name, username, image } = user;
 
   const replyHandler = () => {
+    console.log("Message", message);
     setIsReplying(!isReplying);
   };
   return (
@@ -35,7 +36,7 @@ const Comment = ({ message, isReply = false, replyToUser }) => {
       </span>
 
     </div>
-      {isReplying && <Reply setIsReplying={setIsReplying}/>}
+      {isReplying && <Reply setIsReplying={setIsReplying} replyingTo={message.user.username} />}
     </>
   );
 };

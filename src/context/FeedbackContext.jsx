@@ -75,22 +75,18 @@ const FeedbackProvider = ({ children }) => {
     return filteredArray;
   };
   useEffect(() => {
-    console.log("Getting user");
     util.getUser().then((response) => {
       setCurrentUserData(response);
     });
   }, []);
 
   useEffect(() => {
-    console.log("Fetching data");
-
     setTimeout(() => {
       setLoading(false);
     }, 2000);
     util
       .getProductRequests()
       .then((response) => {
-        console.log("Response", response);
         setUpdateStatus(() => {
           return {
             planned: response.filter((res) => res.status === PLANNED),

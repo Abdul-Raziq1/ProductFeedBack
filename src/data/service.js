@@ -21,9 +21,7 @@ const updateCurrentUser = (values) => {
 const addFeedBack = (newFeedback) => {
     return new Promise((resolve, reject) => {
         try {
-            console.log(newFeedback)
             let productRequests = JSON.parse(localStorage.getItem('productRequests'))
-            console.log("New product", Array.isArray(productRequests));
             const id = productRequests.length + 1
             const feedback = {
                 id,
@@ -32,7 +30,6 @@ const addFeedBack = (newFeedback) => {
             productRequests = [ ...productRequests, feedback ]
             updateProductRequest(productRequests)
             setTimeout(() => {
-                console.log("Added ", feedback)
                 return resolve(productRequests)
             }, 250);
         }
@@ -43,10 +40,8 @@ const addFeedBack = (newFeedback) => {
 }
 const addComment = (id, comment) => {
     return new Promise((resolve, reject) => {
-        console.log("ID", id);
         getSuggestionWithId(id)
             .then((suggestion) => {
-                console.log("Sugg", suggestion);
                 const updatedComments = { ...suggestion, comments: [...suggestion.comments, comment], numOfComments: suggestion.numOfComments + 1 }
                 setTimeout(() => {
                     updateProductRequestWithID(id, updatedComments)
@@ -122,7 +117,6 @@ const addReply = async (suggestionId, messageId, reply) => {
 
 const editFeedback = async (id, editedFeedback) => {
     try {
-        console.log("Edited", editedFeedback);
         updateProductRequestWithID(id, editedFeedback)
         return editFeedback
     }
@@ -141,13 +135,11 @@ const getProductRequests = () => {
     return new Promise((resolve, reject) => {
         const productRequests = JSON.parse(localStorage.getItem("productRequests")) || localData.productRequests
         localStorage.setItem("productRequests", JSON.stringify(productRequests))
-        console.log("new", productRequests);
         if (productRequests === undefined) {
             return setTimeout(
                 () => reject(new Error("Suggestions not found"))
                 , 250)
         }
-        console.log(productRequests, Array.isArray(productRequests));
         return setTimeout(() => {
             resolve(productRequests)
         }, 250)
@@ -163,7 +155,6 @@ const getUser = () => {
                 () => reject(new Error("User not found"))
                 , 250)
         }
-        console.log(Object.values(currentUser));
         return setTimeout(() => {
             resolve(currentUser)
         }, 250)
