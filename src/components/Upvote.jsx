@@ -1,9 +1,9 @@
 import { FaChevronUp } from "react-icons/fa";
 import PropTypes from "prop-types";
-import axiosUtil from "../data/service";
 import { useState } from "react";
 import { useContext } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
+import util from "../data/service";
 
 const Upvote = ({ upvotes, id }) => {
   const { setSortedState, sorter, sortBy, currentUserData, setCurrentUserData } =
@@ -19,14 +19,15 @@ const Upvote = ({ upvotes, id }) => {
         upvotes: prevState.upvotes + 1,
         once: true,
       }));
-      axiosUtil.addToLikes(id)
+      util.addToLikes(id)
       .then((response) => {
         setCurrentUserData(response);
       })
       .catch(() => {
         console.log("Error");
       });
-      axiosUtil
+
+      util
         .addUpvote(id)
         .then((response) => {
           setSortedState((prevState) => {
@@ -42,19 +43,20 @@ const Upvote = ({ upvotes, id }) => {
         .catch(() => {
           console.log("Error");
         });
+        console.log("Top worked");
     } else {
       setNumOfUpvotes((prevState) => ({
         upvotes: prevState.upvotes - 1,
         once: false,
       }));
-      axiosUtil.removeFromLikes(id)
+      util.removeFromLikes(id)
       .then((response) => {
         setCurrentUserData(response);
       })
       .catch(() => {
         console.log("Error");
       });
-      axiosUtil
+      util
         .addUpvote(id, "decrement")
         .then((response) => {
           setSortedState((prevState) => {

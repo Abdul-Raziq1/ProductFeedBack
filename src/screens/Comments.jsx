@@ -3,19 +3,14 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import CustomButton from "../components/CustomButton";
 import Suggestion from "../components/Suggestion";
 import DetailedComments from "../components/DetailedComments";
-import { INITIAL_CHARS, productRequests } from "../data/types";
+import { INITIAL_CHARS } from "../data/types";
 import { useContext, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { FeedbackContext } from "../context/FeedbackContext";
-import axiosUtil from "../data/service";
 import LinkButton from "../components/LinkButtons";
+import util from "../data/service";
 
-async function detailsLoader({ params }) {
-  const suggestionUrl = `${productRequests}/${params.id}`;
-  const response = await fetch(suggestionUrl);
-  const suggestion = await response.json();
-  return suggestion;
-}
+
 
 const Comments = () => {
   const [comment, setComment] = useState("");
@@ -45,7 +40,7 @@ const Comments = () => {
     };
     setComment("");
     setCharactersLeft(INITIAL_CHARS);
-    axiosUtil
+    util
       .addComment(suggestion.id, commentObject)
       .then((response) => {
         setSuggestion(response)
@@ -146,4 +141,4 @@ const Comments = () => {
   );
 };
 
-export { detailsLoader, Comments };
+export default  Comments;

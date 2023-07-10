@@ -3,9 +3,9 @@ import CustomButton from "./CustomButton";
 import { INITIAL_CHARS } from "../data/types";
 import { v4 as uuid } from "uuid";
 import { FeedbackContext } from "../context/FeedbackContext";
-import axiosUtil from "../data/service";
 import { IdContext } from "../components/DetailedComments";
 import PropTypes from "prop-types";
+import util from "../data/service";
 
 const Reply = ({ setIsReplying }) => {
   const [reply, setReply] = useState("");
@@ -57,7 +57,7 @@ const Reply = ({ setIsReplying }) => {
     };
     setReply("");
     setCharactersLeft(INITIAL_CHARS);
-    axiosUtil
+    util
       .addReply(suggestionId, messageId, replyObject)
       .then((response) => {
         setSuggestion(response);

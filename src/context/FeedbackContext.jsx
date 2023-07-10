@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useState, useEffect } from "react";
-import localData from "../data/data.json";
 import {
   ALL,
   IN_PROGRESS,
@@ -10,15 +9,15 @@ import {
   MOST_UPVOTES,
   PLANNED,
 } from "../data/types";
-// import axiosUtil from "../data/service";
-import util from "../data/newService";
+import PropTypes from 'prop-types'
+import util from "../data/service";
 import { SUGGESTION } from "../data/types";
 export const FeedbackContext = createContext();
 
 const FeedbackProvider = ({ children }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState(MOST_UPVOTES);
+  const [sortBy, setSortBy] = useState(LEAST_UPVOTES);
   const [filterBy, setFilterBy] = useState(ALL);
   const [sortedState, setSortedState] = useState([]);
   const [selected, setSelected] = useState(true);
@@ -77,20 +76,6 @@ const FeedbackProvider = ({ children }) => {
   };
   useEffect(() => {
     console.log("Getting user");
-    localStorage.setItem(
-      "productRequests",
-      JSON.stringify(
-        JSON.parse(localStorage.getItem("productRequests")) ||
-          localData.productRequests
-      )
-    );
-    localStorage.setItem(
-      "currentUser",
-      JSON.stringify(
-        JSON.parse(localStorage.getItem("currentUser")) ||
-          localData.currentUser
-      )
-    );
     util.getUser().then((response) => {
       setCurrentUserData(response);
     });
@@ -105,6 +90,7 @@ const FeedbackProvider = ({ children }) => {
     util
       .getProductRequests()
       .then((response) => {
+        console.log("Response", response);
         setUpdateStatus(() => {
           return {
             planned: response.filter((res) => res.status === PLANNED),
@@ -153,4 +139,7 @@ const FeedbackProvider = ({ children }) => {
   );
 };
 
+FeedbackProvider.propTypes = {
+  children: PropTypes.any,
+};
 export default FeedbackProvider;

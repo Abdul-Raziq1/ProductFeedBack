@@ -4,10 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingScreen from "./screens/LandingScreen.jsx";
 import FeedbackProvider from "./context/FeedbackContext";
 import FeedbackScreen from "./screens/FeedbackScreen";
-import { Comments, detailsLoader } from "./screens/Comments";
-import { EditScreen, editLoader } from "./screens/EditScreen";
+import Comments from "./screens/Comments";
+import EditScreen from "./screens/EditScreen";
 import Roadmap from "./screens/Roadmap";
-
+import { loaders } from "./data/loaders";
 const router = createBrowserRouter([
   {
     index: true,
@@ -20,12 +20,12 @@ const router = createBrowserRouter([
   {
     path: "/comments/:id",
     element: <Comments />,
-    loader: detailsLoader,
+    loader: loaders.detailsLoader,
   },
   {
     path: "comments/:id/edit/",
     element: <EditScreen />,
-    loader: editLoader
+    loader: loaders.editLoader
   },
   {
     path: "/roadmap",
