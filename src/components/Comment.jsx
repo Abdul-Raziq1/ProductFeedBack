@@ -13,10 +13,10 @@ const Comment = ({ message, isReply = false, replyToUser }) => {
   };
   return (
     <>
-    <div className="p-4 bg-white">
+    <div className="py-4 px-2 bg-white">
       <div className="flex items-center justify-between text-lg">
         <div className="flex items-center gap-3">
-          <img src={image} className="rounded-full w-16" />
+          <img src={image} className="rounded-full w-14" />
           <div className="leading-6">
             <div className="font-semibold text-lighterBlueBlackTheme">
               <span>{name}</span>

@@ -13,7 +13,7 @@ const DetailedComments = ({ message, suggestionId, setSuggestion }) => {
         {message.replies?.length !== 0 ? (
           message.replies?.map((reply) => {
             return (
-              <div key={reply.id} className="border-l-2 ml-4">
+              <div key={reply.id} className="border-l-2 ml-2">
                 <Comment message={reply} isReply={true} replyToUser={reply.replyingTo}/>
               </div>
             );

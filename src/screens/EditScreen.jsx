@@ -85,7 +85,7 @@ const EditScreen = () => {
   };
 
   return (
-    <div className="min-h-screen p-7 bg-grayTheme flex flex-col gap-10 select-none">
+    <div className="min-h-screen py-7 px-4 bg-grayTheme flex flex-col gap-10 select-none">
       <div
         onClick={backClickHandler}
         className="cursor-pointer w-fit flex gap-2 items-center"
