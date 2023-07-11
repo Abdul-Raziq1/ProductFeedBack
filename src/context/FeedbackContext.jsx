@@ -17,7 +17,7 @@ export const FeedbackContext = createContext();
 const FeedbackProvider = ({ children }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState(LEAST_UPVOTES);
+  const [sortBy, setSortBy] = useState(MOST_UPVOTES);
   const [filterBy, setFilterBy] = useState(ALL);
   const [sortedState, setSortedState] = useState([]);
   const [selected, setSelected] = useState(true);
