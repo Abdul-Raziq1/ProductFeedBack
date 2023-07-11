@@ -76,13 +76,15 @@ const Upvote = ({ upvotes, id }) => {
   return (
     <div
       onClick={upvoteHandler}
-      className={` flex justify-center gap-2 px-2 py-1 items-center ${
+      className={`flex tablet:flex-col justify-center tablet:w-10 gap-2 px-2 py-1 items-center ${
         numOfUpvotes.once
           ? "bg-blueTheme text-white"
           : "bg-grayTheme hover:bg-blueTheme hover:bg-opacity-25"
       } rounded-lg`}
     >
-      <FaChevronUp className="w-3 font-bold" />
+      <FaChevronUp className={`w-3 font-bold ${
+          numOfUpvotes.once ? "text-white" : "text-blueTheme"
+        }`} />
       <span
         className={`font-bold ${
           numOfUpvotes.once ? "text-white" : "text-blueBlackTheme"
