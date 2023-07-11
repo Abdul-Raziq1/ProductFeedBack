@@ -35,7 +35,7 @@ const Suggestion = ({ suggestion, isPresentational = false, screen="homepage", c
         <h2 className="text-blueBlackTheme font-bold text-lg">
           {suggestion.title}
         </h2>
-        <p className="text-darkGrayTheme">
+        <p className="text-lg text-darkGrayTheme">
           {suggestion.description}
         </p>
         <div className="flex gap-3">

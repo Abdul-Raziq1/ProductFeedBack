@@ -14,9 +14,9 @@ const CustomOption = (props) => (
 );
 const CustomSelect = ({ options, onChange, defaultValue, override }) => {
   const customStyle = {
-    control: (styles) => ({
+    control: (styles, state) => ({
       ...styles,
-      border: override ? '1px solid #4661E6' : 0,
+      border: state.isFocused && override ? '1px solid #4661E6' : 0,
       boxShadow: 0,
       backgroundColor: override ? "#F2F4FE" : "#373F68",
       padding: override && "10px",
@@ -39,11 +39,6 @@ const CustomSelect = ({ options, onChange, defaultValue, override }) => {
           backgroundColor: "",
         },
       };
-    },
-    container: (styles) => {
-        return {
-            ...styles,
-        }
     },
     singleValue: (styles) => {
       return {

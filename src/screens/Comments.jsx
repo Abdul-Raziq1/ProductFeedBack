@@ -75,7 +75,7 @@ const Comments = () => {
     }
   };
   return (
-    <div className="min-h-screen p-7 bg-grayTheme flex flex-col gap-10 select-none">
+    <div className="min-h-screen py-7 px-4 bg-grayTheme flex flex-col gap-10 select-none">
       <div className="flex justify-between">
         <div onClick={backClickHandler} className="flex gap-2 items-center">
           <FaChevronLeft className="w-2 text-blueTheme" />
@@ -88,7 +88,7 @@ const Comments = () => {
 
       <div className="flex flex-col">
         <Suggestion suggestion={suggestion} isPresentational={true} />
-        <div className=" p-3 bg-white rounded-xl">
+        <div className=" py-3 px-2 bg-white rounded-xl">
           <span className="px-4 text-2xl font-semibold text-lighterBlueBlackTheme">
             {suggestion.numOfComments}{" "}
             {suggestion.numOfComments === 1 ? "Comment" : "Comments"}
