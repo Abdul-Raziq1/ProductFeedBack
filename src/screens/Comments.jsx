@@ -24,7 +24,7 @@ const Comments = () => {
   };
   const postCommentHandler = (event) => {
     event.preventDefault();
-    if (comment === "") {
+    if (!/\S/.test(comment)) {
       setShowWarning(true);
       setTimeout(() => {
         setShowWarning(false);

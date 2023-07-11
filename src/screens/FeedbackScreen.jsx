@@ -17,7 +17,7 @@ const FeedbackScreen = () => {
   };
   const submitHandler = (event) => {
     event.preventDefault();
-    if (feedback.title === "") {
+    if (!/\S/.test(feedback.title)) {
       setShowWarning(true);
       setTimeout(() => {
         setShowWarning(false);

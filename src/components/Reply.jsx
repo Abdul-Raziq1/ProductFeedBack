@@ -39,7 +39,7 @@ const Reply = ({ setIsReplying, replyingTo }) => {
   const postReplyHandler = (event) => {
     event.preventDefault();
 
-    if (reply === ''){
+    if (!/\S/.test(reply)){
       setShowWarning(true);
       setTimeout(() => {
         setShowWarning(false);
