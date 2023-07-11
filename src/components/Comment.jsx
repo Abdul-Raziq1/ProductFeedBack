@@ -6,15 +6,15 @@ const Comment = ({ message, isReply = false, replyToUser }) => {
   const [isReplying, setIsReplying] = useState(false);
   const { user, content } = message;
   const { name, username, image } = user;
-
+  console.log("Message", message);
   const replyHandler = () => {
     setIsReplying(!isReplying);
   };
   return (
     <>
-    <div className="py-4 px-2 bg-white">
+    <div className="py-4 px-2 flex flex-col bg-white">
       <div className="flex items-center justify-between text-lg">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 tablet:gap-7">
           <img src={image} className="rounded-full w-14" />
           <div className="leading-6">
             <div className="font-semibold text-lighterBlueBlackTheme">
@@ -27,7 +27,7 @@ const Comment = ({ message, isReply = false, replyToUser }) => {
           Reply
         </button>
       </div>
-      <span className="pt-3 text-lg text-darkGrayTheme">
+      <span className="tablet:self-end tablet:w-11/12 tablet:pl-6 pt-3 text-lg text-darkGrayTheme">
         <span className="text-purpleTheme font-bold">
           {isReply && replyToUser !== username ? `@${replyToUser} ` : ""}
         </span>
