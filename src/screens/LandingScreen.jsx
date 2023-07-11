@@ -12,11 +12,13 @@ import LinkButton from "../components/LinkButtons";
 import Loading from "../components/Loading";
 import FilterOptions from "../components/FilterOptions";
 import RoadmapStats from "../components/RoadmapStats";
-import suggestionsIcon from "/assets/suggestions/icon-suggestions.svg"
+import suggestionsIcon from "/assets/suggestions/icon-suggestions.svg";
+import RoadmapSuggestion from "../components/SuggestionTablet";
 const LandingScreen = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const sideBarRef = useRef();
-  const { sortedState, loading, setFilterBy, selected, updateStatus } = useContext(FeedbackContext);
+  const { sortedState, loading, setFilterBy, selected, updateStatus } =
+    useContext(FeedbackContext);
 
   const sideBarHandler = () => {
     setShowSideBar(!showSideBar);
@@ -51,7 +53,7 @@ const LandingScreen = () => {
           </h4>
         </div>
         <FilterOptions selected={selected} setFilterBy={setFilterBy} />
-        <RoadmapStats updateStatus={updateStatus}/>
+        <RoadmapStats updateStatus={updateStatus} />
       </div>
       <header className="tablet:hidden flex pl-3 py-1 justify-between items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         <div className="flex flex-col">
@@ -72,8 +74,15 @@ const LandingScreen = () => {
         {<SideBar ref={sideBarRef} showSideBar={showSideBar} />}
         <section className="flex items-center tablet:rounded-lg justify-around bg-blueBlackTheme py-2">
           <div className="hidden tablet:flex gap-2">
-            <img src={suggestionsIcon} className="w-6 h-6" alt="suggestions-icon"/>
-            <h2 className="text-xl font-bold text-white">{sortedState.length} {sortedState.length === 1 ? "Suggestion" : "Suggestions"}</h2>
+            <img
+              src={suggestionsIcon}
+              className="w-6 h-6"
+              alt="suggestions-icon"
+            />
+            <h2 className="text-xl font-bold text-white">
+              {sortedState.length}{" "}
+              {sortedState.length === 1 ? "Suggestion" : "Suggestions"}
+            </h2>
           </div>
           <SortDropDown />
           <LinkButton icon={<FaPlus />} text={ADD_FEEDBACK} color={"#AD1FEA"} />
@@ -108,7 +117,12 @@ const LandingScreen = () => {
             </div>
           ) : (
             sortedState?.map((suggestion) => {
-              return <Suggestion key={suggestion.id} suggestion={suggestion} />;
+              return (
+                <div key={suggestion.id}>
+                    <Suggestion suggestion={suggestion} />
+                    <RoadmapSuggestion suggestion={suggestion} />
+                </div>
+              );
             })
           )}
         </section>

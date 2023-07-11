@@ -51,12 +51,12 @@ const InputField = ({
   return (
     <div className="flex flex-col">
       {title !== undefined && (
-        <span className="font-semibold text-lighterBlueBlackTheme">
+        <span className="tablet:text-xl font-semibold text-lighterBlueBlackTheme">
           {title}
         </span>
       )}
       {description !== undefined && (
-        <span className=" mb-5 text-darkGrayTheme text-opacity-50">
+        <span className="tablet:text-lg mb-5 text-darkGrayTheme text-opacity-50">
           {description}
         </span>
       )}

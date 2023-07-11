@@ -85,7 +85,7 @@ const EditScreen = () => {
   };
 
   return (
-    <div className="min-h-screen py-7 px-4 bg-grayTheme flex flex-col gap-10 select-none">
+    <div className="min-h-screen py-7 tablet:px-6 px-4 bg-grayTheme flex flex-col gap-10 select-none">
       <div
         onClick={backClickHandler}
         className="cursor-pointer w-fit flex gap-2 items-center"
@@ -95,9 +95,9 @@ const EditScreen = () => {
           Go Back
         </span>
       </div>
-      <div className="flex-1 pt-14 pb-7 px-5 relative rounded-xl bg-white">
+      <div className="tablet:px-12 tablet:pb-10 flex-1 pt-14 pb-7 px-5 relative rounded-xl bg-white">
         <FloatingActionButton icon={<img src={editIcon} />} />
-        <h2 className="text-2xl mb-5 font-semibold text-lighterBlueBlackTheme">
+        <h2 className="tablet:text-3xl text-2xl mb-5 font-semibold text-lighterBlueBlackTheme">
           Editing &apos;{title}&apos;
         </h2>
         <form noValidate className="flex flex-col gap-7">
@@ -142,7 +142,9 @@ const EditScreen = () => {
             descriptionHandler={descriptionChangeHandler}
             descriptionValue={editedFeedback.description}
           />
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col tablet:flex-row-reverse tablet:justify-between gap-3">
+            <div className="flex flex-col gap-3 tablet:flex-row-reverse">
+
             <CustomButton
               type={"submit"}
               color={"#AD1FEA"}
@@ -154,6 +156,7 @@ const EditScreen = () => {
               text={"Cancel"}
               onClick={backClickHandler}
             />
+            </div>
             <CustomButton
               color={"#D73737"}
               text={"Delete"}

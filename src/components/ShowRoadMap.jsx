@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
-import Suggestion from "../components/Suggestion";
+import Suggestion from "./Suggestion";
 
 const ShowRoadMap = ({ status }) => {
   const { title, description, cards, color } = status;
   return (
-    <div className="">
       <div className="flex flex-col gap-2">
         <h2 className="text-xl text-blueBlackTheme font-bold">{title}</h2>
         <span className="mb-3 text-lg text-darkGrayTheme">{description}</span>
@@ -14,7 +13,6 @@ const ShowRoadMap = ({ status }) => {
           );
         })}
       </div>
-    </div>
   );
 };
 

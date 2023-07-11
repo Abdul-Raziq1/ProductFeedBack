@@ -7,7 +7,6 @@ const Comment = ({ message, isReply = false, replyToUser }) => {
   const { user, content } = message;
   const { name, username, image } = user;
 
-  console.log(message.user.username, "has", message);
   const replyHandler = () => {
     setIsReplying(!isReplying);
   };

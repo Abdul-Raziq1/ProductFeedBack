@@ -6,8 +6,8 @@ import FeedbackProvider from "./context/FeedbackContext";
 import FeedbackScreen from "./screens/FeedbackScreen";
 import Comments from "./screens/Comments";
 import EditScreen from "./screens/EditScreen";
-import Roadmap from "./screens/Roadmap";
 import { loaders } from "./data/loaders";
+import RoadmapScreen from "./screens/RoadmapScreen";
 const router = createBrowserRouter([
   {
     index: true,
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/roadmap",
-    element: <Roadmap />
+    element: <RoadmapScreen />
   },
   {
     path: "*",

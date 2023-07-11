@@ -61,7 +61,7 @@ const FeedbackScreen = () => {
     });
   };
   return (
-    <div className="min-h-screen py-7 px-4 bg-grayTheme flex flex-col gap-10 select-none">
+    <div className="min-h-screen py-7 tablet:px-6 px-4 bg-grayTheme flex flex-col gap-10 select-none">
       <div
         onClick={backClickHandler}
         className="cursor-pointer w-fit flex gap-2 items-center"
@@ -71,9 +71,9 @@ const FeedbackScreen = () => {
           Go Back
         </span>
       </div>
-      <div className="flex-1 pt-14 pb-7 px-5 relative rounded-xl bg-white">
-        <FloatingActionButton icon={<FaPlus />} />
-        <h2 className="text-2xl mb-5 font-semibold text-lighterBlueBlackTheme">
+      <div className="flex-1 pt-14 pb-7 px-5 tablet:px-12 tablet:pb-10 relative rounded-xl bg-white">
+        <FloatingActionButton icon={<FaPlus className="w-6 h-6"/>} />
+        <h2 className="tablet:text-3xl text-2xl mb-5 font-semibold text-lighterBlueBlackTheme">
           Create New Feedback
         </h2>
         <form noValidate className="flex flex-col gap-7">
@@ -108,7 +108,7 @@ const FeedbackScreen = () => {
             descriptionHandler={descriptionChangeHandler}
             descriptionValue={feedback.description}
           />
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col tablet:flex-row-reverse tablet:self-end gap-3">
             <CustomButton
               type={"submit"}
               color={"#AD1FEA"}

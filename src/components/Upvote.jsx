@@ -5,9 +5,14 @@ import { useContext } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
 import util from "../data/service";
 
-const Upvote = ({ upvotes, id }) => {
-  const { setSortedState, sorter, sortBy, currentUserData, setCurrentUserData } =
-    useContext(FeedbackContext);
+const Upvote = ({ upvotes, id, screen = "homepage" }) => {
+  const {
+    setSortedState,
+    sorter,
+    sortBy,
+    currentUserData,
+    setCurrentUserData,
+  } = useContext(FeedbackContext);
   const [numOfUpvotes, setNumOfUpvotes] = useState({
     upvotes,
     once: !!currentUserData?.likes[id],
@@ -19,13 +24,14 @@ const Upvote = ({ upvotes, id }) => {
         upvotes: prevState.upvotes + 1,
         once: true,
       }));
-      util.addToLikes(id)
-      .then((response) => {
-        setCurrentUserData(response);
-      })
-      .catch(() => {
-        console.log("Error");
-      });
+      util
+        .addToLikes(id)
+        .then((response) => {
+          setCurrentUserData(response);
+        })
+        .catch(() => {
+          console.log("Error");
+        });
 
       util
         .addUpvote(id)
@@ -48,13 +54,14 @@ const Upvote = ({ upvotes, id }) => {
         upvotes: prevState.upvotes - 1,
         once: false,
       }));
-      util.removeFromLikes(id)
-      .then((response) => {
-        setCurrentUserData(response);
-      })
-      .catch(() => {
-        console.log("Error");
-      });
+      util
+        .removeFromLikes(id)
+        .then((response) => {
+          setCurrentUserData(response);
+        })
+        .catch(() => {
+          console.log("Error");
+        });
       util
         .addUpvote(id, "decrement")
         .then((response) => {
@@ -76,15 +83,19 @@ const Upvote = ({ upvotes, id }) => {
   return (
     <div
       onClick={upvoteHandler}
-      className={`flex tablet:flex-col justify-center tablet:w-10 gap-2 px-2 py-1 items-center ${
+      className={`flex ${
+        screen === "roadmap" ? "" : "tablet:flex-col tablet:w-10"
+      } justify-center gap-2 px-2 py-1 items-center ${
         numOfUpvotes.once
           ? "bg-blueTheme text-white"
           : "bg-grayTheme hover:bg-blueTheme hover:bg-opacity-25"
       } rounded-lg`}
     >
-      <FaChevronUp className={`w-3 font-bold ${
+      <FaChevronUp
+        className={`w-3 font-bold ${
           numOfUpvotes.once ? "text-white" : "text-blueTheme"
-        }`} />
+        }`}
+      />
       <span
         className={`font-bold ${
           numOfUpvotes.once ? "text-white" : "text-blueBlackTheme"
@@ -99,6 +110,7 @@ const Upvote = ({ upvotes, id }) => {
 Upvote.propTypes = {
   upvotes: PropTypes.number,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  screen: PropTypes.string,
 };
 
 export default Upvote;
