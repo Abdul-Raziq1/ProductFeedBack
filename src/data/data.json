@@ -44,7 +44,7 @@
       "upvotes": 100,
       "status": "Suggestion",
       "description": "It would help people with light sensitivities and who prefer dark mode.",
-      "numOfComments": 11,
+      "numOfComments": 4,
       "comments": [
         {
           "id": 3,
@@ -86,116 +86,6 @@
               }
             }
           ]
-        },
-        {
-          "id": "3a153a64-11dd-47db-b43c-a6dadf979a93",
-          "content": "Lmao",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "2": 2,
-              "6": 6, 
-              "11": 11
-            }
-          },
-          "replies": [
-            {
-              "id": "9630aff9-eb11-48c5-aaff-7ebb1175c1c7",
-              "content": "I will delete this as soon as that feature is implemented",
-              "replyingTo": "velvetround",
-              "user": {
-                "image": "/assets/user-images/image-zena.jpg",
-                "name": "Zena Kelley",
-                "username": "velvetround",
-                "likes": {
-                  "2": 2,
-                  "6": 6,
-                  "11": 11,
-                  "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "e88ad0aa-6afa-4b5c-97e1-7fefb6b77219",
-          "content": "Okay I am really sorry about what I said, it's a good idea...not even trolling.",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "2": 2,
-              "6": 6,
-              "11": 11
-            }
-          },
-          "replies": []
-        },
-        {
-          "id": "e6f2f005-45ce-41de-97bb-02315f7c0029",
-          "content": "Ah yes, comments added.\nI wonder whether I should add timestamps",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "2": 2,
-              "6": 6,
-              "11": 11,
-              "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
-            }
-          },
-          "replies": [
-            {
-              "id": "769544a8-bb29-4e2f-981e-73947cdaa2e3",
-              "content": "Replies also implemented. So good.\nMoete kita zo!",
-              "replyingTo": "velvetround",
-              "user": {
-                "image": "/assets/user-images/image-zena.jpg",
-                "name": "Zena Kelley",
-                "username": "velvetround",
-                "likes": {
-                  "2": 2,
-                  "6": 6,
-                  "11": 11,
-                  "803992f3-0d2c-4ce0-9bff-5968d5223c8e": "803992f3-0d2c-4ce0-9bff-5968d5223c8e"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "id": "4a61537f-3bd3-4612-9a37-2170f54ca41d",
-          "content": "Okay folks, implemented the delete functionality. Time to delete",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "1": 1,
-              "6": 6,
-              "11": 11
-            }
-          },
-          "replies": []
-        },
-        {
-          "id": "a4f75f30-1eda-44b8-a2b8-e84d3ffbe26b",
-          "content": "Oh wait xDDD,\nI can't delete replies, just feedback. LMAO",
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround",
-            "likes": {
-              "1": 1,
-              "6": 6,
-              "11": 11
-            }
-          },
-          "replies": []
         }
       ]
     },

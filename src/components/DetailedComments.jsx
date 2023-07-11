@@ -9,19 +9,6 @@ const DetailedComments = ({ message, suggestionId, setSuggestion }) => {
   return (
     <IdContext.Provider value={{suggestionId, messageId: message.id, replyingTo: message.user.username, setSuggestion}}>
       <Comment message={message} />
-      <div className="">
-        {message.replies?.length !== 0 ? (
-          message.replies?.map((reply) => {
-            return (
-              <div key={reply.id} className="border-l-2 ml-2 tablet:ml-6">
-                <Comment message={reply} isReply={true} replyToUser={reply.replyingTo}/>
-              </div>
-            );
-          })
-        ) : (
-          <hr className="mx-4" />
-        )}
-      </div>
     </IdContext.Provider>
   );
 };
