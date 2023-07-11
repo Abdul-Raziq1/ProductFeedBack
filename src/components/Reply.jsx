@@ -48,7 +48,6 @@ const Reply = ({ setIsReplying, replyingTo }) => {
     }
 
     const id = uuid();
-    console.log("Replying to", replyingTo, messageId)
     const replyObject = {
       id,
       content: reply,

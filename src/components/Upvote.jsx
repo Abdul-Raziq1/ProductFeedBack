@@ -43,7 +43,6 @@ const Upvote = ({ upvotes, id }) => {
         .catch(() => {
           console.log("Error");
         });
-        console.log("Top worked");
     } else {
       setNumOfUpvotes((prevState) => ({
         upvotes: prevState.upvotes - 1,

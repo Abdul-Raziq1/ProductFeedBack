@@ -275,7 +275,6 @@ const addFeedBack = (newFeedback) => {
             }
             suggestions = { ...suggestions, [id]: feedback }
             setTimeout(() => {
-                console.log("Added ", feedback)
                 return resolve(true)
             }, 250);
         }
