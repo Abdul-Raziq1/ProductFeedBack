@@ -78,14 +78,14 @@ const LandingScreen = () => {
           <SortDropDown />
           <LinkButton icon={<FaPlus />} text={ADD_FEEDBACK} color={"#AD1FEA"} />
         </section>
-        <section className="py-10 px-4 ">
+        <section className="py-10 px-4 tablet:px-0 ">
           {loading === true ? (
             <div className="min-h-screen w-full bg-white p-3 mr-3">
               <Loading />
             </div>
           ) : sortedState?.length === 0 ? (
             <div className="bg-white py-20 rounded-lg">
-              <div className="flex gap-10 flex-col justify-center items-center">
+              <div className="flex w-full gap-10 flex-col justify-center items-center">
                 <img
                   className="h-36 w-36"
                   src={detective}
