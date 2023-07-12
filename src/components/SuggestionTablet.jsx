@@ -27,7 +27,7 @@ const SuggestionTablet = ({
     <div
       onClick={viewCommentHandler}
       style={isNotSuggestion ? style : {}}
-      className="hidden tablet:hover:cursor-pointer tablet:flex
+      className="hidden hover:cursor-pointer tablet:flex
       select-none rounded-xl items-center justify-between px-7 gap-5 p-5 bg-white mb-5"
     >
       {screen === "roadmap" && <UpdateStatus text={suggestion.status} />}

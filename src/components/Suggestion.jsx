@@ -28,7 +28,7 @@ const Suggestion = ({
     <div
       onClick={viewCommentHandler}
       style={isNotSuggestion ? style : {}}
-      className={`desktop:hover:cursor-pointer ${
+      className={`hover:cursor-pointer ${
         screen === "roadmap" ? "" : "tablet:hidden"
       } select-none rounded-xl flex flex-col gap-5 p-5 bg-white mb-5`}
     >
