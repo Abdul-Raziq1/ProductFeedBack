@@ -15,8 +15,8 @@ const Category = ({ category, onClick, selected, isPresentational }) => {
     <div
       onClick={() => handleClick(category)}
       className={`${
-        filterBy === category && selected ? "bg-blueTheme text-white" : "bg-lighterBlueTheme bg-opacity-10 text-blueTheme"
-      } w-fit cursor-pointer py-1 px-5  font-semibold rounded-xl`}
+        filterBy === category && selected ? "bg-blueTheme text-white hover:bg-blueTheme hover:bg-opacity-100" : "bg-lighterBlueTheme bg-opacity-10 text-blueTheme"
+      } w-fit cursor-pointer py-1 px-5  font-semibold rounded-xl ${isPresentational === undefined && "hover:bg-blueTheme hover:bg-opacity-25"}`}
     >
       <span>{category}</span>
     </div>

@@ -10,10 +10,11 @@ import editIcon from "/assets/shared/icon-edit-feedback.svg";
 import { FeedbackContext } from "../context/FeedbackContext";
 import util from "../data/service";
 
-
-
 const EditScreen = () => {
-  const [showWarning, setShowWarning] = useState(false);
+  const [showWarning, setShowWarning] = useState({
+    titleWarning: false,
+    descriptionWarning: false,
+  });
   const { setFetchData, setSuggestions } = useContext(FeedbackContext);
   const navigate = useNavigate();
   const backClickHandler = () => {
@@ -48,10 +49,17 @@ const EditScreen = () => {
 
   const saveEditHandler = (event) => {
     event.preventDefault();
-    if (editedFeedback.title === "") {
-      setShowWarning(true);
+    if (!/\S/.test(editedFeedback.title)) {
+      setShowWarning((prevState) => ({ ...prevState, titleWarning: true }));
       setTimeout(() => {
-        setShowWarning(false);
+        setShowWarning((prevState) => ({ ...prevState, titleWarning: false }));
+      }, 1500);
+      return;
+    }
+    if (!/\S/.test(editedFeedback.description)) {
+      setShowWarning((prevState) => ({ ...prevState, descriptionWarning: true }));
+      setTimeout(() => {
+        setShowWarning((prevState) => ({ ...prevState, descriptionWarning: false }));
       }, 1500);
       return;
     }
@@ -85,10 +93,10 @@ const EditScreen = () => {
   };
 
   return (
-    <div className="min-h-screen py-7 tablet:px-6 px-4 bg-grayTheme flex flex-col gap-10 select-none">
+    <div className="min-h-screen py-7 desktop:max-w-2xl desktop:mx-auto desktop:py-20 tablet:px-6 px-4 bg-grayTheme flex flex-col gap-10 select-none">
       <div
         onClick={backClickHandler}
-        className="cursor-pointer w-fit flex gap-2 items-center"
+        className="cursor-pointer w-fit flex gap-2 items-center desktop:text-xl desktop:mb-4"
       >
         <FaChevronLeft className="w-2 text-blueTheme" />
         <span className="hover:underline font-semibold text-darkGrayTheme">
@@ -96,7 +104,9 @@ const EditScreen = () => {
         </span>
       </div>
       <div className="tablet:px-12 tablet:pb-10 flex-1 pt-14 pb-7 px-5 relative rounded-xl bg-white">
-        <FloatingActionButton icon={<img src={editIcon} />} />
+        <FloatingActionButton
+          icon={<img src={editIcon} className="desktop:w-14 desktop:h-14" />}
+        />
         <h2 className="tablet:text-3xl text-2xl mb-5 font-semibold text-lighterBlueBlackTheme">
           Editing &apos;{title}&apos;
         </h2>
@@ -108,9 +118,9 @@ const EditScreen = () => {
               titleValue={editedFeedback.title}
               titleHandler={titleChangeHandler}
               inputType={"text"}
-              warn={showWarning}
+              warn={showWarning.titleWarning}
             />
-            {showWarning && (
+            {showWarning.titleWarning && (
               <span className="text-red-600">Can&apos;t be empty</span>
             )}
           </div>
@@ -132,30 +142,34 @@ const EditScreen = () => {
             categoryValue={editedFeedback.status}
             categoryHandler={addStatusHandler}
           />
-
-          <InputField
-            title={"Feedback Detail"}
-            description={
-              "Include any specific comments on what should be improved, added, etc"
-            }
-            inputType={"textarea"}
-            descriptionHandler={descriptionChangeHandler}
-            descriptionValue={editedFeedback.description}
-          />
+          <div>
+            <InputField
+              title={"Feedback Detail"}
+              description={
+                "Include any specific comments on what should be improved, added, etc"
+              }
+              inputType={"textarea"}
+              descriptionHandler={descriptionChangeHandler}
+              descriptionValue={editedFeedback.description}
+              warn={showWarning.descriptionWarning}
+            />
+            {showWarning.descriptionWarning && (
+              <span className="text-red-600">Can&apos;t be empty</span>
+            )}
+          </div>
           <div className="flex flex-col tablet:flex-row-reverse tablet:justify-between gap-3">
             <div className="flex flex-col gap-3 tablet:flex-row-reverse">
-
-            <CustomButton
-              type={"submit"}
-              color={"#AD1FEA"}
-              text={"Save Changes"}
-              onClick={saveEditHandler}
-            />
-            <CustomButton
-              color={"#3A4374"}
-              text={"Cancel"}
-              onClick={backClickHandler}
-            />
+              <CustomButton
+                type={"submit"}
+                color={"#AD1FEA"}
+                text={"Save Changes"}
+                onClick={saveEditHandler}
+              />
+              <CustomButton
+                color={"#3A4374"}
+                text={"Cancel"}
+                onClick={backClickHandler}
+              />
             </div>
             <CustomButton
               color={"#D73737"}

@@ -4,7 +4,7 @@ import Category from "./Category";
 import { useNavigate } from "react-router-dom";
 import UpdateStatus from "./UpdateStatus";
 import { FaComment } from "react-icons/fa";
-const RoadmapSuggestion = ({
+const SuggestionTablet = ({
   suggestion,
   isPresentational = false,
   screen = "homepage",
@@ -19,7 +19,7 @@ const RoadmapSuggestion = ({
   };
   const isNotSuggestion = suggestion.status !== "Suggestion";
   const style = {
-    borderTopWidth: "8px",
+    borderTopWidth: color === undefined ? "0" : "8px",
     borderTopColor: color,
   };
 
@@ -27,7 +27,8 @@ const RoadmapSuggestion = ({
     <div
       onClick={viewCommentHandler}
       style={isNotSuggestion ? style : {}}
-      className="hidden tablet:flex select-none rounded-xl items-center justify-between px-7 gap-5 p-5 bg-white mb-5"
+      className="hidden desktop:hover:cursor-pointer tablet:flex 
+      select-none rounded-xl items-center justify-between px-7 gap-5 p-5 bg-white mb-5"
     >
       {screen === "roadmap" && <UpdateStatus text={suggestion.status} />}
       <div className="flex items-center gap-10 w-4/5">
@@ -52,10 +53,10 @@ const RoadmapSuggestion = ({
   );
 };
 
-RoadmapSuggestion.propTypes = {
+SuggestionTablet.propTypes = {
   suggestion: PropTypes.object,
   isPresentational: PropTypes.bool,
   screen: PropTypes.string,
   color: PropTypes.string,
 };
-export default RoadmapSuggestion;
+export default SuggestionTablet;

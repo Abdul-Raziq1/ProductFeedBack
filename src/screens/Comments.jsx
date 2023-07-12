@@ -9,15 +9,15 @@ import { v4 as uuid } from "uuid";
 import { FeedbackContext } from "../context/FeedbackContext";
 import LinkButton from "../components/LinkButtons";
 import util from "../data/service";
-
-
+import SuggestionTablet from "../components/SuggestionTablet";
 
 const Comments = () => {
   const [comment, setComment] = useState("");
   const [showWarning, setShowWarning] = useState(false);
   const [charactersLeft, setCharactersLeft] = useState(INITIAL_CHARS);
   const [suggestion, setSuggestion] = useState(useLoaderData());
-  const { currentUserData, setSuggestions, setFetchData } = useContext(FeedbackContext);
+  const { currentUserData, setSuggestions, setFetchData } =
+    useContext(FeedbackContext);
   const navigate = useNavigate();
   const backClickHandler = () => {
     navigate(-1);
@@ -40,22 +40,19 @@ const Comments = () => {
     };
     setComment("");
     setCharactersLeft(INITIAL_CHARS);
-    util
-      .addComment(suggestion.id, commentObject)
-      .then((response) => {
-        setSuggestion(response)
-        setSuggestions(prevState => {
-            const updatedSuggestions = prevState.map((state) => {
-                if (state.id === response.id) {
-                    return response
-                }
-                return state
-            })
-            return updatedSuggestions
-        })
-        setFetchData(prevState => !prevState)
-      })
-
+    util.addComment(suggestion.id, commentObject).then((response) => {
+      setSuggestion(response);
+      setSuggestions((prevState) => {
+        const updatedSuggestions = prevState.map((state) => {
+          if (state.id === response.id) {
+            return response;
+          }
+          return state;
+        });
+        return updatedSuggestions;
+      });
+      setFetchData((prevState) => !prevState);
+    });
   };
   const commentHandler = (event) => {
     const value = event.target.value;
@@ -75,9 +72,9 @@ const Comments = () => {
     }
   };
   return (
-    <div className="tablet:px-5 tablet:py-16 min-h-screen py-7 px-4 bg-grayTheme flex flex-col gap-10 select-none">
+    <div className="desktop:max-w-3xl desktop:mx-auto tablet:px-5 tablet:py-16 min-h-screen py-7 px-4 bg-grayTheme flex flex-col gap-10 select-none">
       <div className="flex justify-between">
-        <div onClick={backClickHandler} className="flex gap-2 items-center">
+        <div onClick={backClickHandler} className="flex gap-2 items-center desktop:text-xl ">
           <FaChevronLeft className="w-2 text-blueTheme" />
           <span className="hover:underline font-semibold text-darkGrayTheme">
             Go Back
@@ -88,6 +85,7 @@ const Comments = () => {
 
       <div className="flex flex-col">
         <Suggestion suggestion={suggestion} isPresentational={true} />
+        <SuggestionTablet suggestion={suggestion} isPresentational={true}/>
         <div className=" py-3 px-2 bg-white rounded-xl">
           <span className="px-4 text-2xl font-semibold text-lighterBlueBlackTheme">
             {suggestion.numOfComments}{" "}
@@ -141,4 +139,4 @@ const Comments = () => {
   );
 };
 
-export default  Comments;
+export default Comments;

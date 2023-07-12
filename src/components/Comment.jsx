@@ -25,7 +25,7 @@ const Comment = ({ message, isReply = false, replyToUser }) => {
           </div>
           <button
             onClick={replyHandler}
-            className="text-blueTheme font-semibold tablet:pr-5"
+            className="text-blueTheme font-semibold tablet:pr-5 hover:underline"
           >
             Reply
           </button>

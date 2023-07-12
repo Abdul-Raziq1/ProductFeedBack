@@ -12,7 +12,7 @@ import Loading from "../components/Loading";
 import FilterOptions from "../components/FilterOptions";
 import RoadmapStats from "../components/RoadmapStats";
 import suggestionsIcon from "/assets/suggestions/icon-suggestions.svg";
-import RoadmapSuggestion from "../components/SuggestionTablet";
+import SuggestionTablet from "../components/SuggestionTablet";
 import NotFound from "./NotFound";
 const LandingScreen = () => {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -38,7 +38,7 @@ const LandingScreen = () => {
 
   if (loading === true) {
     return (
-      <div className="min-h-screen min-w-screen flex flex-col justify-center">
+      <div className="min-h-screen min-w-screen flex flex-col justify-center bg-white">
         <Loading />
       </div>
     );
@@ -106,7 +106,7 @@ const LandingScreen = () => {
               return (
                 <div key={suggestion.id}>
                   <Suggestion suggestion={suggestion} />
-                  <RoadmapSuggestion suggestion={suggestion} />
+                  <SuggestionTablet suggestion={suggestion} />
                 </div>
               );
             })

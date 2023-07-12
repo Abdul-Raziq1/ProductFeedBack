@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { FaPlus } from "react-icons/fa";
-import detective from "../assets/images/detective.svg";
+import detective from "/assets/suggestions/illustration-empty.svg"
 import LinkButton from "../components/LinkButtons";
 import { ADD_FEEDBACK } from "../data/types";
 import PropTypes from "prop-types";

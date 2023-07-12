@@ -20,6 +20,9 @@ const CustomSelect = ({ options, onChange, defaultValue, containerSize="normal",
       boxShadow: 0,
       backgroundColor: override ? "#F2F4FE" : "#373F68",
       padding: override && "10px",
+      ":hover": {
+        cursor: "pointer"
+      }
     }),
     indicatorSeparator: (styles) => ({
       ...styles,
@@ -34,6 +37,7 @@ const CustomSelect = ({ options, onChange, defaultValue, containerSize="normal",
         ":hover": {
           backgroundColor: "",
           color: "#AD1FEA",
+          cursor: "pointer"
         },
         ":active": {
           backgroundColor: "",

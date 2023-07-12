@@ -31,7 +31,7 @@ const RoadmapTablet = () => {
     color: "#4661E6",
   }
   return (
-    <div className="min-h-screen w-screen p-10 bg-grayTheme overflow-x-hidden">
+    <div className="min-h-screen w-screen desktop:max-w-5xl desktop:mx-auto p-10 bg-grayTheme overflow-x-hidden">
       <div className="bg-blueBlackTheme rounded-xl text-white p-10 flex justify-between items-center">
         <div className="flex flex-col">
           <div

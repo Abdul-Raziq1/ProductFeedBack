@@ -1,5 +1,5 @@
 import LinkButton from "../components/LinkButtons";
-import detective from "../assets/images/detective.svg";
+import detective from "/assets/suggestions/illustration-empty.svg"
 
 const PageNotFound = () => {
   return (

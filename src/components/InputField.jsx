@@ -33,7 +33,7 @@ const InputField = ({
           className="rounded p-3"
           options={options}
           onChange={categoryHandler}
-          defaultValue={{label: categoryValue, value: categoryValue}}
+          defaultValue={{ label: categoryValue, value: categoryValue }}
         />
       ),
       textarea: (
@@ -42,7 +42,9 @@ const InputField = ({
           placeholder={placeholder}
           value={descriptionValue}
           rows={3}
-          className="rounded bg-grayTheme p-3 focus:outline-blueTheme outline-offset-0 outline-1 outline-none"
+          className={`rounded bg-grayTheme p-3 focus:outline-blueTheme outline-offset-0 outline-1 outline-none ${
+            warn ? "outline-red-500" : "focus:outline-blueTheme"
+          }`}
         ></textarea>
       ),
     };

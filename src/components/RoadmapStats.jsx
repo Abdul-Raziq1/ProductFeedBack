@@ -9,7 +9,7 @@ const RoadmapStats = ({ updateStatus }) => {
         <h2 className="text-xl font-semibold text-blueBlackTheme">Roadmap</h2>
         <Link
           to={"/roadmap"}
-          className="text-sm tablet:text-blueTheme text-darkGrayTheme text-opacity-30 font-semibold underline"
+          className="text-sm text-blueTheme hover:text-opacity-60 font-semibold underline"
         >
           View
         </Link>

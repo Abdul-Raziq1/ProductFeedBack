@@ -6,7 +6,7 @@ const ShowRoadMap = ({ status }) => {
   return (
       <div className="flex flex-col gap-2">
         <h2 className="text-xl text-blueBlackTheme font-bold">{title}</h2>
-        <span className="mb-3 text-lg text-darkGrayTheme">{description}</span>
+        <span className="mb-3 text-darkGrayTheme">{description}</span>
         {cards.map((card) => {
           return (
             <Suggestion key={card.id} screen="roadmap" suggestion={card} color={color}/>

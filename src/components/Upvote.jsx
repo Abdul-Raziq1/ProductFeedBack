@@ -83,7 +83,7 @@ const Upvote = ({ upvotes, id, screen = "homepage" }) => {
   return (
     <div
       onClick={upvoteHandler}
-      className={`flex ${
+      className={`flex cursor-pointer ${
         screen === "roadmap" ? "" : "tablet:flex-col tablet:w-10"
       } justify-center gap-2 px-2 py-1 items-center ${
         numOfUpvotes.once
