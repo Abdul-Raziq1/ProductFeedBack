@@ -21,6 +21,7 @@ const PageNotFound = () => {
             </h3>
           </div>
           <LinkButton text={"Take me home"} color={"#4661E6"} />
+          {/* <a href="/" className="bg-blueTheme px-4 py-2 rounded-lg">Take me home</a> */}
         </div>
       </div>
     </div>
