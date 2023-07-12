@@ -2,7 +2,6 @@ import { FaBars, FaPlus } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import SortDropDown from "../components/SortDropDown";
 
-import detective from "../assets/images/detective.svg";
 import Suggestion from "../components/Suggestion";
 import { useContext, useEffect, useRef, useState } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
@@ -14,6 +13,7 @@ import FilterOptions from "../components/FilterOptions";
 import RoadmapStats from "../components/RoadmapStats";
 import suggestionsIcon from "/assets/suggestions/icon-suggestions.svg";
 import RoadmapSuggestion from "../components/SuggestionTablet";
+import NotFound from "./NotFound";
 const LandingScreen = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const sideBarRef = useRef();
@@ -93,34 +93,13 @@ const LandingScreen = () => {
               <Loading />
             </div>
           ) : sortedState?.length === 0 ? (
-            <div className="bg-white py-20 rounded-lg">
-              <div className="flex w-full gap-10 flex-col justify-center items-center">
-                <img
-                  className="h-36 w-36"
-                  src={detective}
-                  alt="searching for results"
-                />
-                <h2 className="text-blueBlackTheme text-3xl font-bold">
-                  There is no feedback yet
-                </h2>
-
-                <blockquote className="max-w-sm text-center text-lg">
-                  Got a suggestion? Found a bug that needs to be squashed? We
-                  love hearing about new ideas to improve our app.
-                </blockquote>
-                <LinkButton
-                  icon={<FaPlus />}
-                  text={ADD_FEEDBACK}
-                  color={"#AD1FEA"}
-                />
-              </div>
-            </div>
+            <NotFound error={false} />
           ) : (
             sortedState?.map((suggestion) => {
               return (
                 <div key={suggestion.id}>
-                    <Suggestion suggestion={suggestion} />
-                    <RoadmapSuggestion suggestion={suggestion} />
+                  <Suggestion suggestion={suggestion} />
+                  <RoadmapSuggestion suggestion={suggestion} />
                 </div>
               );
             })

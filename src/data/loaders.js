@@ -8,9 +8,14 @@ async function detailsLoader({ params }) {
 async function editLoader({ params }) {
     const suggestion = await util.getSuggestionWithId(params.id);
     return suggestion;
-  }
+}
+
+async function urlLoader({ params }) {
+    return `${params.id}`
+}
 
 export const loaders = {
     detailsLoader,
-    editLoader
+    editLoader,
+    urlLoader
 }

@@ -8,6 +8,7 @@ import Comments from "./screens/Comments";
 import EditScreen from "./screens/EditScreen";
 import { loaders } from "./data/loaders";
 import RoadmapScreen from "./screens/RoadmapScreen";
+import NotFound from "./screens/NotFound";
 const router = createBrowserRouter([
   {
     index: true,
@@ -32,9 +33,14 @@ const router = createBrowserRouter([
     element: <RoadmapScreen />
   },
   {
+    path: "/error/:id",
+    element: <NotFound />,
+    loader: loaders.urlLoader
+  },
+  {
     path: "*",
     element: <LandingScreen />
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

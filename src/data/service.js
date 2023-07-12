@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import localData from "./data.json";
 
 const updateProductRequest = (values) => {
@@ -163,17 +164,17 @@ const getUser = () => {
 
 const getSuggestionWithId = (id) => {
     return new Promise((resolve, reject) => {
-        let productRequests = JSON.parse(localStorage.getItem('productRequests'))
-        const suggestion = productRequests[id - 1]
-
-        if (suggestion === undefined) {
+        try {
+            let productRequests = JSON.parse(localStorage.getItem('productRequests'))
+            const suggestion = productRequests[id - 1]
             return setTimeout(() => {
-                reject("Could not find the feedback. It may have been deleted. Please reload the screen")
+                resolve(suggestion)
+            }, 250);
+        } catch (error) {
+            return setTimeout(() => {
+                reject(redirect(`/error/${id}`))
             }, 250);
         }
-        return setTimeout(() => {
-            resolve(suggestion)
-        }, 250);
     })
 }
 const util = {
