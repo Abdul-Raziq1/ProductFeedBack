@@ -88,7 +88,7 @@ const FeedbackScreen = () => {
         </span>
       </div>
       <div className="flex-1 pt-14 pb-7 px-5 tablet:px-12 tablet:pb-10 relative rounded-xl bg-white">
-        <FloatingActionButton icon={<FaPlus className="w-3 h-3 tablet:w-6 tablet:h-6" />} />
+        <FloatingActionButton icon={<FaPlus className="p-2 w-10 h-10 tablet:w-6 tablet:h-6 tablet:p-0" />} />
         <h2 className="tablet:text-3xl text-2xl mb-5 font-semibold text-lighterBlueBlackTheme">
           Create New Feedback
         </h2>
