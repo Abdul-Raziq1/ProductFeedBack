@@ -6,7 +6,7 @@ import RoadmapStats from "./RoadmapStats";
 
 // eslint-disable-next-line react/display-name
 const SideBar = forwardRef(({ showSideBar }, ref) => {
-  const { setFilterBy, selected, updateStatus } = useContext(FeedbackContext);
+  const { setFilterBy, selected } = useContext(FeedbackContext);
   return (
     <div
       ref={ref}
@@ -15,7 +15,7 @@ const SideBar = forwardRef(({ showSideBar }, ref) => {
       } ease-in-out duration-300`}
     >
       <FilterOptions selected={selected} setFilterBy={setFilterBy} />
-      <RoadmapStats updateStatus={updateStatus} />
+      <RoadmapStats />
     </div>
   );
 });

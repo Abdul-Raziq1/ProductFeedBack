@@ -30,9 +30,7 @@ const addFeedBack = (newFeedback) => {
             }
             productRequests = [ ...productRequests, feedback ]
             updateProductRequest(productRequests)
-            setTimeout(() => {
-                return resolve(productRequests)
-            }, 250);
+            return resolve(productRequests)
         }
         catch (error) {
             reject(new Error("Something wrong occured"))
@@ -44,15 +42,11 @@ const addComment = (id, comment) => {
         getSuggestionWithId(id)
             .then((suggestion) => {
                 const updatedComments = { ...suggestion, comments: [...suggestion.comments, comment], numOfComments: suggestion.numOfComments + 1 }
-                setTimeout(() => {
                     updateProductRequestWithID(id, updatedComments)
                     resolve(updatedComments)
-                }, 250);
             })
             .catch(() => {
-                return setTimeout(() => {
                     reject("Could not find the feedback. It may have been deleted. Please reload the screen")
-                }, 250);
             })
     })
 }
@@ -137,13 +131,9 @@ const getProductRequests = () => {
         const productRequests = JSON.parse(localStorage.getItem("productRequests")) || localData.productRequests
         localStorage.setItem("productRequests", JSON.stringify(productRequests))
         if (productRequests === undefined) {
-            return setTimeout(
-                () => reject(new Error("Suggestions not found"))
-                , 250)
+            return reject(new Error("Suggestions not found"))
         }
-        return setTimeout(() => {
-            resolve(productRequests)
-        }, 250)
+        return resolve(productRequests)
     })
 }
 
@@ -152,13 +142,9 @@ const getUser = () => {
         const currentUser = JSON.parse(localStorage.getItem("currentUser")) || localData.currentUser
         localStorage.setItem("currentUser", JSON.stringify(currentUser))
         if (currentUser === undefined) {
-            return setTimeout(
-                () => reject(new Error("User not found"))
-                , 250)
+            return reject(new Error("User not found"))
         }
-        return setTimeout(() => {
-            resolve(currentUser)
-        }, 250)
+        return resolve(currentUser)
     })
 }
 
@@ -167,13 +153,9 @@ const getSuggestionWithId = (id) => {
         try {
             let productRequests = JSON.parse(localStorage.getItem('productRequests'))
             const suggestion = productRequests[id - 1]
-            return setTimeout(() => {
-                resolve(suggestion)
-            }, 250);
+            return resolve(suggestion)
         } catch (error) {
-            return setTimeout(() => {
-                reject(redirect(`/error/${id}`))
-            }, 250);
+            return reject(redirect(`/error/${id}`))
         }
     })
 }

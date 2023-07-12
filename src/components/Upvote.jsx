@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { FeedbackContext } from "../context/FeedbackContext";
 import util from "../data/service";
+import { IN_PROGRESS, LIVE, MOST_UPVOTES, PLANNED } from "../data/types";
 
 const Upvote = ({ upvotes, id, screen = "homepage" }) => {
   const {
@@ -12,6 +13,7 @@ const Upvote = ({ upvotes, id, screen = "homepage" }) => {
     sortBy,
     currentUserData,
     setCurrentUserData,
+    setUpdateStatus
   } = useContext(FeedbackContext);
   const [numOfUpvotes, setNumOfUpvotes] = useState({
     upvotes,
@@ -36,6 +38,45 @@ const Upvote = ({ upvotes, id, screen = "homepage" }) => {
       util
         .addUpvote(id)
         .then((response) => {
+          setUpdateStatus((prevState) => {
+            const newPlanned = prevState.planned.map((entry) => {
+              if (entry.id === response.id) {
+                return response
+              }
+              return entry
+            })
+            if (response.status === PLANNED) {
+              return {
+                ...prevState,
+                planned: sorter(MOST_UPVOTES, newPlanned, true)
+              }
+            }
+            if (response.status === IN_PROGRESS) {
+              const newInProgress = prevState.inProgress.map((entry) => {
+                if (entry.id === response.id) {
+                  return response
+                }
+                return entry
+              })
+              return {
+                ...prevState,
+                inProgress: sorter(MOST_UPVOTES, newInProgress, true)
+              }
+            }
+            if (response.status === LIVE) {
+              const newLive = prevState.live.map((entry) => {
+                if (entry.id === response.id) {
+                  return response
+                }
+                return entry
+              })
+              return {
+                ...prevState,
+                live: sorter(MOST_UPVOTES, newLive, true)
+              }
+            }
+            return prevState
+          })
           setSortedState((prevState) => {
             const newState = prevState.map((state) => {
               if (state.id === id) {
@@ -65,6 +106,45 @@ const Upvote = ({ upvotes, id, screen = "homepage" }) => {
       util
         .addUpvote(id, "decrement")
         .then((response) => {
+          setUpdateStatus((prevState) => {
+            const newPlanned = prevState.planned.map((entry) => {
+              if (entry.id === response.id) {
+                return response
+              }
+              return entry
+            })
+            if (response.status === PLANNED) {
+              return {
+                ...prevState,
+                planned: sorter(MOST_UPVOTES, newPlanned, true)
+              }
+            }
+            if (response.status === IN_PROGRESS) {
+              const newInProgress = prevState.inProgress.map((entry) => {
+                if (entry.id === response.id) {
+                  return response
+                }
+                return entry
+              })
+              return {
+                ...prevState,
+                inProgress: sorter(MOST_UPVOTES, newInProgress, true)
+              }
+            }
+            if (response.status === LIVE) {
+              const newLive = prevState.live.map((entry) => {
+                if (entry.id === response.id) {
+                  return response
+                }
+                return entry
+              })
+              return {
+                ...prevState,
+                live: sorter(MOST_UPVOTES, newLive, true)
+              }
+            }
+            return prevState
+          })
           setSortedState((prevState) => {
             const newState = prevState.map((state) => {
               if (state.id === id) {

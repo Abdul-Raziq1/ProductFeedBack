@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import UpdateStatus from "./UpdateStatus";
+import { useContext } from "react";
+import { FeedbackContext } from "../context/FeedbackContext";
 
-const RoadmapStats = ({ updateStatus }) => {
+const RoadmapStats = () => {
+  const { updateStatus } = useContext(FeedbackContext)
   return (
     <div className="flex flex-col gap-5 bg-white rounded-xl p-7">
       <div className="flex justify-between items-center ">

@@ -43,10 +43,12 @@ const FeedbackProvider = ({ children }) => {
     likes: {},
   });
 
-  const sorter = (sortBy, arrayToSort) => {
-    arrayToSort = arrayToSort.filter(
-      (suggestion) => suggestion.status === SUGGESTION
-    );
+  const sorter = (sortBy, arrayToSort, isNotSuggestion=false) => {
+    if (isNotSuggestion === false){
+      arrayToSort = arrayToSort.filter(
+        (suggestion) => suggestion.status === SUGGESTION
+      );
+    }
     let copy;
     // Sort Logic
     if (sortBy === MOST_UPVOTES) {
@@ -89,9 +91,9 @@ const FeedbackProvider = ({ children }) => {
       .then((response) => {
         setUpdateStatus(() => {
           return {
-            planned: response.filter((res) => res.status === PLANNED),
-            inProgress: response.filter((res) => res.status === IN_PROGRESS),
-            live: response.filter((res) => res.status === LIVE),
+            planned: sorter(MOST_UPVOTES, response.filter((res) => res.status === PLANNED), true),
+            inProgress: sorter(MOST_UPVOTES, response.filter((res) => res.status === IN_PROGRESS), true),
+            live: sorter(MOST_UPVOTES, response.filter((res) => res.status === LIVE), true),
           };
         });
         setSuggestions(sorter(sortBy, response));
@@ -128,6 +130,7 @@ const FeedbackProvider = ({ children }) => {
         setSuggestions,
         setSortedState,
         setCurrentUserData,
+        setUpdateStatus,
       }}
     >
       {children}

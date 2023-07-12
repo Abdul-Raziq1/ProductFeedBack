@@ -10,7 +10,6 @@ import util from "../data/service";
 import { AiOutlineReload } from "react-icons/ai";
 
 const NotFound = ({ error = true }) => {
-  console.log(location.href);
   const id = useLoaderData();
   const navigate = useNavigate();
   const reload = () => {
