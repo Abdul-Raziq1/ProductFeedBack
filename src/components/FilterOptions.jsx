@@ -32,17 +32,28 @@ const FilterOptions = ({ setFilterBy, selected }) => {
             onClick={categoryHandler}
             category={"Enhancement"}
           />
+          <div className="tablet:hidden">
+            <Category
+              selected={selected}
+              onClick={categoryHandler}
+              category={"Bug"}
+            />
+          </div>
+        </div>
+        <div className="tablet:flex gap-4">
           <Category
             selected={selected}
             onClick={categoryHandler}
-            category={"Bug"}
+            category={"Feature"}
           />
+          <div className="hidden tablet:flex">
+            <Category
+              selected={selected}
+              onClick={categoryHandler}
+              category={"Bug"}
+            />
+          </div>
         </div>
-        <Category
-          selected={selected}
-          onClick={categoryHandler}
-          category={"Feature"}
-        />
       </div>
     </div>
   );
