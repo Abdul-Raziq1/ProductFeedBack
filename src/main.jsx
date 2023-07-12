@@ -9,6 +9,7 @@ import EditScreen from "./screens/EditScreen";
 import { loaders } from "./data/loaders";
 import RoadmapScreen from "./screens/RoadmapScreen";
 import NotFound from "./screens/NotFound";
+import PageNotFound from "./screens/PageNotFound";
 const router = createBrowserRouter([
   {
     index: true,
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <LandingScreen />
+    element: <PageNotFound />
   },
 ]);
 
