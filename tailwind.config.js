@@ -9,7 +9,7 @@ export default {
       'jost': ['Jost', 'sans-serif']
     },
     screens: {
-      'tablet': '768px',
+      'tablet': '668px',
       // => @media (min-width: 640px) { ... }
 
       'laptop': '1024px',

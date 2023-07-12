@@ -8,7 +8,7 @@ const FilterOptions = ({ setFilterBy, selected }) => {
   };
   return (
     <div className="flex flex-col bg-white rounded-xl">
-      <div className="flex flex-col tablet:max-w-sm tablet:mx-auto tablet:px-2 tablet:pb-4 p-7 pb-10 gap-4">
+      <div className="flex flex-col desktop:p-7 desktop:mx-0 tablet:max-w-sm tablet:mx-auto tablet:px-2 tablet:pb-4 p-7 pb-10 gap-4">
         <div className="flex gap-4 tablet:gap-2">
           <Category
             selected={selected}

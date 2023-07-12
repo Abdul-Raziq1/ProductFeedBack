@@ -32,7 +32,7 @@ const NotFound = ({ error = true }) => {
             There is no feedback yet
           </h2>
 
-          <blockquote className="max-w-sm mx-4 text-blueBlackTheme text-center text-lg">
+          <blockquote className="max-w-sm mx-4 desktop:max-w-xl text-blueBlackTheme text-center text-lg">
             {error === false
               ? "Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app."
               : "Could not find the feedback. It may have been deleted. Please reload the screen"}

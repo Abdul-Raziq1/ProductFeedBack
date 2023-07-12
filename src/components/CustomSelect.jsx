@@ -12,7 +12,7 @@ const CustomOption = (props) => (
     </span>
   </components.Option>
 );
-const CustomSelect = ({ options, onChange, defaultValue, override }) => {
+const CustomSelect = ({ options, onChange, defaultValue, containerSize="normal", override }) => {
   const customStyle = {
     control: (styles, state) => ({
       ...styles,
@@ -68,7 +68,7 @@ const CustomSelect = ({ options, onChange, defaultValue, override }) => {
   menu: (styles) => {
     return {
       ...styles,
-      minWidth: "160px"
+      minWidth: containerSize === "normal" ? "160px" : "250px"
     }
   }
   };
@@ -87,6 +87,6 @@ const CustomSelect = ({ options, onChange, defaultValue, override }) => {
 
 CustomSelect.propTypes = {
   options: PropTypes.array,
-  override: PropTypes.bool
+  override: PropTypes.bool,
 };
 export default CustomSelect;

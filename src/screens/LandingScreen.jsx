@@ -44,9 +44,9 @@ const LandingScreen = () => {
     );
   }
   return (
-    <div className="tablet:p-6 tablet:bg-grayTheme min-h-screen overflow-x-hidden select-none">
-      <div className="hidden tablet:grid grid-row-1 grid-cols-3 gap-2 mb-6">
-        <div className="flex flex-col rounded-lg pb-7 text-center justify-end bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="tablet:p-6 desktop:flex desktop:px-32 desktop:py-20 tablet:bg-grayTheme min-h-screen overflow-x-hidden select-none">
+      <div className="hidden desktop:grid-cols-1 desktop:w-2/6 desktop:h-full desktop:gap-4 desktop:grid-row-3 desktop:mr-4 tablet:grid tablet:grid-row-1 tablet:grid-cols-3 gap-2 mb-6">
+        <div className="flex flex-col desktop:h-40 desktop:pb-5 rounded-lg pb-7 desktop:text-left desktop:pl-8 text-center justify-end bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
           <h2 className="font-semibold text-xl text-white">Frontend Mentor</h2>
           <h4 className=" text-lg text-grayTheme text-opacity-90">
             Feedback Board
@@ -70,24 +70,31 @@ const LandingScreen = () => {
           )}
         </div>
       </header>
-      <main className="min-h-screen relative bg-grayTheme">
+      <main className="min-h-screen desktop:w-screen relative bg-grayTheme">
         {<SideBar ref={sideBarRef} showSideBar={showSideBar} />}
-        <section className="flex items-center tablet:rounded-lg justify-around bg-blueBlackTheme py-2">
-          <div className="hidden tablet:flex gap-2">
-            <img
-              src={suggestionsIcon}
-              className="w-6 h-6"
-              alt="suggestions-icon"
-            />
-            <h2 className="text-xl font-bold text-white">
-              {sortedState.length}{" "}
-              {sortedState.length === 1 ? "Suggestion" : "Suggestions"}
-            </h2>
+        <section className="flex items-center desktop:justify-between desktop:px-5 desktop:py-4 tablet:rounded-lg justify-around bg-blueBlackTheme py-2">
+          <div className="hidden desktop:gap-16 tablet:flex items-center gap-2">
+            <div className="flex items-center desktop:gap-5 gap-2">
+              <img
+                src={suggestionsIcon}
+                className="w-6 h-6 mb-1"
+                alt="suggestions-icon"
+              />
+              <h2 className="text-xl font-bold text-white">
+                {sortedState.length}{" "}
+                {sortedState.length === 1 ? "Suggestion" : "Suggestions"}
+              </h2>
+            </div>
+            <div className="hidden desktop:flex mt-1">
+              <SortDropDown />
+            </div>
           </div>
-          <SortDropDown />
+          <div className="desktop:hidden">
+            <SortDropDown />
+          </div>
           <LinkButton icon={<FaPlus />} text={ADD_FEEDBACK} color={"#AD1FEA"} />
         </section>
-        <section className="py-10 px-4 tablet:px-0 ">
+        <section className="py-10 desktop:py-5 px-4 tablet:px-0 ">
           {loading === true ? (
             <div className="min-h-screen w-full bg-white p-3 mr-3">
               <Loading />

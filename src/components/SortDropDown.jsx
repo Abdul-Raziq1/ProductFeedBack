@@ -15,9 +15,16 @@ const SortDropDown = () => {
     setSortBy(selectedValue.value)
   }
   return (
-    <div className="flex items-center">
-      <span className="font-bold whitespace-nowrap text-grayTheme">Sort by :</span>
+    <div className="flex items-center cursor-pointer">
+      <label className="font-bold whitespace-nowrap text-grayTheme">Sort by :</label>
+      <div className="desktop:hidden tablet:hidden">
       <CustomSelect options={dropDownItems} onChange={handleChange} defaultValue={{label: sortBy, value: sortBy}}/>
+
+      </div>
+      <div className="hidden desktop:flex tablet:flex">
+      <CustomSelect options={dropDownItems} onChange={handleChange} containerSize="desktop" defaultValue={{label: sortBy, value: sortBy}}/>
+
+      </div>
     </div>
   );
 };
