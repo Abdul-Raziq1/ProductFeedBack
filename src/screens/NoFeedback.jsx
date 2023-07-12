@@ -1,9 +1,7 @@
-import { FaPlus } from "react-icons/fa";
 import detective from "/assets/suggestions/illustration-empty.svg"
 import LinkButton from "../components/LinkButtons";
-import { ADD_FEEDBACK } from "../data/types";
 
-const NotFound = () => {
+const NoFeedback = () => {
   return (
     <div className="bg-grayTheme min-h-screen tablet:max-w-xl tablet:mx-auto desktop:max-w-5xl desktop:mx-auto flex flex-col">
       <div className="bg-white py-20 rounded-lg my-auto">
@@ -18,12 +16,11 @@ const NotFound = () => {
           </h2>
 
           <blockquote className="max-w-sm mx-4 desktop:max-w-xl text-blueBlackTheme text-center text-lg">
-              Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.
+            You are reaching into the future a bit. There&apos;s nothing here in the now
           </blockquote>
           <div className="flex gap-4">
             <LinkButton
-              icon={<FaPlus />}
-              text={ADD_FEEDBACK}
+              text={"Back to the Past"}
               color={"#AD1FEA"}
             />
           </div>
@@ -33,4 +30,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NoFeedback;

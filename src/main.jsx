@@ -10,6 +10,7 @@ import { loaders } from "./data/loaders";
 import RoadmapScreen from "./screens/RoadmapScreen";
 import NotFound from "./screens/NotFound";
 import PageNotFound from "./screens/PageNotFound";
+import NoFeedback from "./screens/NoFeedback";
 const router = createBrowserRouter([
   {
     index: true,
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     path: "/comments/:id",
     element: <Comments />,
     loader: loaders.detailsLoader,
+    errorElement: <NoFeedback />
   },
   {
     path: "comments/:id/edit/",
