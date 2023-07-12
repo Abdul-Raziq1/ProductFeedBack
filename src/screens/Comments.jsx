@@ -72,7 +72,7 @@ const Comments = () => {
     }
   };
   return (
-    <div className="desktop:max-w-3xl desktop:mx-auto tablet:px-5 tablet:py-16 min-h-screen py-7 px-4 bg-grayTheme flex flex-col gap-10 select-none">
+    <div className="max-w-md mx-auto tablet:max-w-xl tablet:mx-auto desktop:max-w-3xl desktop:mx-auto tablet:px-5 tablet:py-16 min-h-screen py-7 px-4 bg-grayTheme flex flex-col gap-10 select-none">
       <div className="flex justify-between">
         <div onClick={backClickHandler} className="flex gap-2 items-center desktop:text-xl ">
           <FaChevronLeft className="w-2 text-blueTheme" />

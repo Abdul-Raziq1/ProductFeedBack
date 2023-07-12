@@ -93,7 +93,7 @@ const EditScreen = () => {
   };
 
   return (
-    <div className="min-h-screen py-7 desktop:max-w-2xl desktop:mx-auto desktop:py-20 tablet:px-6 px-4 bg-grayTheme flex flex-col gap-10 select-none">
+    <div className="min-h-screen py-7 tablet:max-w-xl tablet:mx-auto desktop:max-w-3xl desktop:mx-auto desktop:py-20 tablet:px-6 px-4 bg-grayTheme flex flex-col gap-10 select-none">
       <div
         onClick={backClickHandler}
         className="cursor-pointer w-fit flex gap-2 items-center desktop:text-xl desktop:mb-4"
