@@ -16,7 +16,7 @@ const NoFeedback = () => {
           </h2>
 
           <blockquote className="max-w-sm mx-4 desktop:max-w-xl text-blueBlackTheme text-center text-lg">
-            You are reaching into the future a bit. There&apos;s nothing here in the now
+            You are reaching into the Future a bit. There&apos;s nothing here in the Now
           </blockquote>
           <div className="flex gap-4">
             <LinkButton
