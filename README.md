@@ -64,12 +64,11 @@ Mobile-first approach
 Improve my state management techniques
 Improve my styling
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
 ### Useful resources
 
-- (https://tailwindcss.com/) - Best CSS framework I have used.
+- [TailwindCSS](https://tailwindcss.com/) - Best CSS framework I have used.
 
 ## Author
 
-- Website - [Abdul-Raziq](https://www.your-site.com)
+- Website - [Abdul-Raziq](https://product-feedback-six.vercel.app/)
