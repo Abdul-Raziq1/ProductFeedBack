@@ -5,7 +5,7 @@ import { ADD_FEEDBACK } from "../data/types";
 
 const NotFound = () => {
   return (
-    <div className="bg-grayTheme min-h-screen tablet:max-w-xl tablet:mx-auto desktop:max-w-5xl desktop:mx-auto flex flex-col">
+    <div className="bg-grayTheme tablet:max-w-xl tablet:mx-auto desktop:max-w-5xl desktop:mx-auto flex flex-col">
       <div className="bg-white py-20 rounded-lg my-auto">
         <div className="flex w-full gap-10 flex-col justify-center items-center">
           <img

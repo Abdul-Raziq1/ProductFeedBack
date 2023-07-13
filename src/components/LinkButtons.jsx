@@ -12,7 +12,8 @@ const LinkButton = ({ text, icon, color }) => {
     const links = {
       'Add Feedback': '/addFeedback',
       'Edit Feedback': 'edit',
-      'Take me home': '/'
+      'Take me home': '/',
+      'Back to the Past': '/'
     }
     return links[text]
   }
