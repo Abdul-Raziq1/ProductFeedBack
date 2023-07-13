@@ -17,8 +17,8 @@ const Category = ({ category, onClick, selected, isPresentational }) => {
       className={`${
         filterBy === category && selected
           ? "bg-blueTheme text-white tablet:hover:bg-blueTheme tablet:hover:bg-opacity-100"
-          : "bg-lighterBlueTheme bg-opacity-10 text-blueTheme"
-      } w-fit cursor-pointer py-1 px-5 tablet:hover:bg-blueTheme tablet:hover:bg-opacity-25  font-semibold rounded-xl`}
+          : "bg-lighterBlueTheme bg-opacity-10 text-blueTheme tablet:hover:bg-blueTheme tablet:hover:bg-opacity-25"
+      } w-fit cursor-pointer py-1 px-5  font-semibold rounded-xl`}
     >
       <span>{category}</span>
     </div>
