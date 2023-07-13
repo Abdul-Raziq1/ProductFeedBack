@@ -11,7 +11,7 @@ const PageNotFound = () => {
             src={detective}
             alt="searching for results"
           />
-          <h1 className="text-blueBlackTheme text-center text-4xl tablet:text-5xl font-bold">Where are you hiding...</h1>
+          <h1 className="text-blueBlackTheme text-center text-4xl tablet:text-5xl font-bold">Where are you hiding...?</h1>
           <div className="w-10/12 text-center">
             <h3 className="text-blueBlackTheme text-2xl font-semibold">
               We&apos;re not sure how you got here...
