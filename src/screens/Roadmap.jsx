@@ -76,7 +76,7 @@ const Roadmap = () => {
                 : index.currentIndex === 1 && index.prevIndex === 0
                 ? "translate-x-full bg-purpleTheme"
                 : index.currentIndex === 2 && index.prevIndex === 0
-                ? "translate-x-[200%]  bg-amber-600"
+                ? "translate-x-[200%] bg-blueTheme"
                 : "opacity-0"
             }`}
           ></div>
