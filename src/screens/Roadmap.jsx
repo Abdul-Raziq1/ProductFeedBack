@@ -53,7 +53,7 @@ const Roadmap = () => {
             <FaChevronLeft className="w-2" />
             <span className="hover:underline font-semibold">Go Back</span>
           </div>
-          <span className="text-xl font-bold">Roadmap</span>
+          <span className="select-none text-xl font-bold">Roadmap</span>
         </div>
         <LinkButton icon={<FaPlus />} text={ADD_FEEDBACK} color={"#AD1FEA"} />
       </div>
