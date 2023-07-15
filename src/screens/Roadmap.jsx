@@ -76,7 +76,7 @@ const Roadmap = () => {
                 : index.currentIndex === 1 && index.prevIndex === 0
                 ? "translate-x-full bg-purpleTheme"
                 : index.currentIndex === 2 && index.prevIndex === 0
-                ? "translate-x-[280px]  bg-amber-600"
+                ? "translate-x-[200%]  bg-amber-600"
                 : "opacity-0"
             }`}
           ></div>
@@ -120,7 +120,7 @@ const Roadmap = () => {
               index.currentIndex === 2 && index.prevIndex === 2
                 ? "translate-x-0 bg-blueTheme"
                 : index.currentIndex === 0 && index.prevIndex === 2
-                ? "-translate-x-[280px] bg-amber-600"
+                ? "-translate-x-[200%] bg-amber-600"
                 : index.currentIndex === 1 && index.prevIndex === 2
                 ? "-translate-x-full bg-purpleTheme"
                 : "opacity-0"
